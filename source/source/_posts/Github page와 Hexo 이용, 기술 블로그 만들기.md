@@ -238,21 +238,38 @@ $ hexo server
   $ hexo clean
   ```
 
-* 배포가 되지 않는 경우
-
-  ```bash bash
-  npm install hexo-deployer-git --save
-  ```
-
-* git 
-
+  * 테마 안에 있는 git 삭제
 
   ```bash bash
   $ rm -rf .git
   ```
 
-  ​
+    
 
+* 배포가 되지 않는 경우 해볼 것들
 
+  * git을 못 찾는다면 `hexo-deployer-git` 설치
 
+  ```bash bash
+  $ npm install hexo-deployer-git --save
+  ```
+  * github 관련 에러 경우
+
+    > http://maxisam.github.io/2016/09/02/Hexo-got-error-on-deploying-to-github/ 블로그 참고
+
+    1) Git Credential Manager for Windows 설치 
+
+    https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases
+
+    2) git bash에서 명령어 실행
+
+    ```bash bash
+    $ git config --global credential.helper wincred
+    ```
+
+    3) 자격증명 삭제
+
+    제어판 > 사용자계정 > 자격증명 관리자 > windows 자격 증명 > 일반 자격 증명 에서 `github.com` 자격증명을 제거
+
+    `deploy` 혹은 `push`를 할때, 다시 ID&PW를 입력해야 한다.
 
