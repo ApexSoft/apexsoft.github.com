@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>webpack | apexsoft 기술블로그</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="apexsoft,node.js,npm" />
+    
+    <meta name="description" content="모듈화1.스코프 (Scope) 모든 모듈은 자신만의 독립적인 실행 영역이 있어야 한다 전역변수와 지역변수를 분리하는 것이 중요  2.  정의 exports 객체 이용  3. 사용 모듈 사용은 require 함수 사용  webpack 모듈 번들러   의존성을 가진 모듈들을 다루고 , 그 모듈로부터 정적인 asset을 생성  하나의 파일로 js파일을 번들할수있">
+<meta name="keywords" content="apexsoft,node.js,npm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack">
+<meta property="og:url" content="http://apexsoft.github.io/2018/02/23/webpack/index.html">
+<meta property="og:site_name" content="apexsoft 기술블로그">
+<meta property="og:description" content="모듈화1.스코프 (Scope) 모든 모듈은 자신만의 독립적인 실행 영역이 있어야 한다 전역변수와 지역변수를 분리하는 것이 중요  2.  정의 exports 객체 이용  3. 사용 모듈 사용은 require 함수 사용  webpack 모듈 번들러   의존성을 가진 모듈들을 다루고 , 그 모듈로부터 정적인 asset을 생성  하나의 파일로 js파일을 번들할수있">
+<meta property="og:updated_time" content="2018-02-23T06:58:20.621Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack">
+<meta name="twitter:description" content="모듈화1.스코프 (Scope) 모든 모듈은 자신만의 독립적인 실행 영역이 있어야 한다 전역변수와 지역변수를 분리하는 것이 중요  2.  정의 exports 객체 이용  3. 사용 모듈 사용은 require 함수 사용  webpack 모듈 번들러   의존성을 가진 모듈들을 다루고 , 그 모듈로부터 정적인 asset을 생성  하나의 파일로 js파일을 번들할수있">
+    
+
+    
+        <link rel="alternate" href="/" title="apexsoft 기술블로그" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">모두가 master가 되는 날 까지</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Inici</a>
+                                </li>
+                            
+                                        
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">Quant a</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cercar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'categories',
+            TAGS: 'etiquetes',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    Sense categoria
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-webpack" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        webpack
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/02/23/webpack/" class="article-date">
+            <time datetime="2018-02-23T06:58:20.621Z" itemprop="datePublished">2018-02-23</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/apexsoft/">apexsoft</a>, <a class="tag-link" href="/tags/node-js/">node.js</a>, <a class="tag-link" href="/tags/npm/">npm</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="모듈화"><a href="#모듈화" class="headerlink" title="모듈화"></a>모듈화</h1><h2 id="1-스코프-Scope"><a href="#1-스코프-Scope" class="headerlink" title="1.스코프 (Scope)"></a>1.스코프 (Scope)</h2><ul>
+<li>모든 모듈은 자신만의 독립적인 실행 영역이 있어야 한다</li>
+<li>전역변수와 지역변수를 분리하는 것이 중요</li>
+</ul>
+<h2 id="2-정의"><a href="#2-정의" class="headerlink" title="2.  정의"></a>2.  정의</h2><ul>
+<li><code>exports</code> 객체 이용</li>
+</ul>
+<h2 id="3-사용"><a href="#3-사용" class="headerlink" title="3. 사용"></a>3. 사용</h2><ul>
+<li>모듈 사용은 <code>require</code> 함수 사용</li>
+</ul>
+<h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><ul>
+<li><p>모듈 번들러 </p>
+</li>
+<li><p>의존성을 가진 모듈들을 다루고 , 그 모듈로부터 정적인 asset을 생성</p>
+</li>
+<li><p>하나의 파일로 js파일을 번들할수있다</p>
+</li>
+<li><p>작동 방법 </p>
+<blockquote>
+<ul>
+<li>하나의 파일을 진입점으로 지정</li>
+<li>진입점 파일은 트리의 루트가 된다  </li>
+<li><code>require</code>에 의해 다른 파일이 트리에 추가 된다 = require으로 명시된 의존성들을 해석하며 의존성 트리를 그린다</li>
+<li>webpack명령을 실행하면  , 모든 파일과 모듈은 하나의 파일에 번들로 제공된다</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="로더"><a href="#로더" class="headerlink" title="로더"></a>로더</h3><ul>
+<li>일종의 함수</li>
+<li>마지막 로더는 최종적으로 적절하게 변형된 모듈을 번들 자바스크립트 파일에 넣어주게 된다</li>
+<li>ex) css 파일 require 하는 경우<ul>
+<li>css 파일을 그대로 자바스크립트에 넣을수 없으니 , </li>
+<li>원래의 css파일과 같은 역활을 할 수 있는 자바스크립트 형태의 무언가를 만들어야 최종 번들에 해당 내용을 포함시킬수 있다. </li>
+<li>이 과정을 일련의 로더 파이프라인이 수행 </li>
+</ul>
+</li>
+</ul>
+<h3 id="모듈-번들링"><a href="#모듈-번들링" class="headerlink" title="모듈 번들링"></a>모듈 번들링</h3><ul>
+<li>모듈간의 의존성을 해석하고 , 그걸 바탕으로 정적 에셋을 만드는 과정</li>
+</ul>
+<h3 id="모듈-번들러"><a href="#모듈-번들러" class="headerlink" title="모듈 번들러"></a>모듈 번들러</h3><ul>
+<li><p>모듈 번들링을 하는 친구</p>
+</li>
+<li><p>ex ) webpack</p>
+</li>
+<li><p>거대한 파일들을 여러 파일로 나눠 쓸수있게 해준다.</p>
+<p>​</p>
+<p>​</p>
+</li>
+</ul>
+<h2 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h2><ul>
+<li><p>webpack을 설정한다</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"> entry: &#123;</span><br><span class="line">        <span class="string">'vuejs-test2'</span>: path.join(__dirname, <span class="string">'/src/vuejs-test2.js'</span>),</span><br><span class="line">        <span class="string">'draggabletest'</span>: path.join(__dirname, <span class="string">'/src/draggabletest.js'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(__dirname, <span class="string">'../src/main/resources/static/js/bundles'</span>),</span><br><span class="line">    publicPath: <span class="string">'/js/bundles'</span>,</span><br><span class="line">    filename: <span class="string">'[name].js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>enty - 번들의 엔트리 포인트 . webpack은 여러 번들을 생성하는 진입점을 허용하기 때문에 배열이다</p>
+</li>
+<li><p>output - webpack의 최종 결과물이 되는 형태를 명시</p>
+<ul>
+<li><p>path -  어디에 번들 파일을 위치 시킬 것인지를 지정 ( 빌드 결과물 들어갈 <code>webpack.config.js</code>로 부터의 상태 경로 )</p>
+</li>
+<li><p>publicPath -  웹사이트에서 해당 에셋에 접근하기 위해 필요한 경로 </p>
+</li>
+<li><p>filename  </p>
+<blockquote>
+<ul>
+<li>각 번들 파일의 이름을 지정</li>
+<li><code>[name]</code> : <code>entry</code>에서의 key 값</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>webpack 명령을 실행하면 , bundles라는 폴더에 <code>draggabletest.js</code> <code>vuejs-test2</code>파일을 생성한다</p>
+</li>
+<li><p>webpack은 <code>require</code> 하고있는  파일들 모두 묶어 하나의  번들을 내놓게 된다</p>
+</li>
+</ul>
+<h3 id="webpack-로더"><a href="#webpack-로더" class="headerlink" title="webpack 로더"></a>webpack 로더</h3><ul>
+<li><p><code>require</code>를 이용하여 , <code>.css</code>  와 <code>.html</code> <code>.png</code>등을 불러올수있다</p>
+<p>​</p>
+</li>
+</ul>
+<h2 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h2><ul>
+<li>npm 설정을 관리</li>
+<li>이를 통해 모든 부품이 설치되어 돌아갈 수 있습니다.</li>
+</ul>
+<h2 id="node-moules"><a href="#node-moules" class="headerlink" title="node-moules"></a>node-moules</h2><ul>
+<li>npm이 pakage들을 설치하는 디렉토리 폴더</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><h1 id="모듈화-1"><a href="#모듈화-1" class="headerlink" title="모듈화"></a>모듈화</h1><h2 id="1-스코프-Scope-1"><a href="#1-스코프-Scope-1" class="headerlink" title="1.스코프 (Scope)"></a>1.스코프 (Scope)</h2><ul>
+<li>모든 모듈은 자신만의 독립적인 실행 영역이 있어야 한다</li>
+<li>전역변수와 지역변수를 분리하는 것이 중요</li>
+</ul>
+<h2 id="2-정의-1"><a href="#2-정의-1" class="headerlink" title="2.  정의"></a>2.  정의</h2><ul>
+<li><code>exports</code> 객체 이용</li>
+</ul>
+<h2 id="3-사용-1"><a href="#3-사용-1" class="headerlink" title="3. 사용"></a>3. 사용</h2><ul>
+<li>모듈 사용은 <code>require</code> 함수 사용</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://apexsoft.github.io/2018/02/23/webpack/" data-id="cjdzlf7ue000iwwulznamn4z2" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>seguir:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/02/23/다국어 처리 적용하는 방법/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">més nou</strong>
+        <p class="article-nav-title">
+        
+            다국어처리
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/02/23/간결한 spring security configure/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">antic</strong>
+        <p class="article-nav-title">Spring security config 예제</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/23/다국어 처리 적용하는 방법/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/23/다국어 처리 적용하는 방법/" class="title">다국어처리</a></p>
+                            <p class="item-date"><time datetime="2018-02-23T06:58:20.621Z" itemprop="datePublished">2018-02-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/23/webpack/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/23/webpack/" class="title">webpack</a></p>
+                            <p class="item-date"><time datetime="2018-02-23T06:58:20.621Z" itemprop="datePublished">2018-02-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/23/간결한 spring security configure/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/23/간결한 spring security configure/" class="title">Spring security config 예제</a></p>
+                            <p class="item-date"><time datetime="2018-02-23T06:58:20.621Z" itemprop="datePublished">2018-02-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/23/라우터정리/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/23/라우터정리/" class="title">vueRouter</a></p>
+                            <p class="item-date"><time datetime="2018-02-23T06:58:20.621Z" itemprop="datePublished">2018-02-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/23/Redis/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/23/Redis/" class="title">REDIS</a></p>
+                            <p class="item-date"><time datetime="2018-02-23T06:58:20.606Z" itemprop="datePublished">2018-02-23</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">arxius</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">15</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">etiquetes</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apexsoft/">apexsoft</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/templete/">templete </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">etiqueta cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/DB/" style="font-size: 10px;">DB</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JPA/" style="font-size: 13.33px;">JPA</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/apexsoft/" style="font-size: 20px;">apexsoft</a> <a href="/tags/component/" style="font-size: 13.33px;">component</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/node-js/" style="font-size: 13.33px;">node.js</a> <a href="/tags/npm/" style="font-size: 13.33px;">npm</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/templete/" style="font-size: 10px;">templete </a> <a href="/tags/vue-js/" style="font-size: 16.67px;">vue.js</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 HyoSook Kim</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://apexsoft.github.io/2018/02/23/webpack/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

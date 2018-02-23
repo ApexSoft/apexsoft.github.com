@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>spring security | apexsoft 기술블로그</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="apexsoft,springboot,security" />
+    
+    <meta name="description" content="1. build.gradle1compile(&apos;org.springframework.boot:spring-boot-starter-security&apos;) 2. DB, Domain에 USER와 ROLE 필요 User  java12345678910111213141516171819202122232425262728293031@Entity@Table(name = &quot;USER&quot;">
+<meta name="keywords" content="apexsoft,springboot,security">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring security">
+<meta property="og:url" content="http://apexsoft.github.io/2018/02/23/Spring Security/index.html">
+<meta property="og:site_name" content="apexsoft 기술블로그">
+<meta property="og:description" content="1. build.gradle1compile(&apos;org.springframework.boot:spring-boot-starter-security&apos;) 2. DB, Domain에 USER와 ROLE 필요 User  java12345678910111213141516171819202122232425262728293031@Entity@Table(name = &quot;USER&quot;">
+<meta property="og:updated_time" content="2018-02-23T06:58:20.606Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring security">
+<meta name="twitter:description" content="1. build.gradle1compile(&apos;org.springframework.boot:spring-boot-starter-security&apos;) 2. DB, Domain에 USER와 ROLE 필요 User  java12345678910111213141516171819202122232425262728293031@Entity@Table(name = &quot;USER&quot;">
+    
+
+    
+        <link rel="alternate" href="/" title="apexsoft 기술블로그" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">모두가 master가 되는 날 까지</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Inici</a>
+                                </li>
+                            
+                                        
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">Quant a</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cercar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'categories',
+            TAGS: 'etiquetes',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    Sense categoria
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-Spring Security" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        spring security
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/02/23/Spring Security/" class="article-date">
+            <time datetime="2018-02-23T06:58:20.606Z" itemprop="datePublished">2018-02-23</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/apexsoft/">apexsoft</a>, <a class="tag-link" href="/tags/security/">security</a>, <a class="tag-link" href="/tags/springboot/">springboot</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h4 id="1-build-gradle"><a href="#1-build-gradle" class="headerlink" title="1. build.gradle"></a>1. build.gradle</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile(<span class="string">'org.springframework.boot:spring-boot-starter-security'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="2-DB-Domain에-USER와-ROLE-필요"><a href="#2-DB-Domain에-USER와-ROLE-필요" class="headerlink" title="2. DB, Domain에 USER와 ROLE 필요"></a>2. DB, Domain에 USER와 ROLE 필요</h4><ul>
+<li>User</li>
+</ul>
+<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name = <span class="string">"USER"</span>)</span><br><span class="line"><span class="meta">@Getter</span> <span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@JsonIdentityInfo</span>(generator = ObjectIdGenerators.PropertyGenerator.class,</span><br><span class="line">                  property = <span class="string">"id"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">AbstractBaseEntity</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"user_id"</span>)</span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull</span></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"user_name"</span>, unique = <span class="keyword">true</span>)</span><br><span class="line">    <span class="meta">@Size</span>(min = <span class="number">8</span>)</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull</span></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"password"</span>)</span><br><span class="line">    <span class="meta">@Size</span>(min = <span class="number">8</span>)</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"email"</span>)</span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ManyToMany</span></span><br><span class="line">    <span class="meta">@JoinTable</span>(name = <span class="string">"user_role"</span>,</span><br><span class="line">               joinColumns = <span class="meta">@JoinColumn</span>(name = <span class="string">"user_id"</span>),</span><br><span class="line">               inverseJoinColumns = <span class="meta">@JoinColumn</span>(name = <span class="string">"role_id"</span>))</span><br><span class="line">    <span class="keyword">private</span> Set&lt;Role&gt; roles;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Role</li>
+</ul>
+<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name = <span class="string">"role"</span>)</span><br><span class="line"><span class="meta">@Getter</span> <span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@JsonIdentityInfo</span>(generator = ObjectIdGenerators.PropertyGenerator.class,</span><br><span class="line">                  property = <span class="string">"id"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Role</span> <span class="keyword">extends</span> <span class="title">AbstractBaseEntity</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span> <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Role</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Role</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ManyToMany</span>(mappedBy = <span class="string">"roles"</span>)</span><br><span class="line">    <span class="keyword">private</span> Set&lt;User&gt; users;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-UserServiceDetailImpl-생성"><a href="#3-UserServiceDetailImpl-생성" class="headerlink" title="3. UserServiceDetailImpl 생성"></a>3. UserServiceDetailImpl 생성</h4><p><code>UserDetailService</code>를 구현해야만 Spring Security가 정상적으로 조회 가능</p>
+<p><code>InMemoryAuthentication</code>설정이 없다면 기본적으로 <code>UserDetailsService</code>구현 객체를 찾아 로그인 요청시 이용한다.</p>
+<p><code>InMemoryAuthentication</code>설정이 있으면, <code>UserDetailsService</code>구현 객체가 있어도 해당 흐름을 타지 않는다.</p>
+<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span>(onConstructor = @__(<span class="meta">@Autowired</span>))</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceDetailImpl</span> <span class="keyword">implements</span> <span class="title">UserDetailsService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span> <span class="keyword">private</span> <span class="keyword">final</span> UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="meta">@Transactional</span>(readOnly = <span class="keyword">true</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserDetails <span class="title">loadUserByUsername</span><span class="params">(String username)</span> <span class="keyword">throws</span> UsernameNotFoundException </span>&#123;</span><br><span class="line"></span><br><span class="line">        User user = <span class="keyword">this</span>.userRepository</span><br><span class="line">                            .findByUserName(username)</span><br><span class="line">                            .orElseThrow(() -&gt; <span class="keyword">new</span> UsernameNotFoundException(<span class="string">"사용자 이름을 찾을 수 없습니다."</span>));</span><br><span class="line"></span><br><span class="line">        Set&lt;GrantedAuthority&gt; grantedAuthorities = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Role role: user.getRoles()) &#123;</span><br><span class="line">            grantedAuthorities.add(<span class="keyword">new</span> SimpleGrantedAuthority(role.getName()));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), grantedAuthorities);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>loadUserByUsername</code>메소드를 반드시 구현해야한다. 스프링시큐리티에서 User 정보를 읽을 때 사용된다.</li>
+<li>User를 읽어왔으면 권한을 부여해준다. </li>
+</ul>
+<h4 id="4-비밀번호-암호화"><a href="#4-비밀번호-암호화" class="headerlink" title="4. 비밀번호 암호화"></a>4. 비밀번호 암호화</h4><p>비밀번호 뿐만 아니라 개인 식별정보는 필히 암호화를 거쳐 저장하여야 한다.<br>암호화는  BCrypt  방식을 이용하며 Spring에서 기본적으로 제공되는 클래스는  <code>BCryptPasswordEncoder</code> 이다.<br><code>passwordEncoder</code> 라는 이름의 빈으로 등록하면 자동으로 적용된다.</p>
+<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> BCryptPasswordEncoder <span class="title">passwordEncoder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> BCryptPasswordEncoder();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>회원가입 시 패스워드를 DB에 저장할때는  <code>PasswordEncoder</code> 를 통해 암호화하는 로직을 필히 명시해줘야 한다.</p>
+<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">  <span class="meta">@NonNull</span> <span class="keyword">private</span> <span class="keyword">final</span> BCryptPasswordEncoder bCryptPasswordEncoder;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">saveUserUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));</span><br><span class="line">        <span class="keyword">if</span> (Objects.isNull(user.getRoles()) || user.getRoles().isEmpty()) &#123;</span><br><span class="line">            Set&lt;Role&gt; roles = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">            roles.add(roleRepository.findByName(<span class="string">"ROLE_USER"</span>)</span><br><span class="line">                                    .orElseThrow(() -&gt; <span class="keyword">new</span> IllegalStateException(<span class="string">"ROLE is not set"</span>)));</span><br><span class="line">            user.setRoles(roles);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.userRepository.save(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-로그인"><a href="#5-로그인" class="headerlink" title="5. 로그인"></a>5. 로그인</h4><h5 id="1-WebSecurityConfig-java-gt-로그인-관련-부분"><a href="#1-WebSecurityConfig-java-gt-로그인-관련-부분" class="headerlink" title="1) WebSecurityConfig.java &gt; 로그인 관련 부분"></a>1) WebSecurityConfig.java &gt; 로그인 관련 부분</h5><figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.formLogin()</span><br><span class="line">	.loginPage(<span class="string">"/user/view/membership/sign-in"</span>)</span><br><span class="line">    .loginProcessingUrl(<span class="string">"/user/auth/login"</span>)</span><br><span class="line">    .usernameParameter(<span class="string">"userName"</span>)</span><br><span class="line">    .passwordParameter(<span class="string">"password"</span>)</span><br><span class="line">    .successHandler(loginSuccessHandler())</span><br><span class="line">    .failureHandler(loginFailureHandler())</span><br><span class="line">    .permitAll()</span><br><span class="line">.and()</span><br><span class="line">.logout()</span><br><span class="line">	.logoutRequestMatcher(<span class="keyword">new</span> AntPathRequestMatcher(<span class="string">"/user/auth/logout"</span>))</span><br><span class="line">    .logoutSuccessHandler(logoutSuccessHandler())</span><br></pre></td></tr></table></figure>
+<p><code>.loginPage(&quot;/user/view/membership/sign-in&quot;)</code> : 로그인 페이지 지정</p>
+<p><code>.loginProcessingUrl(&quot;/user/auth/login&quot;)</code> </p>
+<blockquote>
+<p>로그인을 수행하는 url 지정</p>
+<p>해당 url  controller를 별도로 지정하지 않음</p>
+<p><code>UserDetailService</code> 구현부분을 찾아서 로그인을 수행함</p>
+</blockquote>
+<p><code>.usernameParameter(&quot;userName&quot;)</code> : <code>User</code> 도메인 내 아이디 변수를 그대로 작성 </p>
+<p><code>.passwordParameter(&quot;password&quot;)</code> : <code>User</code> 도메인 내 비밀번호 변수를 그대로 작성</p>
+<p><code>.successHandler(loginSuccessHandler())</code> : 로그인 성공핸들러, 대부분 url을 리다이렉트 함</p>
+<p><code>.failureHandler(loginFailureHandler())</code> : 로그인 실패 핸들러, 대부분 url을 리다이렉트 함</p>
+<p><code>.logoutRequestMatcher(new AntPathRequestMatcher(&quot;/user/auth/logout&quot;))</code> : method를 지정할 수 있기 때문에 csrf를 적용하고, get을 이용하는 경우에 사용</p>
+<p><code>.logoutSuccessHandler(logoutSuccessHandler())</code> : 로그아웃 핸들러, 대부분 url을 리다이렉트 함</p>
+<ul>
+<li>RestLoginSuccessHandler</li>
+</ul>
+<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestLoginSuccessHandler</span> <span class="keyword">extends</span> <span class="title">SimpleUrlAuthenticationSuccessHandler</span> </span>&#123;</span><br><span class="line">    Logger logger = LoggerFactory.getLogger(RestLoginSuccessHandler.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAuthenticationSuccess</span><span class="params">(HttpServletRequest request, HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">                                        Authentication authentication)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        logger.info(<span class="string">"로그인 성공"</span>);</span><br><span class="line">        response.sendRedirect(<span class="string">"/"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>RestLoginFailureHandler</li>
+</ul>
+<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestLoginFailureHandler</span> <span class="keyword">implements</span> <span class="title">AuthenticationFailureHandler</span> </span>&#123;</span><br><span class="line">    Logger logger = LoggerFactory.getLogger(RestLoginFailureHandler.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAuthenticationFailure</span><span class="params">(HttpServletRequest request, HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">                                        AuthenticationException exception)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cuase=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(exception.getClass().equals(BadCredentialsException.class))&#123;</span><br><span class="line">            cuase=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        logger.info(<span class="string">"로그인 실패"</span>);</span><br><span class="line">        response.sendRedirect(<span class="string">"/?cause="</span>+cuase);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>RestLogoutSuccessHandler</li>
+</ul>
+<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestLogoutSuccessHandler</span> <span class="keyword">extends</span> <span class="title">SimpleUrlLogoutSuccessHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLogoutSuccess</span><span class="params">(HttpServletRequest request, HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">                                Authentication authentication)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        String targetUrl = determineTargetUrl(request, response);</span><br><span class="line">        <span class="keyword">if</span> (response.isCommitted()) &#123;</span><br><span class="line">            logger.debug(<span class="string">"Response has already been committed. Unable to redirect to "</span> + targetUrl);</span><br><span class="line">        &#125;</span><br><span class="line">        logger.info(<span class="string">"로그아웃 성공"</span>);</span><br><span class="line">        response.sendRedirect(<span class="string">"/"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-로그인-화면"><a href="#2-로그인-화면" class="headerlink" title="2) 로그인 화면"></a>2) 로그인 화면</h5><ul>
+<li>sign-in.ftl</li>
+</ul>
+<figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>로그인<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"pure-form pure-form-aligned"</span> <span class="attr">id</span>=<span class="string">"form-login"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pure-control-group"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"userName"</span>&gt;</span>UserName<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"userName"</span> <span class="attr">v-model</span>=<span class="string">"userName"</span> <span class="attr">id</span>=<span class="string">"userName"</span> <span class="attr">class</span>=<span class="string">"pure-input-1-3"</span> <span class="attr">value</span>=<span class="string">""</span></span></span><br><span class="line"><span class="tag">                               <span class="attr">placeholder</span>=<span class="string">"UserName"</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pure-control-group"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"password1"</span>&gt;</span>Password<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">v-model</span>=<span class="string">"password1"</span> <span class="attr">id</span>=<span class="string">"password1"</span> <span class="attr">class</span>=<span class="string">"pure-input-1-3"</span> <span class="attr">value</span>=<span class="string">""</span></span></span><br><span class="line"><span class="tag">                               <span class="attr">placeholder</span>=<span class="string">"Password"</span> <span class="attr">type</span>=<span class="string">"password"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pure-controls"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"pure-button pure-button-primary pure-u-1-3"</span> @<span class="attr">click.prevent</span>=<span class="string">"onSignIn()"</span>&gt;</span>로그인</span><br><span class="line">                        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span></span></span><br><span class="line"><span class="tag">                           <span class="attr">name</span>=<span class="string">"$&#123;_csrf.parameterName&#125;"</span></span></span><br><span class="line"><span class="tag">                           <span class="attr">value</span>=<span class="string">"$&#123;_csrf.token&#125;"</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>sign-in.js</li>
+</ul>
+<figure class="highlight javascript"><figcaption><span>vue.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    i18n: apex_lang,</span><br><span class="line">    data: &#123;</span><br><span class="line">        userName: <span class="string">''</span>,</span><br><span class="line">        password1: <span class="string">''</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        onSignIn() &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'onSignIn'</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> form = <span class="built_in">document</span>.getElementById(<span class="string">"form-login"</span>);</span><br><span class="line">            form.method = <span class="string">'post'</span>;</span><br><span class="line">            form.action = <span class="string">'/user/auth/login'</span>;</span><br><span class="line">            form.submit();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>.loginProcessingUrl(&quot;/user/auth/login&quot;)</code> 시큐리티 설정시, 지정했던 url과 동일한 url을 사용</p>
+<h4 id="6-계정-만료-및-잠금에-의한-로그인-실패처리"><a href="#6-계정-만료-및-잠금에-의한-로그인-실패처리" class="headerlink" title="6. 계정 만료 및 잠금에 의한 로그인 실패처리"></a>6. 계정 만료 및 잠금에 의한 로그인 실패처리</h4><p><code>loadUserByUsername</code> 메소드의 반환값은     <code>UserDetails</code> 타입이다.</p>
+<ul>
+<li><code>org.springframework.security.core.userdetails.User</code> </li>
+</ul>
+<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String password;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> String username;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Set&lt;GrantedAuthority&gt; authorities;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">boolean</span> accountNonExpired;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">boolean</span> accountNonLocked;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">boolean</span> credentialsNonExpired;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">boolean</span> enabled;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://apexsoft.github.io/2018/02/23/Spring Security/" data-id="cjdzlf7ty0007wwul30p41mku" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>seguir:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/02/23/Redis/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">més nou</strong>
+        <p class="article-nav-title">
+        
+            REDIS
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/02/23/nodjs/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">antic</strong>
+        <p class="article-nav-title">node.js? npm? cdn? 사용하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/23/다국어 처리 적용하는 방법/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/23/다국어 처리 적용하는 방법/" class="title">다국어처리</a></p>
+                            <p class="item-date"><time datetime="2018-02-23T06:58:20.621Z" itemprop="datePublished">2018-02-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/23/webpack/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/23/webpack/" class="title">webpack</a></p>
+                            <p class="item-date"><time datetime="2018-02-23T06:58:20.621Z" itemprop="datePublished">2018-02-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/23/간결한 spring security configure/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/23/간결한 spring security configure/" class="title">Spring security config 예제</a></p>
+                            <p class="item-date"><time datetime="2018-02-23T06:58:20.621Z" itemprop="datePublished">2018-02-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/23/라우터정리/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/23/라우터정리/" class="title">vueRouter</a></p>
+                            <p class="item-date"><time datetime="2018-02-23T06:58:20.621Z" itemprop="datePublished">2018-02-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/23/Redis/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/23/Redis/" class="title">REDIS</a></p>
+                            <p class="item-date"><time datetime="2018-02-23T06:58:20.606Z" itemprop="datePublished">2018-02-23</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">arxius</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">15</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">etiquetes</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apexsoft/">apexsoft</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/templete/">templete </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">etiqueta cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/DB/" style="font-size: 10px;">DB</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JPA/" style="font-size: 13.33px;">JPA</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/apexsoft/" style="font-size: 20px;">apexsoft</a> <a href="/tags/component/" style="font-size: 13.33px;">component</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/node-js/" style="font-size: 13.33px;">node.js</a> <a href="/tags/npm/" style="font-size: 13.33px;">npm</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/templete/" style="font-size: 10px;">templete </a> <a href="/tags/vue-js/" style="font-size: 16.67px;">vue.js</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 HyoSook Kim</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://apexsoft.github.io/2018/02/23/Spring Security/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
