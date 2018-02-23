@@ -244,12 +244,14 @@ $ hexo server
   npm install hexo-deployer-git --save
   ```
 
-  ​
+* git 
+
+
+  ```bash bash
+  $ rm -rf .git
+  ```
 
   ​
-
-
-
 
 
 
