@@ -16,7 +16,7 @@
 <meta property="og:url" content="http://apexsoft.github.io/2018/02/23/Github page와 Hexo 이용, 기술 블로그 만들기/index.html">
 <meta property="og:site_name" content="apexsoft 기술블로그">
 <meta property="og:description" content="Github page와 Hexo 이용, 기술 블로그 만들기Git Page1. Github Repository 생성 https://github.com/ New Repository, Repository 이름은 USERNAME.github.io USERNAME 은 Github의 가입시에 사용자의 username을 입력한다 Public / Private 중 Pub">
-<meta property="og:updated_time" content="2018-02-23T06:58:20.606Z">
+<meta property="og:updated_time" content="2018-02-23T08:02:43.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="블로그 만들기">
 <meta name="twitter:description" content="Github page와 Hexo 이용, 기술 블로그 만들기Git Page1. Github Repository 생성 https://github.com/ New Repository, Repository 이름은 USERNAME.github.io USERNAME 은 Github의 가입시에 사용자의 username을 입력한다 Public / Private 중 Pub">
@@ -275,15 +275,34 @@
 <h3 id="10-기타"><a href="#10-기타" class="headerlink" title="10. 기타"></a>10. 기타</h3><ul>
 <li><p>테마가 적용 안되는 경우</p>
 <figure class="highlight bash"><figcaption><span>bash</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>배포가 되지 않는 경우</p>
-<figure class="highlight bash"><figcaption><span>bash</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>git </p>
+<ul>
+<li>테마 안에 있는 git 삭제</li>
+</ul>
+<figure class="highlight bash"><figcaption><span>bash</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm -rf .git</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-  <figure class="highlight bash"><figcaption><span>bash</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm -rf .git</span><br></pre></td></tr></table></figure>
-<p>  ​</p>
+<ul>
+<li><p>배포가 되지 않는 경우 해볼 것들</p>
+<ul>
+<li>git을 못 찾는다면 <code>hexo-deployer-git</code> 설치</li>
+</ul>
+<figure class="highlight bash"><figcaption><span>bash</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>github 관련 에러 경우</p>
+<blockquote>
+<p><a href="http://maxisam.github.io/2016/09/02/Hexo-got-error-on-deploying-to-github/" target="_blank" rel="noopener">http://maxisam.github.io/2016/09/02/Hexo-got-error-on-deploying-to-github/</a> 블로그 참고</p>
+</blockquote>
+<p>1) Git Credential Manager for Windows 설치 </p>
+<p><a href="https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases" target="_blank" rel="noopener">https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases</a></p>
+<p>2) git bash에서 명령어 실행</p>
+<figure class="highlight bash"><figcaption><span>bash</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global credential.helper wincred</span><br></pre></td></tr></table></figure>
+<p>3) 자격증명 삭제</p>
+<p>제어판 &gt; 사용자계정 &gt; 자격증명 관리자 &gt; windows 자격 증명 &gt; 일반 자격 증명 에서 <code>github.com</code> 자격증명을 제거</p>
+<p><code>deploy</code> 혹은 <code>push</code>를 할때, 다시 ID&amp;PW를 입력해야 한다.</p>
+</li>
+</ul>
+</li>
+</ul>
 
         </div>
         <footer class="article-footer">
