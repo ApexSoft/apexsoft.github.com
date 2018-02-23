@@ -3,8 +3,6 @@ title : JPA 엔티티 구성
 tags: ["JPA","apexsoft"]
 ---
 
-
-
 # JPA 엔티티 구성
 
 쇼핑몰 소스/중요도 위주로 작성함
