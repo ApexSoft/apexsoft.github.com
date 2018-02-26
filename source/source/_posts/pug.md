@@ -5,9 +5,11 @@ tags : ["pug","vue.js","extends"]
 
 
 
-#pug
+# pug
 
 > templete 확장을 가능하게 하는 언어
+
+
 
 # extend
 
@@ -15,9 +17,11 @@ tags : ["pug","vue.js","extends"]
 
 
 
-### 기본 구조
+### 예제 기본 구조
 
 ![](https://d33wubrfki0l68.cloudfront.net/23f398a1c554aa3937aa806cf82fbbe77fc1aa9d/27529/images/posts/extending_components_2.png)
+
+
 
 
 
