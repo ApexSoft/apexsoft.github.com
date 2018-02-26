@@ -1,6 +1,6 @@
 ---
 title : 블로그 만들기
-tags: ["hexo", "github", "apexsoft"] 
+tags: ["hexo", "github"] 
 ---
 
 
@@ -244,7 +244,6 @@ $ hexo server
   $ rm -rf .git
   ```
 
-    
 
 * 배포가 되지 않는 경우 해볼 것들
 

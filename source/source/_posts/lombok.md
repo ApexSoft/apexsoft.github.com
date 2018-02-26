@@ -1,6 +1,6 @@
 ---
 title : lombok
-tags : ["apexsoft","java"]
+tags : ["java"]
 ---
 
 

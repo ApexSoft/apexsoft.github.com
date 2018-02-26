@@ -1,6 +1,6 @@
 ---
 title : web 서버
-tags : ["apexsoft","web","se"]
+tags : ["web","server"]
 ---
 
 

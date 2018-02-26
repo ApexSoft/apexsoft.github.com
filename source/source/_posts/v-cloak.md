@@ -1,6 +1,6 @@
 ---
 title : v-cloak
-tags: ["vue.js", "apexsoft"] 
+tags: ["vue.js"] 
 ---
 
 

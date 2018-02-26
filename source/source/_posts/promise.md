@@ -1,6 +1,6 @@
 ---
 title : promise
-tags : ["apexsoft","ES6","javascript"]
+tags : ["ES6","javascript"]
 ---
 
 

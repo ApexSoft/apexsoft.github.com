@@ -1,6 +1,6 @@
 ---
 title : query mehtod
-tags : ["apexsoft","DB","JPA"]
+tags : ["DB","JPA"]
 ---
 
 

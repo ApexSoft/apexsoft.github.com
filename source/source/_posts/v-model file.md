@@ -1,6 +1,6 @@
 ---
 title : vue.js 파일업로드
-tags : ["apexsoft","file","vue.js"]
+tags : ["file","vue.js"]
 ---
 
 

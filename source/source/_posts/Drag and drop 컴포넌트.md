@@ -1,6 +1,6 @@
 ---
 title : Drag and drop
-tags: ["vue.js","apexsoft","component"] 
+tags: ["vue.js","component"] 
 ---
 
 ## Drag and drop

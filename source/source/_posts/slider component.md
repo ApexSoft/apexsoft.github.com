@@ -1,6 +1,6 @@
 ---
 title : vue slider 컴포넌트
-tags : ["vuejs", "component"]
+tags : ["vuejs"]
 ---
 
 

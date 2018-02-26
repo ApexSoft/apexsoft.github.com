@@ -1,6 +1,6 @@
 ---
 title : vee-validate
-tags : ["vue.js","component","apexsoft"]
+tags : ["vue.js","component"]
 ---
 
 

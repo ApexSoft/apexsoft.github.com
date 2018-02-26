@@ -1,6 +1,6 @@
 ---
 title : Transaction
-tags: ["apexsoft","JPA","java","DB"]
+tags: ["JPA","java","DB"]
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 title : JPA 엔티티 구성
-tags: ["JPA","apexsoft"]
+tags: ["JPA","DB","java"]
 ---
 
 # JPA 엔티티 구성

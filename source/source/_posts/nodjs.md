@@ -1,6 +1,6 @@
 ---
 title : node.js? npm? cdn? 사용하기
-tags : ["apexsoft","node.js","npm"]
+tags : ["node.js","npm"]
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 title : JPA 개념
-tags: ["JPA","apexsoft"] 
+tags: ["JPA","DB","java"] 
 ---
 
 

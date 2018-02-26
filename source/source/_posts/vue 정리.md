@@ -1,6 +1,6 @@
 ---
 title : vue.js 기본
-tags : ["apexosft"]
+tags : ["vue.js"]
 ---
 
 

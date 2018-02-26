@@ -1,6 +1,6 @@
 ---
 title : REDIS
-tags : ["apexsoft","DB"]
+tags : ["DB"]
 ---
 
 
