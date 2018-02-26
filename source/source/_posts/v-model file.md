@@ -30,7 +30,7 @@ tags : ["apexsoft","file","vue.js"]
 
   * ftl
 
-  ```html
+  ```html html
    <template>
        <label class="file-select">
             <div class="select-button">
@@ -55,7 +55,7 @@ tags : ["apexsoft","file","vue.js"]
 
   * vue js
 
-  ```javascript
+  ```javascript vue.js
    data: {
           value: File
       },

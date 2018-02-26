@@ -1,6 +1,6 @@
 ---
 title : web 서버
-tags : ["apexsoft","web","server"]
+tags : ["apexsoft","web","se"]
 ---
 
 
@@ -205,7 +205,7 @@ tags : ["apexsoft","web","server"]
 
 #### yml 설정하기
 
-```yaml
+```yaml yml
 ---
 spring.profiles: aws
 file.rootDir: gradnet

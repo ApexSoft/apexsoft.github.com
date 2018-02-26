@@ -1,6 +1,6 @@
 ---
 title : vue.js 기본
-tags : ["apexsoft","vue.js"]
+tags : ["apexosft"]
 ---
 
 
@@ -74,7 +74,7 @@ tags : ["apexsoft","vue.js"]
 
   #### 기본 (getter 사용)
 
-  ```
+  ```javascript vue.js
   var vm = new Vue({
     el: '#demo',
     data: {
@@ -93,7 +93,7 @@ tags : ["apexsoft","vue.js"]
 
   - computed는 기본적으로 getter만 가지고 있지만 필요한 경우 setter를 제공함
 
-  ```
+  ```javascript vue.js
   computed: {
     fullName: {
       // getter
@@ -116,7 +116,7 @@ tags : ["apexsoft","vue.js"]
 
 - 사용
 
-  ```
+  ```html html
   <div id="product-list-bottom">
                   <div v-if="noMoreItems">No more items</div>
               </div>
@@ -154,7 +154,7 @@ tags : ["apexsoft","vue.js"]
 
 
 
-```
+```javascript vue.js
 <div id="app">
     <input type="text" v-model='always'/>
     <div>{{ing}}</div>
@@ -226,11 +226,11 @@ var demo = new Vue({
 
 ### 계산된 속성(Computed) vs 감시된 속성(Watched)
 
-```
+```html html
 <div id="demo"> {{ fullName }} </div>
 ```
 
-```
+```javascript vue.js
 var vm = new Vue({
   el: '#demo',
   data: {
@@ -252,7 +252,7 @@ var vm = new Vue({
 위의 코드를 보면  firstName 과  lastName 의 코드가 중복되므로 효율적이지 못함 
 이때는 computed를 이용한다면 아래와 같이 한줄로 작성 가능해짐
 
-```
+```javascript vue.js
 var vm = new Vue({
   el: '#demo',
   data: {
@@ -279,7 +279,7 @@ var vm = new Vue({
 
 템플릿은 뭔가 추상적인 개념이라고 한다면 컴포넌트는 이를 구현할 기술이라고 생각해보죠.
 
-**독립적인 JS 하나당 component 하나를 만들어서 기능을 
+독립적인 JS 하나당 component 하나를 만들어서 기능을 
 
 줘서 반복사용을 통해 활용성을 높이고 유지보수도 간편하게 할 수 있습니다.
 
@@ -291,7 +291,7 @@ text 나 값은 props 나 data로 바꾸면 되니까요.
 
 - 새 vue 인스턴스 만들기 (root 인스턴스 생성)
 
-  ```
+  ```javascript vue.js
   // 루트 인스턴스 생성
   new Vue({
     el: '#example'
@@ -302,7 +302,7 @@ text 나 값은 props 나 data로 바꾸면 되니까요.
 
 - 전역 컴포넌트 등록
 
-  ```
+  ```javascript vue.js
   // 등록
   Vue.component('my-component', {
     template: '<div>사용자 정의 컴포넌트 입니다!</div>'
@@ -311,7 +311,7 @@ text 나 값은 props 나 data로 바꾸면 되니까요.
 
 -  컴포넌트는 인스턴스의 템플릿에서 커스텀 엘리먼트,`<my-component></my-component>`로 사용할 수 있습니다. 루트 Vue 인스턴스를 인스턴스화하기 **전에** 컴포넌트가 등록되어 있는지 확인하십시오. 
 
-  ```
+  ```html html
   <div id="example">
     <my-component></my-component>
   </div>
@@ -319,7 +319,7 @@ text 나 값은 props 나 data로 바꾸면 되니까요.
 
 모든 컴포넌트를 전역으로 등록 할 필요는 없습니다. 컴포넌트를 `components` 인스턴스 옵션으로 등록함으로써 다른 인스턴스/컴포넌트의 범위에서만 사용할 수있는 컴포넌트를 만들 수 있습니다:
 
-```
+```javascript vue.js
 var Child = {
   template: '<div>사용자 정의 컴포넌트 입니다!</div>'
 }
@@ -359,7 +359,7 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 `v-bind`를 사용하여 부모의 데이터에 props를 동적으로 바인딩 할 수 있음
 데이터가 상위에서 업데이트 될 때마다 하위 데이터로도 전달된다.
 
-```
+```html html
 <div>
     <input v-model="parentMsg">
     <br>
@@ -386,20 +386,24 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 
 * 머스태쉬 태그나, 디렉티브를 사용 할 때, 그 내부의 값을 꼭 데이터 명으로 해야 하는건 아니다.
 
-  >  **자바스크립트 표현식**을 사용 할 수도 있습니다. ` <h1>{{ Date() }}</h1>`
+  >  **자바스크립트 표현식**을 사용 할 수도 있습니다.
+  >
+  >  ```html html
+  >  <h1>{{ Date() }}</h1>
+  >  ```
 
   ​
 
-  ### 머스태쉬 태그  {{ }}  
+  ### 머스태쉬 태그    
 
   *  내부의 값으로  **데이터 명** ,  **자바스크립트 표현식** 을 사용 할수 있다.
 
-    ```HTML
+    ```html html
     /* Date 함수 사용 */
     <h1> {{ Date() }} </h1>
     ```
 
-    ```HTML
+    ```html 
     /* 자바스크립트 표현식 3항 연산자 사용 */ 
     <div id="app">
         
@@ -420,7 +424,7 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
     });
     ```
 
-    ```javascript
+    ```javascript vue.js
      /* 함수 사용 */
      <div id="app">
         <h1> {{ myfunction() }} </h1>
@@ -452,12 +456,11 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 
   ### 1. v-text 디렉티브(결과 머스태쉬 태그 와 같다)
 
-  `<h1> {{ name }} </h1>`
+   `v-text` 라는 디렉티브를 사용
 
-  이것과 같은 기능을 `{{ }}` 를 사용하는 대신에 `v-text` 라는 디렉티브를 사용
-
-  ```
+  ```html vue.js
    <h1> {{number}}</h1>
+   		||
    <h1  v-text="number"> </h1>
   ```
 
@@ -471,7 +474,7 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 
   ​
 
-  ```
+  ```html html/vue.js
     <div id="app">
       
       <h1 v-html="nameItaly"></h1>
@@ -491,7 +494,7 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 
   해당 엘리먼트가 보여질지, 보여지지 않을지 `true` / `false` 값으로 지정 할 수 있습니다. 
 
-  ```
+  ```html html/vue.js
 
    <h1 v-show="show" v-html="nameItaly"></h1>
       
@@ -524,7 +527,7 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 
   `v-else-if` 는, 언제나 `v-if` 디렉티브를 사용하는 엘리먼트의 **다음위치**에 있어야 합니다. 만약에 `v-else` 디렉티브가 사용되는 경우엔 그 **사이에** 위치해있어야 하구요, 이 디렉티브를 **여러번 사용**해도 됩니다.
 
-  ```
+  ```html html
    <div id="app">
       <h1 v-if="value > 5">value 가 5보다 크군요</h1>
       <h1 v-else-if="value === 5">값이 5네요</h1>
@@ -540,7 +543,7 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 
   이걸 사용하므로서, Vue 시스템에서 해당 엘리먼트는 **지시문이 없다는걸 인**식하게 되어 그 엘리먼트 내부의 자식엘리먼트들을 신경쓰지 않고 그냥 **건너뜁니다**. 
 
-  ```
+  ```html html
    <h1 v-pre> {{ 이건 그대로 렌더링해줘요 }} </h1>
   ```
 
@@ -554,7 +557,7 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 
   ​
 
-  ```
+  ```html html
   <h2 v-once> value초기 값 보여준다 : {{ value }}</h2>
 
   <h2>value 현재 값 보여준다: {{ value }}</h2>
@@ -566,9 +569,9 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 
   * HTML 에서 **for-loop** 을 구현하기 위하여 사용됩니다. 즉, **비슷한 내용을 반복적으로 보여줄 때 **사용
 
-  * ` v-for "(arr , index ) in arrs"  {{ arr.value}} `
-
-     ​
+  * ```html html
+     v-for "(arr , index ) in arrs"  {{ arr.value}}
+     ```
 
   * `item in items` 의 형식으로 작성합니다.
 
@@ -618,7 +621,7 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
           </div>
     ```
 
-    ```html
+    ```html html/vue.js
       <div id='test'>
         
         <div v-for="(item,index) in arr">
@@ -661,7 +664,7 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 
      ​
 
-  ```html
+  ```html html/vue.js
     <div id="app">
       
         <img v-bind:src="addr"/>
@@ -693,11 +696,10 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 
   ​
 
-  ![Peek-2017-01-27-16-44](C:\Users\anyone\Desktop\Peek-2017-01-27-16-44.gif)
 
 
 
-```html
+```html html/vue.js
 
    <div id="app">
     <h1>{{ feels }}</h1>
@@ -746,7 +748,7 @@ https://kr.vuejs.org/v2/guide/forms.html
 
   ​
 
-```html
+```html html/vue.js
 <div id="app">
   <h1>카운터: {{ number }}</h1>
  <button v-on:click="increment">증가</button>
@@ -772,7 +774,7 @@ var app = new Vue({
 });
 ```
 
-```html
+```html html/vue.js
 <div id="example-1">
   <button v-on:click="counter += 1">Add 1</button>
   <p>위 버튼을 클릭한 횟수는 {{ counter }} 번 입니다.</p>
@@ -1001,7 +1003,7 @@ var example1 = new Vue({
 
   문자열의 일부를 주어진 문자로 대체하는 함수
 
-  ** 오브젝트?replace(찾을문자열, 대체할문자열)**
+  오브젝트?replace(찾을문자열, 대체할문자열)
 
   #### `${item.content?replace(">", "&gt;")}`
 
@@ -1020,5 +1022,3 @@ var example1 = new Vue({
   ${item.name?default("")}<#if item_has_next>,</#if>
   </#list>
   ```
-
-  ​

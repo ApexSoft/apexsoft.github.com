@@ -33,7 +33,7 @@ tags: ["JPA","apexsoft"]
 
 1. name : 필드와 매핑할 테이블의 컬럼 이름. 기본값이 필드 이름
 
-```java
+```java java
 @Column(name = "cart_id")
 private Long id;
 ```
@@ -66,7 +66,7 @@ private Long id;
 - FetchType.EAGER : 관계된 엔티티의 정보를 미리 읽어오는 것
 - FetchType.LAZY : 관계된 엔티티의 정보를 실제 요청하는 순간 가져오는 것
 
-```java
+```java java
 public class CartItem extends BaseEntity implements Serializable {
 	..
   	@ManyToOne(fetch = FetchType.LAZY)
@@ -86,7 +86,7 @@ public class CartItem extends BaseEntity implements Serializable {
 - FetchType.EAGER : 관계된 엔티티의 정보를 미리 읽어오는 것
 - FetchType.LAZY : 관계된 엔티티의 정보를 실제 요청하는 순간 가져오는 것
 
-```java
+```java java
 public class Cart extends BaseEntity implements Serializable {
 	..
     @OneToMany(mappedBy = "cart", fetch = FetchType.EAGER)

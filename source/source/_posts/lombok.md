@@ -28,7 +28,7 @@ tags : ["apexsoft","java"]
 
   ​
 
-```java
+```java java
 @Builder
 @ToString
 public static class LombokClass {
@@ -39,7 +39,7 @@ public static class LombokClass {
 }
 ```
 
-```java
+```java java
 val lombokClass = LombokClass.builder()
                               .name("Hello")
                               .value(500)
@@ -73,7 +73,7 @@ System.out.println(val0); // 100
 
 정보들은 자바 빈즈 패턴처럼 받되, 데이터 일관성을 위해 정보들을 다 받은후에 객체생성을 해준다.
 
-```java
+```java java
 PersonInfo personInfo = new PersonInfo( );
 personInfo.setName("Mommoo");         // 이름을 넣는 메서드
 personInfo.setAge(12);                       // 나이를 넣는 메서드
@@ -85,7 +85,7 @@ personInfo.setPhonNumber(119);          // 전화번호를 넣는 메서드
 
 ## 사용 에러
 
-```
+```bash console
 org.springframework.web.util.NestedServletException:
 Request processing failed; 
 nested exception is org.springframework.orm.jpa.JpaSystemException:
@@ -98,7 +98,7 @@ kr.co.apexsoft.GCSVC.domain.FileUpLoad
 
 ## 해결 
 
-```
+```java java
 @AllArgsConstructor
 @RequiredArgsConstructor
 ```
@@ -121,7 +121,7 @@ kr.co.apexsoft.GCSVC.domain.FileUpLoad
 3. `onConstructor` : 생성자에 어노테이션을 작성할 수 있다.
   공통적인 속성으로는 위와 같이 3가지가 존재한다.
 
-```
+```java java
 @RequiredArgsConstructor(staticName = "of", onConstructor = @__(@Inject))
 public class ConstructorObject {
   private final Long id;
@@ -132,7 +132,7 @@ public class ConstructorObject {
 
 만약 위와 같은 어노테이션을 작성할 경우에는 다음과 같은 코드가 나올 것이라고 예상해본다.
 
-```
+```java java
 class ConstructorObjectNot {
   private final Long id;
   private final String name;
@@ -161,7 +161,7 @@ lombok을 사용한다면 제일 많이 사용하는 어노테이션이다. 이 
 각각 부분적으로는 밑에서 설명하도록 하겠다.
 `@Data` 어노테이션에는 속성이 한개 있는데 `staticConstructor` 라는 속성이다. 말그대로 static한 생성자? 를 만들어 주는 것이다.
 
-```
+```java java
 @Data(staticConstructor = "of")
 public class DataObject {
   private final Long id;
@@ -195,7 +195,7 @@ DataObject dataObject2 = new DataObject(); // compile error
 어노테이션 이름 그대로 getter와 setter를 생성해준다. 클래스 레벨에도 사용가능하며 필드 레벨에도 사용가능하다.
 공통 속성으로는 `value`, `onMethod` 속성이 존재한다. `value`의 경우에는 접근 제한을 할 수 있으며 `onMethod` 메서드의 어노테이션을 작성할 수 있다.
 
-```
+```java java
 public class GetSetObject {
 
   @Getter(value = AccessLevel.PACKAGE, onMethod = @__({@NonNull, @Id}))
@@ -206,7 +206,7 @@ public class GetSetObject {
 
 만약 위와 같은 코드를 작성하였을 경우에는 다음과 같은 코드가 작성 될 것이다.
 
-```
+```java java
 class GetSetObjectOnMethod {
   private Long id;
 
@@ -221,7 +221,7 @@ class GetSetObjectOnMethod {
 
 물론 @Setter 어노테이션에도 onMethod를 사용할 수 있다.
 
-```
+```java java
 @Setter(onMethod = @__({@NotNull}))
 
 ```
@@ -229,7 +229,7 @@ class GetSetObjectOnMethod {
 그리고 @Getter, @Setter 각각이 다른 속성들을 한개씩 가지고 있는데. @Getter인 경우에는 `lazy` 속성이고 @Setter의 경우에는 `onParam` 이라는 속성이다.
 @Getter 의 lazy 속성은 속성명 그대로 필드의 값은 지연시킨다는 것이다.
 
-```
+```java java
 @Getter(value = AccessLevel.PUBLIC, lazy = true)
 private final String name = expensive();
 
@@ -243,7 +243,7 @@ lazy가 true일때는 무조건 final 필드어야만 한다. lazy 속성이 fal
 
 다음은 @Setter의 onParam 속성이다. 이 속성은 파라미터의 어노테이션을 작성할 수 있는 속성이다.
 
-```
+```java java
 @Setter(onParam = @__(@NotNull))
 private Long id;
 
@@ -251,7 +251,7 @@ private Long id;
 
 만약 다음과 같은 코드가 있을 경우에는 아래와 같은 코드가 작성될 것이라고 판단된다.
 
-```
+```java java
 class GetSetObjectOnParam {
   private Long id;
 
@@ -271,7 +271,7 @@ class GetSetObjectOnParam {
 `@EqualsAndHashCode` 어노테이션은 이름 그대로 hashcode와 equals를 생성해주는 어노테이션이고, `@ToString`도 마찬가지로 `toString()` 메서드를 생성해주는 어노테이션이다.
 공통 속성으로는 4가지 있는데 `exclude`, `of`, `callSuper`, `doNotUseGetters`가 존재 한다. exclude는 제외시킬 변수명을 작성하면 되고 of는 포함시킬 변수명을 작성하면 된다. callSuper 속성은 상위 클래스의 호출 여부를 묻는 속성이다. 마지막으로 doNotUseGetters의 속성은 getter 사용여부 인듯 하나 제대로 동작하지는 모르겠다.
 
-```
+```java java
 @EqualsAndHashCode(of = "id")
 @ToString(exclude = "name")
 public class HashCodeAndEqualsObject {
@@ -295,7 +295,7 @@ HashCodeAndEqualsObject(null)
 
 스칼라, 코틀린 이외에 다른 언어들의 키워드와 동일하게 타입추론을 한다.
 
-```
+```java java
 public class ValAndVarTests {
   @Test
   public void valVarTest() {
@@ -311,7 +311,7 @@ public class ValAndVarTests {
 
 `val` 경우에는 `final` 키워드가 생성된다. 그래서 다시 어사인을 할 경우에 컴파일 에러가 발생한다. 마찬가지로 `var`는 final이 존재 하지 않으므로 다시 어사인이 가능하다. 위의 코드를 다시 만들어 보면 다음과 같을 것으로 예상된다.
 
-```
+```java java
 final List<Integer> arrVal1 = Arrays.asList(1, 2, 3, 4, 5);
 arrVal1 = new ArrayList<>();
 
@@ -326,7 +326,7 @@ arrVar1 = new ArrayList<>();
 
 유틸리티 클래스에 적용하면 되는 어노테이션이다. 만약 이 어노테이션을 작성하면 기본생성자가 `private` 생성되며 만약 리플렉션 혹은 내부에서 생성자를 호출할 경우에는 `UnsupportedOperationException`이 발생한다.
 
-```
+```java java
 @UtilityClass
 public class UtilityClassObject {
   public static String name() {
@@ -339,7 +339,7 @@ public class UtilityClassObject {
 
 만약 위의 코드를 다시 작성해보면 다음과 같다.
 
-```
+```java 
 class UtilityClassObjectNot {
   private UtilityClassObjectNot() {
     throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
