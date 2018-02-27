@@ -80,18 +80,5 @@ deploy:
   type: git
   repo : https://github.com/ApexSoft/apexsoft.github.com.git
   branch : master 
-  
-# Search
-search:
-    insight: true
-    swiftype:
-    baidu: false
-    
-# Comment
-comment:
-    disqus: futurecreator
-    duoshuo:
-    youyan:
-    
-#  sidebar
-sidebar: left
+
+
