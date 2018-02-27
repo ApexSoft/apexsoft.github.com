@@ -16,8 +16,6 @@
     
 
     
-        <link rel="alternate" href="/" title="apexsoft 기술블로그" type="application/atom+xml" />
-    
 
     
 
@@ -63,13 +61,11 @@
                         <ul id="main-nav">
                             
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">Inicio</a>
+                                    <a class="main-nav-list-link" href="/">Inici</a>
                                 </li>
                             
-                                        
-                                    
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/about/index.html">Acerca de</a>
+                                    <a class="main-nav-list-link" href="https://about.me/apexsoft">Quant a</a>
                                 </li>
                             
                         </ul>
@@ -77,7 +73,7 @@
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cercar" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -96,10 +92,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Entradas',
+            POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'Categorias',
-            TAGS: 'Etiquetas',
+            CATEGORIES: 'categories',
+            TAGS: 'etiquetes',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -125,7 +121,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="home">Inicio</em>
+    <em class="page-title-link" data-url="home">Inici</em>
     </h1>
 </div>
                         <div class="main-body-content">
@@ -148,7 +144,7 @@
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/27/@Transactional/" class="thumbnail">
+        <a href="/2018/02/27/Component&plugin/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -158,7 +154,7 @@
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/27/@Transactional/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/27/Component&amp;plugin/">0</span>
     
 </span>
 
@@ -171,20 +167,26 @@
             <div class="category">
             
             </div>
-            <div class="date"><time datetime="2018-02-27T04:39:49.503Z" itemprop="datePublished">2018-02-27</time></div>
+            <div class="date"><time datetime="2018-02-27T04:40:53.284Z" itemprop="datePublished">2018-02-27</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/27/@Transactional/">Transaction</a>
+        <a href="/2018/02/27/Component&plugin/">컴포넌트와 플러그인</a>
         </h1>
     
 
         <p class="article-excerpt">
-            @Transactional
-정기 사용자 레벨 관리 작업을 수행하는 도중에 네트워크가 끊기거나 서버에 장애가 생겨서 작업을 완료할 수 없다면, 그 때까지 변경된 사용자의 레벨은 그대로 둘까요? 아니면 모두 초기상태로 되돌려 놓아야 할까요?
+            Component
+기본 html 엘리먼트를 확장하여 재사용 가능한 코드 단위로 묶음
+컴포넌트를 지역/전역적으로 사용할 수 있는 소스코드가 들어있음 
+일반적인 외부 컴포넌트들이 사용가능한 소스코드를 제공하는 것으로 보임
+외부 컴포넌트의 경우, webpack을 사용해 bundle하여 js파일만 제공하는 컴포넌트가 많음
 
-이 문제에 대한 답은,‘작업 중간에 문제가 발생해서 작업이 중단된다면,그 때까지 진행된 변경 작업도 모두 취소시켜야 한
+
+
+외부 컴포넌트 사용방법
+npm ins
         </p>
     </div>
 </article>
@@ -254,7 +256,7 @@ https://jsbin.com/patusomaqi/2/edit?html,js,output
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/23/라우터정리/" class="thumbnail">
+        <a href="/2018/02/23/간결한 spring security configure/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -264,7 +266,7 @@ https://jsbin.com/patusomaqi/2/edit?html,js,output
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/라우터정리/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/간결한 spring security configure/">0</span>
     
 </span>
 
@@ -282,12 +284,12 @@ https://jsbin.com/patusomaqi/2/edit?html,js,output
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/라우터정리/">vueRouter</a>
+        <a href="/2018/02/23/간결한 spring security configure/">Spring security config 예제</a>
         </h1>
     
 
         <p class="article-excerpt">
-            VueRouter 불러오기1234567891011import Vue from 'vue'# 이곳에 VueRouter를 불러옵니다.import VueRouter from 'vue-router'import Home from './components/Home' #사용할 컴포넌트 import Login from './components/Login'  #사용할 컴포넌
+            간결한 spring security configure123456789101112131415161718192021222324@Overrideprotected void configure(HttpSecurity http) throws Exception &#123;  http    .antMatcher("/unreal/**")    .csrf()//  	.disa
         </p>
     </div>
 </article>
@@ -354,7 +356,7 @@ json 형태로 키값을 만들어주어야 함
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/23/간결한 spring security configure/" class="thumbnail">
+        <a href="/2018/02/23/라우터정리/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -364,7 +366,7 @@ json 형태로 키값을 만들어주어야 함
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/간결한 spring security configure/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/라우터정리/">0</span>
     
 </span>
 
@@ -382,12 +384,12 @@ json 형태로 키값을 만들어주어야 함
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/간결한 spring security configure/">Spring security config 예제</a>
+        <a href="/2018/02/23/라우터정리/">vueRouter</a>
         </h1>
     
 
         <p class="article-excerpt">
-            간결한 spring security configure123456789101112131415161718192021222324@Overrideprotected void configure(HttpSecurity http) throws Exception &#123;  http    .antMatcher("/unreal/**")    .csrf()//  	.disa
+            VueRouter 불러오기1234567891011import Vue from 'vue'# 이곳에 VueRouter를 불러옵니다.import VueRouter from 'vue-router'import Home from './components/Home' #사용할 컴포넌트 import Login from './components/Login'  #사용할 컴포넌
         </p>
     </div>
 </article>
@@ -396,65 +398,6 @@ json 형태로 키값을 만들어주어야 함
     
     
     
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/02/23/nodjs/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/nodjs/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2018-02-23T06:58:20.606Z" itemprop="datePublished">2018-02-23</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/nodjs/">node.js? npm? cdn? 사용하기</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            javascript 사용1. CDN
-https://unpkg.com/#/   OR https://www.npmjs.com/
-dist 폴더 , 다른이름으로 링크주소 복사
-&lt;script &gt; 주소  &lt;/script&gt;
-
-2.npm
-git 다운
-npm run bundle or yarn bundle
-dist  폴더  , 생성된 물리적 파일
-원하는
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
     
         <article class="article article-summary">
     <div class="article-summary-inner">
@@ -503,15 +446,19 @@ JPA (Java Persistence API)EJB 3.0에서 하이버네이트를 기반으로 새�
     </div>
 </article>
     
+        </div>
+    
 
     
     
     
     
+        <div class="article-row">
+    
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/23/v-cloak/" class="thumbnail">
+        <a href="/2018/02/23/Redis/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -521,7 +468,7 @@ JPA (Java Persistence API)EJB 3.0에서 하이버네이트를 기반으로 새�
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/v-cloak/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/Redis/">0</span>
     
 </span>
 
@@ -539,16 +486,75 @@ JPA (Java Persistence API)EJB 3.0에서 하이버네이트를 기반으로 새�
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/v-cloak/">v-cloak</a>
+        <a href="/2018/02/23/Redis/">REDIS</a>
         </h1>
     
 
         <p class="article-excerpt">
-            v-cloak실행될때, 머스태쉬 태그들이 짧은 순간 동안 깜박거리는 현상이 존재. 
-자바스크립트 코드가 실행되기 전이기 때문에. 
-v-cloak 을 사용하면 html 코드를 숨길 수 있다.
-html123&lt;div id="app" v-cloak&gt;  ..&lt;/div&gt;
-css 123[v-cloak] &#123;    display: none;&
+            REDIS (REmote DIctionary Server)key/Value Store
+in memory key value database
+
+key/value 저장소
+
+특정 키 값에 값을 저장하는 구조
+
+
+메모리에 데이터를 저장
+
+빠른 read /write 속도
+
+전체적인 저장 가능한 데이터의 용량은 물리적인 용량을 넘을수 없음
+
+RDB나 NoSQL이 기본적
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2018/02/23/vee-validate/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/vee-validate/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            
+            </div>
+            <div class="date"><time datetime="2018-02-23T06:58:20.606Z" itemprop="datePublished">2018-02-23</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/02/23/vee-validate/">vee-validate</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            몇가지 사전 체크사항&lt;label&gt;, &lt;input&gt; and id, name attribute
+&lt;label for=&quot;&quot;&gt;의 대상은 input의 id
+VeeValidate에서 validation 대상은 input의 name으로 errors.has(&#39;name&#39;)와 같이 사용
+그러므로 input은 id
         </p>
     </div>
 </article>
@@ -619,17 +625,17 @@ Promise object는 new를 통해 initiate될 수 있으며, 함수를 패스받�
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/23/pug/" class="thumbnail">
+        <a href="/2018/02/23/JPA 엔티티 구성/" class="thumbnail">
     
     
-        <span style="background-image:url(https://d33wubrfki0l68.cloudfront.net/23f398a1c554aa3937aa806cf82fbbe77fc1aa9d/27529/images/posts/extending_components_2.png)" alt="확장" class="thumbnail-image"></span>
+        <span class="thumbnail-image thumbnail-none"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/pug/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/JPA 엔티티 구성/">0</span>
     
 </span>
 
@@ -647,25 +653,22 @@ Promise object는 new를 통해 initiate될 수 있으며, 함수를 패스받�
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/pug/">확장</a>
+        <a href="/2018/02/23/JPA 엔티티 구성/">JPA 엔티티 구성</a>
         </h1>
     
 
         <p class="article-excerpt">
-            pug
-templete 확장을 가능하게 하는 언어
+            JPA 엔티티 구성쇼핑몰 소스/중요도 위주로 작성함
+레퍼런스@Entity테이블과 매핑할 클래스는 필수로 붙혀야 함
+@Table엔티티와 매핑할 테이블을 지정
+생략하면 매핑한 엔티티 이름을 테이블 이름으로 사용.
 
-extend
-컴포넌트 확장
+name : 매핑할 테이블 이름
 
-예제 기본 구조
-SurveyInputBase.pug
-.pub 파일 
-html에서 닫는 태그가 없다
-들여쓰기한 이후에 공백까지 태그로 된다
-태그 속성은  괄호( ) 사용
+@Id기본키 직접 할당
+@GeneratedValue@Column객체 필드를 테이블 컬럼에 매핑
 
-SurveyInputBase.pug12345form  div(class="form-group")    lab
+name : 필드
         </p>
     </div>
 </article>
@@ -678,7 +681,7 @@ SurveyInputBase.pug12345form  div(class="form-group")    lab
 
 
     <nav id="page-nav">
-        <span class="pages">Página 2 de 3</span>
+        <span class="pages">Pàgina 2 de 3</span>
         <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">&raquo;</a>
     </nav>
 
@@ -693,48 +696,8 @@ SurveyInputBase.pug12345form  div(class="form-group")    lab
             
                 
                 <li>
-                    <a class="social-tooltip" title="twitter" href="/" target="_blank">
-                        <i class="icon fa fa-twitter"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="facebook" href="/" target="_blank">
-                        <i class="icon fa fa-facebook"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="google-plus" href="/" target="_blank">
-                        <i class="icon fa fa-google-plus"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank">
+                    <a class="social-tooltip" title="github" href="https://github.com/ApexSoft/apexsoft.github.com" target="_blank">
                         <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="weibo" href="/" target="_blank">
-                        <i class="icon fa fa-weibo"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="rss" href="/" target="_blank">
-                        <i class="icon fa fa-rss"></i>
                     </a>
                 </li>
                 
@@ -747,14 +710,14 @@ SurveyInputBase.pug12345form  div(class="form-group")    lab
             
                 
     <div class="widget-wrap">
-        <h3 class="widget-title">recientes</h3>
+        <h3 class="widget-title">recents</h3>
         <div class="widget">
             <ul id="recent-post" class="">
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/27/Component&plugin/" class="thumbnail">
+                            <a href="/2018/02/27/이벤트 /" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -766,8 +729,8 @@ SurveyInputBase.pug12345form  div(class="form-group")    lab
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/27/Component&plugin/" class="title">컴포넌트와 플러그인</a></p>
-                            <p class="item-date"><time datetime="2018-02-27T04:40:53.284Z" itemprop="datePublished">2018-02-27</time></p>
+                            <p class="item-title"><a href="/2018/02/27/이벤트 /" class="title">EventBus</a></p>
+                            <p class="item-date"><time datetime="2018-02-27T04:49:25.010Z" itemprop="datePublished">2018-02-27</time></p>
                         </div>
                     </li>
                 
@@ -787,27 +750,7 @@ SurveyInputBase.pug12345form  div(class="form-group")    lab
                         <div class="item-inner">
                             <p class="item-category"></p>
                             <p class="item-title"><a href="/2018/02/27/영속성 컨텍스트 트랜잭션/" class="title">영속성 컨텍스트</a></p>
-                            <p class="item-date"><time datetime="2018-02-27T04:39:49.534Z" itemprop="datePublished">2018-02-27</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/02/27/vue 정리/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://blog.jeonghwan.net/assets/imgs/2017/03/27/mvvm-of-vue.png)" alt="vue.js 기본" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/27/vue 정리/" class="title">vue.js 기본</a></p>
-                            <p class="item-date"><time datetime="2018-02-27T04:39:49.534Z" itemprop="datePublished">2018-02-27</time></p>
+                            <p class="item-date"><time datetime="2018-02-27T04:49:25.010Z" itemprop="datePublished">2018-02-27</time></p>
                         </div>
                     </li>
                 
@@ -827,7 +770,7 @@ SurveyInputBase.pug12345form  div(class="form-group")    lab
                         <div class="item-inner">
                             <p class="item-category"></p>
                             <p class="item-title"><a href="/2018/02/27/기본키설정/" class="title">JPA기본키설정</a></p>
-                            <p class="item-date"><time datetime="2018-02-27T04:39:49.534Z" itemprop="datePublished">2018-02-27</time></p>
+                            <p class="item-date"><time datetime="2018-02-27T04:49:25.010Z" itemprop="datePublished">2018-02-27</time></p>
                         </div>
                     </li>
                 
@@ -847,7 +790,27 @@ SurveyInputBase.pug12345form  div(class="form-group")    lab
                         <div class="item-inner">
                             <p class="item-category"></p>
                             <p class="item-title"><a href="/2018/02/27/web 서버/" class="title">web 서버</a></p>
-                            <p class="item-date"><time datetime="2018-02-27T04:39:49.534Z" itemprop="datePublished">2018-02-27</time></p>
+                            <p class="item-date"><time datetime="2018-02-27T04:49:24.995Z" itemprop="datePublished">2018-02-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/27/vue 정리/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://blog.jeonghwan.net/assets/imgs/2017/03/27/mvvm-of-vue.png)" alt="vue.js 기본" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/27/vue 정리/" class="title">vue.js 기본</a></p>
+                            <p class="item-date"><time datetime="2018-02-27T04:49:24.995Z" itemprop="datePublished">2018-02-27</time></p>
                         </div>
                     </li>
                 
@@ -861,7 +824,7 @@ SurveyInputBase.pug12345form  div(class="form-group")    lab
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">archivos</h3>
+        <h3 class="widget-title">arxius</h3>
         <div class="widget">
             <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">26</span></li></ul>
         </div>
@@ -871,9 +834,9 @@ SurveyInputBase.pug12345form  div(class="form-group")    lab
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">etiquetas</h3>
+        <h3 class="widget-title">etiquetes</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extends/">extends</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pug/">pug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vuejs/">vuejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extends/">extends</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pug/">pug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -883,7 +846,7 @@ SurveyInputBase.pug12345form  div(class="form-group")    lab
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">etiqueta cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/DB/" style="font-size: 18px;">DB</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JPA/" style="font-size: 16px;">JPA</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/component/" style="font-size: 14px;">component</a> <a href="/tags/extends/" style="font-size: 10px;">extends</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pug/" style="font-size: 10px;">pug</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/springboot/" style="font-size: 12px;">springboot</a> <a href="/tags/vue-js/" style="font-size: 20px;">vue.js</a> <a href="/tags/vuejs/" style="font-size: 10px;">vuejs</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+            <a href="/tags/DB/" style="font-size: 18px;">DB</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JPA/" style="font-size: 16px;">JPA</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/component/" style="font-size: 14px;">component</a> <a href="/tags/extends/" style="font-size: 10px;">extends</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pug/" style="font-size: 10px;">pug</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/springboot/" style="font-size: 12px;">springboot</a> <a href="/tags/vue-js/" style="font-size: 20px;">vue.js</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
         </div>
     </div>
 
@@ -896,7 +859,7 @@ SurveyInputBase.pug12345form  div(class="form-group")    lab
             <ul>
                 
                     <li>
-                        <a href="http://hexo.io">Hexo</a>
+                        <a href="http://www.apexsoft.co.kr">Apexsoft</a>
                     </li>
                 
             </ul>
