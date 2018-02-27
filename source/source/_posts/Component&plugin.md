@@ -1,5 +1,5 @@
 ---
-title : [Vue] 컴포넌트와 플러그인
+title : 컴포넌트와 플러그인
 tags : ["vue.js", "component", "plugin"]
 ---
 
