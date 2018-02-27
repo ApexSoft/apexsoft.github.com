@@ -7,16 +7,16 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="apexsoft,JPA" />
+        <meta name="keywords" content="JPA,DB,java" />
     
     <meta name="description" content="JPA 엔티티 구성쇼핑몰 소스/중요도 위주로 작성함 레퍼런스@Entity테이블과 매핑할 클래스는 필수로 붙혀야 함 @Table엔티티와 매핑할 테이블을 지정 생략하면 매핑한 엔티티 이름을 테이블 이름으로 사용.  name : 매핑할 테이블 이름  @Id기본키 직접 할당 @GeneratedValue@Column객체 필드를 테이블 컬럼에 매핑  name : 필드">
-<meta name="keywords" content="apexsoft,JPA">
+<meta name="keywords" content="JPA,DB,java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JPA 엔티티 구성">
 <meta property="og:url" content="http://apexsoft.github.io/2018/02/23/JPA 엔티티 구성/index.html">
 <meta property="og:site_name" content="apexsoft 기술블로그">
 <meta property="og:description" content="JPA 엔티티 구성쇼핑몰 소스/중요도 위주로 작성함 레퍼런스@Entity테이블과 매핑할 클래스는 필수로 붙혀야 함 @Table엔티티와 매핑할 테이블을 지정 생략하면 매핑한 엔티티 이름을 테이블 이름으로 사용.  name : 매핑할 테이블 이름  @Id기본키 직접 할당 @GeneratedValue@Column객체 필드를 테이블 컬럼에 매핑  name : 필드">
-<meta property="og:updated_time" content="2018-02-23T07:24:03.541Z">
+<meta property="og:updated_time" content="2018-02-27T04:39:49.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JPA 엔티티 구성">
 <meta name="twitter:description" content="JPA 엔티티 구성쇼핑몰 소스/중요도 위주로 작성함 레퍼런스@Entity테이블과 매핑할 클래스는 필수로 붙혀야 함 @Table엔티티와 매핑할 테이블을 지정 생략하면 매핑한 엔티티 이름을 테이블 이름으로 사용.  name : 매핑할 테이블 이름  @Id기본키 직접 할당 @GeneratedValue@Column객체 필드를 테이블 컬럼에 매핑  name : 필드">
@@ -70,13 +70,13 @@
                         <ul id="main-nav">
                             
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">Inici</a>
+                                    <a class="main-nav-list-link" href="/">Inicio</a>
                                 </li>
                             
                                         
                                     
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/about/index.html">Quant a</a>
+                                    <a class="main-nav-list-link" href="/about/index.html">Acerca de</a>
                                 </li>
                             
                         </ul>
@@ -84,7 +84,7 @@
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Cercar" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -103,10 +103,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
+            POSTS: 'Entradas',
             PAGES: 'Pages',
-            CATEGORIES: 'categories',
-            TAGS: 'etiquetes',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -132,7 +132,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    Sense categoria
+    Sin categoría
     </h1>
 </div>
                         <div class="main-body-content">
@@ -161,7 +161,7 @@
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/JPA/">JPA</a>, <a class="tag-link" href="/tags/apexsoft/">apexsoft</a>
+        <a class="tag-link" href="/tags/DB/">DB</a>, <a class="tag-link" href="/tags/JPA/">JPA</a>, <a class="tag-link" href="/tags/java/">java</a>
     </div>
 
             </div>
@@ -180,7 +180,7 @@
 <ol>
 <li>name : 필드와 매핑할 테이블의 컬럼 이름. 기본값이 필드 이름</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Column</span>(name = <span class="string">"cart_id"</span>)</span><br><span class="line"><span class="keyword">private</span> Long id;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Column</span>(name = <span class="string">"cart_id"</span>)</span><br><span class="line"><span class="keyword">private</span> Long id;</span><br></pre></td></tr></table></figure>
 <ol>
 <li>columnDefinition : 데이터베이스 컬럼 정보를 직접 설정.</li>
 <li>nullable : null 값 허용 여부 false일 경우, not null 제약조건이 됨. 기본값이 true</li>
@@ -199,7 +199,7 @@
 <li>FetchType.EAGER : 관계된 엔티티의 정보를 미리 읽어오는 것</li>
 <li>FetchType.LAZY : 관계된 엔티티의 정보를 실제 요청하는 순간 가져오는 것</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CartItem</span> <span class="keyword">extends</span> <span class="title">BaseEntity</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">	..</span><br><span class="line">  	<span class="meta">@ManyToOne</span>(fetch = FetchType.LAZY)</span><br><span class="line">	<span class="meta">@JoinColumn</span>(name = <span class="string">"cart_id"</span>)</span><br><span class="line">	<span class="keyword">private</span> Cart cart;</span><br><span class="line">  	..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CartItem</span> <span class="keyword">extends</span> <span class="title">BaseEntity</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">	..</span><br><span class="line">  	<span class="meta">@ManyToOne</span>(fetch = FetchType.LAZY)</span><br><span class="line">	<span class="meta">@JoinColumn</span>(name = <span class="string">"cart_id"</span>)</span><br><span class="line">	<span class="keyword">private</span> Cart cart;</span><br><span class="line">  	..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="OneToMany"><a href="#OneToMany" class="headerlink" title="@OneToMany"></a>@OneToMany</h3><p>일대다 관계 설정에서 사용</p>
 <ol>
 <li>mappedBy : 양방향 관계 설정시 관계의 주체가 되는 쪽에서 정의</li>
@@ -209,7 +209,7 @@
 <li>FetchType.EAGER : 관계된 엔티티의 정보를 미리 읽어오는 것</li>
 <li>FetchType.LAZY : 관계된 엔티티의 정보를 실제 요청하는 순간 가져오는 것</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cart</span> <span class="keyword">extends</span> <span class="title">BaseEntity</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">	..</span><br><span class="line">    <span class="meta">@OneToMany</span>(mappedBy = <span class="string">"cart"</span>, fetch = FetchType.EAGER)</span><br><span class="line">    <span class="meta">@OrderBy</span>(<span class="string">"created_at asc"</span>)</span><br><span class="line">    <span class="keyword">private</span> List&lt;CartItem&gt; cartItems;</span><br><span class="line">    ..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cart</span> <span class="keyword">extends</span> <span class="title">BaseEntity</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">	..</span><br><span class="line">    <span class="meta">@OneToMany</span>(mappedBy = <span class="string">"cart"</span>, fetch = FetchType.EAGER)</span><br><span class="line">    <span class="meta">@OrderBy</span>(<span class="string">"created_at asc"</span>)</span><br><span class="line">    <span class="keyword">private</span> List&lt;CartItem&gt; cartItems;</span><br><span class="line">    ..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>@ManyToOne과 @OneToMany 두가지가 크게 다르지 않음. 어느쪽을 기준으로 작성하느냐에 따라 다름</strong></p>
 <h1 id="JPA는-다양한-쿼리-방법을-지원"><a href="#JPA는-다양한-쿼리-방법을-지원" class="headerlink" title="JPA는 다양한 쿼리 방법을 지원"></a>JPA는 다양한 쿼리 방법을 지원</h1><ul>
 <li>JPQL</li>
@@ -366,20 +366,20 @@
         
 <nav id="article-nav">
     
-        <a href="/2018/02/23/Drag and drop 컴포넌트/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">més nou</strong>
+        <a href="/2018/02/23/Github page와 Hexo 이용, 기술 블로그 만들기/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">más nuevo</strong>
         <p class="article-nav-title">
         
-            Drag and drop
+            블로그 만들기
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2018/02/23/Github page와 Hexo 이용, 기술 블로그 만들기/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">antic</strong>
-        <p class="article-nav-title">블로그 만들기</p>
+        <a href="/2018/02/23/Drag and drop 컴포넌트/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">antiguo</strong>
+        <p class="article-nav-title">Drag and drop</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -391,14 +391,14 @@
             
                 
     <div class="widget-wrap">
-        <h3 class="widget-title">recents</h3>
+        <h3 class="widget-title">recientes</h3>
         <div class="widget">
             <ul id="recent-post" class="">
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/23/slider component/" class="thumbnail">
+                            <a href="/2018/02/27/Component&plugin/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -410,15 +410,15 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/23/slider component/" class="title">vue slider 컴포넌트</a></p>
-                            <p class="item-date"><time datetime="2018-02-23T07:47:32.323Z" itemprop="datePublished">2018-02-23</time></p>
+                            <p class="item-title"><a href="/2018/02/27/Component&plugin/" class="title">컴포넌트와 플러그인</a></p>
+                            <p class="item-date"><time datetime="2018-02-27T04:40:53.284Z" itemprop="datePublished">2018-02-27</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/23/webpack/" class="thumbnail">
+                            <a href="/2018/02/27/영속성 컨텍스트 트랜잭션/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -430,18 +430,18 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/23/webpack/" class="title">webpack</a></p>
-                            <p class="item-date"><time datetime="2018-02-23T06:58:20.621Z" itemprop="datePublished">2018-02-23</time></p>
+                            <p class="item-title"><a href="/2018/02/27/영속성 컨텍스트 트랜잭션/" class="title">영속성 컨텍스트</a></p>
+                            <p class="item-date"><time datetime="2018-02-27T04:39:49.534Z" itemprop="datePublished">2018-02-27</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/23/간결한 spring security configure/" class="thumbnail">
+                            <a href="/2018/02/27/vue 정리/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(http://blog.jeonghwan.net/assets/imgs/2017/03/27/mvvm-of-vue.png)" alt="vue.js 기본" class="thumbnail-image"></span>
     
     
 </a>
@@ -450,15 +450,15 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/23/간결한 spring security configure/" class="title">Spring security config 예제</a></p>
-                            <p class="item-date"><time datetime="2018-02-23T06:58:20.621Z" itemprop="datePublished">2018-02-23</time></p>
+                            <p class="item-title"><a href="/2018/02/27/vue 정리/" class="title">vue.js 기본</a></p>
+                            <p class="item-date"><time datetime="2018-02-27T04:39:49.534Z" itemprop="datePublished">2018-02-27</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/23/라우터정리/" class="thumbnail">
+                            <a href="/2018/02/27/기본키설정/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -470,18 +470,18 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/23/라우터정리/" class="title">vueRouter</a></p>
-                            <p class="item-date"><time datetime="2018-02-23T06:58:20.621Z" itemprop="datePublished">2018-02-23</time></p>
+                            <p class="item-title"><a href="/2018/02/27/기본키설정/" class="title">JPA기본키설정</a></p>
+                            <p class="item-date"><time datetime="2018-02-27T04:39:49.534Z" itemprop="datePublished">2018-02-27</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/23/다국어 처리 적용하는 방법/" class="thumbnail">
+                            <a href="/2018/02/27/web 서버/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(http://cfile29.uf.tistory.com/image/21433D4558DB217F0DACFA)" alt="web 서버" class="thumbnail-image"></span>
     
     
 </a>
@@ -490,8 +490,8 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/23/다국어 처리 적용하는 방법/" class="title">다국어처리</a></p>
-                            <p class="item-date"><time datetime="2018-02-23T06:58:20.621Z" itemprop="datePublished">2018-02-23</time></p>
+                            <p class="item-title"><a href="/2018/02/27/web 서버/" class="title">web 서버</a></p>
+                            <p class="item-date"><time datetime="2018-02-27T04:39:49.534Z" itemprop="datePublished">2018-02-27</time></p>
                         </div>
                     </li>
                 
@@ -505,9 +505,9 @@
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">arxius</h3>
+        <h3 class="widget-title">archivos</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">16</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">26</span></li></ul>
         </div>
     </div>
 
@@ -515,9 +515,9 @@
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">etiquetes</h3>
+        <h3 class="widget-title">etiquetas</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apexsoft/">apexsoft</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/templete/">templete </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vuejs/">vuejs</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extends/">extends</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pug/">pug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vuejs/">vuejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -527,7 +527,7 @@
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">etiqueta cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/DB/" style="font-size: 10px;">DB</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JPA/" style="font-size: 12.5px;">JPA</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/apexsoft/" style="font-size: 20px;">apexsoft</a> <a href="/tags/component/" style="font-size: 15px;">component</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/node-js/" style="font-size: 12.5px;">node.js</a> <a href="/tags/npm/" style="font-size: 12.5px;">npm</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/templete/" style="font-size: 10px;">templete </a> <a href="/tags/vue-js/" style="font-size: 17.5px;">vue.js</a> <a href="/tags/vuejs/" style="font-size: 10px;">vuejs</a>
+            <a href="/tags/DB/" style="font-size: 18px;">DB</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JPA/" style="font-size: 16px;">JPA</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/component/" style="font-size: 14px;">component</a> <a href="/tags/extends/" style="font-size: 10px;">extends</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pug/" style="font-size: 10px;">pug</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/springboot/" style="font-size: 12px;">springboot</a> <a href="/tags/vue-js/" style="font-size: 20px;">vue.js</a> <a href="/tags/vuejs/" style="font-size: 10px;">vuejs</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
         </div>
     </div>
 
