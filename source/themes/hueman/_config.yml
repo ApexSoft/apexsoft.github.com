@@ -1,28 +1,22 @@
 # Menus
 menu:
     Home: /
-    # Delete this row if you don't want categories in your header nav bar
-    Categories:
-    About: /about/index.html
+    About: https://about.me/apexsoft
 
 # Customize
 customize:
     logo:
-        width: 165
-        height: 60
-        url: images/logo-header.png
+        width: 168
+        height: 35
+        url: http://www.apexsoft.co.kr/apex_kor/src/thumbnail/20170613/593f2e5d27260.png
     theme_color: '#006bde'
     highlight: androidstudio
     sidebar: left # sidebar position, options: left, right
     thumbnail: true # enable posts thumbnail, options: true, false
     favicon: # path to favicon
     social_links: # for more icons, please see http://fontawesome.io/icons/#brand
-        twitter: /
-        facebook: /
-        google-plus: /
-        github: https://github.com/ppoffice/hexo-theme-hueman
-        weibo: /
-        rss: /
+        github: https://github.com/ApexSoft/apexsoft.github.com
+
 
 # Widgets
 widgets:
@@ -78,4 +72,4 @@ miscellaneous:
         twitter_id:
         google_plus:
     links:
-        Hexo: http://hexo.io
+        Apexsoft: http://www.apexsoft.co.kr
