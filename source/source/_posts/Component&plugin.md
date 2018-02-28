@@ -1,5 +1,5 @@
 ---
-title : [Vue] 컴포넌트와 플러그인
+title : 컴포넌트와 플러그인
 tags : ["vue.js", "component", "plugin"]
 ---
 
@@ -96,6 +96,8 @@ export default SurveyEditor;
   * 사용을 원하는 컴포넌트를, 지역으로 선언하여 사용한다.
 
 ```javascript javascript
+import SurveyEditor from 'survey-editor';
+
 Vue.use(SurveyEditor);
 
 new Vue({
@@ -105,6 +107,10 @@ new Vue({
     }
 })
 ```
+
+> `import` : 소스코드를 읽어옴
+>
+> `use()` : survey 플러그인 내부 install 호출
 
 ```html html
 <canvas slot="viewport"></canvas>
