@@ -402,7 +402,7 @@ json 형태로 키값을 만들어주어야 함
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/23/JPA 큼직한 개념/" class="thumbnail">
+        <a href="/2018/02/23/Spring Security/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -412,7 +412,7 @@ json 형태로 키값을 만들어주어야 함
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/JPA 큼직한 개념/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/Spring Security/">0</span>
     
 </span>
 
@@ -430,18 +430,16 @@ json 형태로 키값을 만들어주어야 함
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/JPA 큼직한 개념/">JPA 개념</a>
+        <a href="/2018/02/23/Spring Security/">spring security</a>
         </h1>
     
 
         <p class="article-excerpt">
-            HibernateEJB 엔티티빈 기술을 대체
-오픈소스 ORM 프레임워크
-JPA (Java Persistence API)EJB 3.0에서 하이버네이트를 기반으로 새로운 자바 ORM 기술표준 (JPA를 하이버네이트로 구현)
-자바애플리케이션과 JDBC 사이에서 동작 
-테이블을 객체 지향적으로 만들어서 사용 (상속이 가능함)
-제공하는 기능 (대분류)
-엔티티와 테이
+            1. build.gradle1compile('org.springframework.boot:spring-boot-starter-security')
+2. DB, Domain에 USER와 ROLE 필요
+User
+
+java12345678910111213141516171819202122232425262728293031@Entity@Table(name = "USER"
         </p>
     </div>
 </article>
@@ -458,7 +456,7 @@ JPA (Java Persistence API)EJB 3.0에서 하이버네이트를 기반으로 새�
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/23/Redis/" class="thumbnail">
+        <a href="/2018/02/23/nodjs/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -468,7 +466,7 @@ JPA (Java Persistence API)EJB 3.0에서 하이버네이트를 기반으로 새�
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/Redis/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/nodjs/">0</span>
     
 </span>
 
@@ -486,26 +484,21 @@ JPA (Java Persistence API)EJB 3.0에서 하이버네이트를 기반으로 새�
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/Redis/">REDIS</a>
+        <a href="/2018/02/23/nodjs/">node.js? npm? cdn? 사용하기</a>
         </h1>
     
 
         <p class="article-excerpt">
-            REDIS (REmote DIctionary Server)key/Value Store
-in memory key value database
+            javascript 사용1. CDN
+https://unpkg.com/#/   OR https://www.npmjs.com/
+dist 폴더 , 다른이름으로 링크주소 복사
+&lt;script &gt; 주소  &lt;/script&gt;
 
-key/value 저장소
-
-특정 키 값에 값을 저장하는 구조
-
-
-메모리에 데이터를 저장
-
-빠른 read /write 속도
-
-전체적인 저장 가능한 데이터의 용량은 물리적인 용량을 넘을수 없음
-
-RDB나 NoSQL이 기본적
+2.npm
+git 다운
+npm run bundle or yarn bundle
+dist  폴더  , 생성된 물리적 파일
+원하는
         </p>
     </div>
 </article>
@@ -571,7 +564,7 @@ VeeValidate에서 validation 대상은 input의 name으로 errors.has(&#39;name&
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/23/promise/" class="thumbnail">
+        <a href="/2018/02/23/Redis/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -581,7 +574,7 @@ VeeValidate에서 validation 대상은 input의 name으로 errors.has(&#39;name&
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/promise/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/Redis/">0</span>
     
 </span>
 
@@ -599,20 +592,26 @@ VeeValidate에서 validation 대상은 input의 name으로 errors.has(&#39;name&
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/promise/">promise</a>
+        <a href="/2018/02/23/Redis/">REDIS</a>
         </h1>
     
 
         <p class="article-excerpt">
-            promise
-비동기 동작의 흐름을 제어할 때 사용
-JavaScript ES6에 추가
-아직은 아니지만 나중에 완료될 것으로 기대 되는 연산을 의미
-async(비동기)연산에서 사용
-Promise object는 new를 통해 initiate될 수 있으며, 함수를 패스받을 수 있다.
-이 함수에는 resolve, reject함수가 매개변수로 차례로 들어가있다.
+            REDIS (REmote DIctionary Server)key/Value Store
+in memory key value database
+
+key/value 저장소
+
+특정 키 값에 값을 저장하는 구조
 
 
+메모리에 데이터를 저장
+
+빠른 read /write 속도
+
+전체적인 저장 가능한 데이터의 용량은 물리적인 용량을 넘을수 없음
+
+RDB나 NoSQL이 기본적
         </p>
     </div>
 </article>
@@ -717,26 +716,6 @@ name : 필드
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/27/이벤트 /" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/27/이벤트 /" class="title">EventBus</a></p>
-                            <p class="item-date"><time datetime="2018-02-27T04:49:25.010Z" itemprop="datePublished">2018-02-27</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2018/02/27/영속성 컨텍스트 트랜잭션/" class="thumbnail">
     
     
@@ -750,6 +729,26 @@ name : 필드
                         <div class="item-inner">
                             <p class="item-category"></p>
                             <p class="item-title"><a href="/2018/02/27/영속성 컨텍스트 트랜잭션/" class="title">영속성 컨텍스트</a></p>
+                            <p class="item-date"><time datetime="2018-02-27T04:49:25.010Z" itemprop="datePublished">2018-02-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/27/이벤트 /" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/27/이벤트 /" class="title">EventBus</a></p>
                             <p class="item-date"><time datetime="2018-02-27T04:49:25.010Z" itemprop="datePublished">2018-02-27</time></p>
                         </div>
                     </li>
@@ -777,6 +776,26 @@ name : 필드
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/02/27/query mehtod만들기/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://cfile27.uf.tistory.com/image/241A7336576804DC04E04F)" alt="query mehtod" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/27/query mehtod만들기/" class="title">query mehtod</a></p>
+                            <p class="item-date"><time datetime="2018-02-27T04:49:24.995Z" itemprop="datePublished">2018-02-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/02/27/web 서버/" class="thumbnail">
     
     
@@ -790,26 +809,6 @@ name : 필드
                         <div class="item-inner">
                             <p class="item-category"></p>
                             <p class="item-title"><a href="/2018/02/27/web 서버/" class="title">web 서버</a></p>
-                            <p class="item-date"><time datetime="2018-02-27T04:49:24.995Z" itemprop="datePublished">2018-02-27</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/02/27/vue 정리/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://blog.jeonghwan.net/assets/imgs/2017/03/27/mvvm-of-vue.png)" alt="vue.js 기본" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/27/vue 정리/" class="title">vue.js 기본</a></p>
                             <p class="item-date"><time datetime="2018-02-27T04:49:24.995Z" itemprop="datePublished">2018-02-27</time></p>
                         </div>
                     </li>
