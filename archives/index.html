@@ -11,6 +11,7 @@
 <meta property="og:title" content="apexsoft 기술블로그">
 <meta property="og:url" content="http://apexsoft.github.io/archives/index.html">
 <meta property="og:site_name" content="apexsoft 기술블로그">
+<meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="apexsoft 기술블로그">
     
@@ -61,11 +62,11 @@
                         <ul id="main-nav">
                             
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">Accueil</a>
+                                    <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="https://about.me/apexsoft">À propos</a>
+                                    <a class="main-nav-list-link" href="https://about.me/apexsoft">About</a>
                                 </li>
                             
                         </ul>
@@ -73,7 +74,7 @@
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Rechercher" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -92,9 +93,9 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Articles',
+            POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'Catégories',
+            CATEGORIES: 'Categories',
             TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
@@ -140,6 +141,59 @@
     
     
         <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2018/03/07/배치 프로그램 (Batch)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/03/07/배치 프로그램 (Batch)/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            
+            </div>
+            <div class="date"><time datetime="2018-03-07T05:05:33.132Z" itemprop="datePublished">2018-03-07</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/03/07/배치 프로그램 (Batch)/">배치프로그램, Quartz</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            배치 프로그램 (Batch)사용자와 상호작용 없이 대량의 데이터를 작업단위로 묶어서 정지거으로 수행하거나 정해진 규칙에 따라 자동으로 수행
+
+정기 배치 : 정해진 시점에 실행 
+예) 일정 기간이 지나면 비밀번호 변경을 권장하는 페이지 보여줌
+
+
+이벤트성 배치 : 사전에 정의해 둔 조건이 충족되면 자동으로 실행
+ON-DEMAND 배치 : 사용자의 명시적 요구
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
     
         <article class="article article-summary">
     <div class="article-summary-inner">
@@ -195,10 +249,14 @@ PG사 한개까지는 무료
     </div>
 </article>
     
+        </div>
+    
 
     
     
     
+    
+        <div class="article-row">
     
         <article class="article article-summary">
     <div class="article-summary-inner">
@@ -251,6 +309,60 @@ PG사 한개까지는 무료
 
 영속성 컨텍스트 특징
 영속성 컨텍스트 엔티티 = 식별자
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2018/02/27/기본키설정/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/27/기본키설정/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            
+            </div>
+            <div class="date"><time datetime="2018-02-27T04:49:25.010Z" itemprop="datePublished">2018-02-27</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/02/27/기본키설정/">JPA기본키설정</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            @Entity테이블과 매핑할 클래스는 필수로 붙혀야 함
+클래스에 @Entity 를 붙여주면 JPA가 Entity로서 관리 한다는 것을 의미한다.
+속성
+name다른 Entity와 충돌이 우려될 경우 이름을 바꿔준다. 기본적으로는 Class명을 따른다.
+
+주의사항
+기본 생성자 필수
+final, enum, interface, inner 클래스 사용 못함
+저장 필
         </p>
     </div>
 </article>
@@ -318,17 +430,17 @@ vue 인스턴스 생명 주기 created 이벤트 훅을 통해서 ,$on메서드�
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/27/기본키설정/" class="thumbnail">
+        <a href="/2018/02/27/web 서버/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(http://cfile29.uf.tistory.com/image/21433D4558DB217F0DACFA)" alt="web 서버" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/27/기본키설정/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/27/web 서버/">0</span>
     
 </span>
 
@@ -341,25 +453,23 @@ vue 인스턴스 생명 주기 created 이벤트 훅을 통해서 ,$on메서드�
             <div class="category">
             
             </div>
-            <div class="date"><time datetime="2018-02-27T04:49:25.010Z" itemprop="datePublished">2018-02-27</time></div>
+            <div class="date"><time datetime="2018-02-27T04:49:24.995Z" itemprop="datePublished">2018-02-27</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/27/기본키설정/">JPA기본키설정</a>
+        <a href="/2018/02/27/web 서버/">web 서버</a>
         </h1>
     
 
         <p class="article-excerpt">
-            @Entity테이블과 매핑할 클래스는 필수로 붙혀야 함
-클래스에 @Entity 를 붙여주면 JPA가 Entity로서 관리 한다는 것을 의미한다.
-속성
-name다른 Entity와 충돌이 우려될 경우 이름을 바꿔준다. 기본적으로는 Class명을 따른다.
+            web 서버
+웹 브라우저와 같은 클라이언트로부터 HTTP 요청을 받아들이고, HTML 문서와 같은 웹 페이지를 반환하는 컴퓨터 프로그램
 
-주의사항
-기본 생성자 필수
-final, enum, interface, inner 클래스 사용 못함
-저장 필
+초기 웹은 정보교환이 목적이었기 때문에 전송할 데이터가 정적인 데이터뿐이었다. (html, img, xml…) 
+
+따라서 그에 맞는 기능에 충실하였고, 지금도 정적인 데이터를 전송하는데는 웹서버가 안정적이다
+웹서버의 표준
         </p>
     </div>
 </article>
@@ -453,17 +563,17 @@ query m
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/27/web 서버/" class="thumbnail">
+        <a href="/2018/02/27/v-model file/" class="thumbnail">
     
     
-        <span style="background-image:url(http://cfile29.uf.tistory.com/image/21433D4558DB217F0DACFA)" alt="web 서버" class="thumbnail-image"></span>
+        <span class="thumbnail-image thumbnail-none"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/27/web 서버/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/27/v-model file/">0</span>
     
 </span>
 
@@ -481,18 +591,24 @@ query m
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/27/web 서버/">web 서버</a>
+        <a href="/2018/02/27/v-model file/">vue.js 파일업로드</a>
         </h1>
     
 
         <p class="article-excerpt">
-            web 서버
-웹 브라우저와 같은 클라이언트로부터 HTTP 요청을 받아들이고, HTML 문서와 같은 웹 페이지를 반환하는 컴퓨터 프로그램
+            input file v-modelv-model
+예상됨: 컴포넌트 폼 인풋 엘리먼트 또는 출력 값에 따라 다릅니다.
+제한사항:
+&lt;input&gt;
+&lt;select&gt;
+&lt;textarea&gt;
+components
 
-초기 웹은 정보교환이 목적이었기 때문에 전송할 데이터가 정적인 데이터뿐이었다. (html, img, xml…) 
 
-따라서 그에 맞는 기능에 충실하였고, 지금도 정적인 데이터를 전송하는데는 웹서버가 안정적이다
-웹서버의 표준
+수식어:
+.lazy - input대신 change 이벤트를 듣습니다.
+.number - 문자열을 숫자로 변경합니다.
+.trim 
         </p>
     </div>
 </article>
@@ -563,68 +679,6 @@ MVVM  ( Model-View-ViewModel )
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/27/v-model file/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/27/v-model file/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2018-02-27T04:49:24.995Z" itemprop="datePublished">2018-02-27</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/27/v-model file/">vue.js 파일업로드</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            input file v-modelv-model
-예상됨: 컴포넌트 폼 인풋 엘리먼트 또는 출력 값에 따라 다릅니다.
-제한사항:
-&lt;input&gt;
-&lt;select&gt;
-&lt;textarea&gt;
-components
-
-
-수식어:
-.lazy - input대신 change 이벤트를 듣습니다.
-.number - 문자열을 숫자로 변경합니다.
-.trim 
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
         <a href="/2018/02/27/mixin/" class="thumbnail">
     
     
@@ -676,56 +730,6 @@ extends: 유사한 기능의 컴포넌트들을 추상화 하여 상위 컴포
     </div>
 </article>
     
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/02/27/lombok/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/27/lombok/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2018-02-27T04:49:24.979Z" itemprop="datePublished">2018-02-27</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/27/lombok/">lombok</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            @Builder
-필수 인자들을 생성자(또는 정적 팩터리 메서드)에 전달하여 빌더 객체를 만들고, 선택적 인자들을 추가한 뒤, 마지막에 build()를 호출하여 Immutable 객체를 만드는 방법.
-Class에 대한 복잡한 Builder API들을 자동으로 생성해 준다. 
-Class 뿐만 아니라, 생성자, 메서드에도 사용할 수 있다. 
-추가적으로 @Sing
-        </p>
-    </div>
-</article>
-    
         </div>
     
 
@@ -734,7 +738,7 @@ Class 뿐만 아니라, 생성자, 메서드에도 사용할 수 있다.
 
 
     <nav id="page-nav">
-        <span class="pages">Page 1 sur 3</span>
+        <span class="pages">Page 1 of 3</span>
         <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">&raquo;</a>
     </nav>
 
@@ -744,7 +748,7 @@ Class 뿐만 아니라, 생성자, 메서드에도 사용할 수 있다.
                     <aside id="sidebar">
     <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
     <div class="sidebar-top">
-        <p>suivre:</p>
+        <p>follow:</p>
         <ul class="social-links">
             
                 
@@ -763,9 +767,29 @@ Class 뿐만 아니라, 생성자, 메서드에도 사용할 수 있다.
             
                 
     <div class="widget-wrap">
-        <h3 class="widget-title">récents</h3>
+        <h3 class="widget-title">recents</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/07/배치 프로그램 (Batch)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/03/07/배치 프로그램 (Batch)/" class="title">배치프로그램, Quartz</a></p>
+                            <p class="item-date"><time datetime="2018-03-07T05:05:33.132Z" itemprop="datePublished">2018-03-07</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -810,26 +834,6 @@ Class 뿐만 아니라, 생성자, 메서드에도 사용할 수 있다.
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/27/이벤트 /" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/27/이벤트 /" class="title">EventBus</a></p>
-                            <p class="item-date"><time datetime="2018-02-27T04:49:25.010Z" itemprop="datePublished">2018-02-27</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2018/02/27/기본키설정/" class="thumbnail">
     
     
@@ -850,10 +854,10 @@ Class 뿐만 아니라, 생성자, 메서드에도 사용할 수 있다.
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/27/query mehtod만들기/" class="thumbnail">
+                            <a href="/2018/02/27/이벤트 /" class="thumbnail">
     
     
-        <span style="background-image:url(http://cfile27.uf.tistory.com/image/241A7336576804DC04E04F)" alt="query mehtod" class="thumbnail-image"></span>
+        <span class="thumbnail-image thumbnail-none"></span>
     
     
 </a>
@@ -862,8 +866,8 @@ Class 뿐만 아니라, 생성자, 메서드에도 사용할 수 있다.
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/27/query mehtod만들기/" class="title">query mehtod</a></p>
-                            <p class="item-date"><time datetime="2018-02-27T04:49:24.995Z" itemprop="datePublished">2018-02-27</time></p>
+                            <p class="item-title"><a href="/2018/02/27/이벤트 /" class="title">EventBus</a></p>
+                            <p class="item-date"><time datetime="2018-02-27T04:49:25.010Z" itemprop="datePublished">2018-02-27</time></p>
                         </div>
                     </li>
                 
@@ -879,7 +883,7 @@ Class 뿐만 아니라, 생성자, 메서드에도 사용할 수 있다.
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">27</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">27</span></li></ul>
         </div>
     </div>
 
@@ -889,7 +893,7 @@ Class 뿐만 아니라, 생성자, 메서드에도 사용할 수 있다.
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extends/">extends</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pug/">pug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/결제모듈/">결제모듈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아임포트/">아임포트</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extends/">extends</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pug/">pug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/결제모듈/">결제모듈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배치/">배치</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아임포트/">아임포트</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -899,7 +903,7 @@ Class 뿐만 아니라, 생성자, 메서드에도 사용할 수 있다.
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/DB/" style="font-size: 18px;">DB</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JPA/" style="font-size: 16px;">JPA</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/component/" style="font-size: 14px;">component</a> <a href="/tags/extends/" style="font-size: 10px;">extends</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pug/" style="font-size: 10px;">pug</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/springboot/" style="font-size: 12px;">springboot</a> <a href="/tags/vue-js/" style="font-size: 20px;">vue.js</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/결제모듈/" style="font-size: 10px;">결제모듈</a> <a href="/tags/아임포트/" style="font-size: 10px;">아임포트</a>
+            <a href="/tags/DB/" style="font-size: 18px;">DB</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JPA/" style="font-size: 16px;">JPA</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/component/" style="font-size: 14px;">component</a> <a href="/tags/extends/" style="font-size: 10px;">extends</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pug/" style="font-size: 10px;">pug</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/springboot/" style="font-size: 12px;">springboot</a> <a href="/tags/vue-js/" style="font-size: 20px;">vue.js</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/결제모듈/" style="font-size: 10px;">결제모듈</a> <a href="/tags/배치/" style="font-size: 10px;">배치</a> <a href="/tags/아임포트/" style="font-size: 10px;">아임포트</a>
         </div>
     </div>
 
@@ -907,7 +911,7 @@ Class 뿐만 아니라, 생성자, 메서드에도 사용할 수 있다.
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">liens</h3>
+        <h3 class="widget-title">links</h3>
         <div class="widget">
             <ul>
                 
