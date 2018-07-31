@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Unreal.js | apexsoft 기술블로그</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Unreal.js,Unreal Engine 4,widget,UMG" />
+    
+    <meta name="description" content="Unreal.js로 위젯 그리기위젯을 그려보자. 그 전에 기본적인 파일을 먼저 셋팅해야한다. visual studio code에서 typings 폴더의 파일들을 전부 연다.(에러 해결 후에도 열어두자.) 아마 에러가 몇개 있다고 할 것이다. 컨텍스트에러이므로 Ctrl+j로 에러로그를 열어 하나씩 눌러서 처리하도록 한다. [ ,:’’, ] 부분을 지우면 될">
+<meta name="keywords" content="Unreal.js,Unreal Engine 4,widget,UMG">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unreal.js">
+<meta property="og:url" content="http://apexsoft.github.io/2018/07/31/Unreal.js로 위젯 그리기/index.html">
+<meta property="og:site_name" content="apexsoft 기술블로그">
+<meta property="og:description" content="Unreal.js로 위젯 그리기위젯을 그려보자. 그 전에 기본적인 파일을 먼저 셋팅해야한다. visual studio code에서 typings 폴더의 파일들을 전부 연다.(에러 해결 후에도 열어두자.) 아마 에러가 몇개 있다고 할 것이다. 컨텍스트에러이므로 Ctrl+j로 에러로그를 열어 하나씩 눌러서 처리하도록 한다. [ ,:’’, ] 부분을 지우면 될">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-07-31T02:12:47.251Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unreal.js">
+<meta name="twitter:description" content="Unreal.js로 위젯 그리기위젯을 그려보자. 그 전에 기본적인 파일을 먼저 셋팅해야한다. visual studio code에서 typings 폴더의 파일들을 전부 연다.(에러 해결 후에도 열어두자.) 아마 에러가 몇개 있다고 할 것이다. 컨텍스트에러이므로 Ctrl+j로 에러로그를 열어 하나씩 눌러서 처리하도록 한다. [ ,:’’, ] 부분을 지우면 될">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">모두가 master가 되는 날 까지</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="https://about.me/apexsoft">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    uncategorized
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-Unreal.js로 위젯 그리기" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Unreal.js
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/07/31/Unreal.js로 위젯 그리기/" class="article-date">
+            <time datetime="2018-07-31T02:12:47.251Z" itemprop="datePublished">2018-07-31</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/UMG/">UMG</a>, <a class="tag-link" href="/tags/Unreal-Engine-4/">Unreal Engine 4</a>, <a class="tag-link" href="/tags/Unreal-js/">Unreal.js</a>, <a class="tag-link" href="/tags/widget/">widget</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="Unreal-js로-위젯-그리기"><a href="#Unreal-js로-위젯-그리기" class="headerlink" title="Unreal.js로 위젯 그리기"></a>Unreal.js로 위젯 그리기</h2><p>위젯을 그려보자.</p>
+<p>그 전에 기본적인 파일을 먼저 셋팅해야한다.</p>
+<p>visual studio code에서 typings 폴더의 파일들을 전부 연다.(에러 해결 후에도 열어두자.)</p>
+<p>아마 에러가 몇개 있다고 할 것이다.</p>
+<p>컨텍스트에러이므로 Ctrl+j로 에러로그를 열어 하나씩 눌러서 처리하도록 한다. [ ,:’’, ] 부분을 지우면 될 것이다.</p>
+<p>####준비</p>
+<p>React.js를 사용해보았다면 알겠지만, 필자는 사용해본 적이 없었다.</p>
+<p>그래서 내가 이해한 기준으로 작성하겠다.</p>
+<p>React.js 모든 파일들은 사슬처럼 연결되어 돌아간다.</p>
+<p>Actor에서 호출할 기본이 되는 파일을 app.js라고 하면</p>
+<p>app.js에서는 트리거 역할만 해주며 익셉션처리 또한 이 곳에서 일어난다.</p>
+<p>web프로젝트로 치면 컨트롤러라고 생각하면 된다.</p>
+<p>app.js에서 정상상태에서 실행할 파일과 익셉션이 발생했을 때 실행할 파일을 정의해둔다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// app.js</span><br><span class="line">(function (global) &#123;</span><br><span class="line">    &quot;use strict&quot;</span><br><span class="line"></span><br><span class="line">    try &#123;</span><br><span class="line"></span><br><span class="line">        let main = require(&apos;start&apos;)</span><br><span class="line">        module.exports = () =&gt; &#123;</span><br><span class="line">            let cleanup = null</span><br><span class="line">            process.nextTick(() =&gt; &#123;</span><br><span class="line">                cleanup = main()</span><br><span class="line">            &#125;);</span><br><span class="line">            return () =&gt; cleanup()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    catch (e) &#123;</span><br><span class="line">        require(&apos;bootstrap&apos;)(&apos;app&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(this)</span><br></pre></td></tr></table></figure>
+<p>위에서 ‘start’는 app.js가 아닌 다른 파일이다.</p>
+<p>캐치절에 들어있는 ‘app’은 app.js 본인을 지칭하는 것이 맞다.</p>
+<p>익셉션이 발생할 경우 ‘bootstrap’과 본인 자신을 다시 실행하겠다는 것이다.</p>
+<p>그러면 ‘start’와 ‘bootstrap’에는 무엇이 들어있는지 살펴볼 필요가 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// bootstrap.js</span><br><span class="line">(function (global) &#123;</span><br><span class="line">    &quot;use strict&quot;</span><br><span class="line"></span><br><span class="line">    module.exports = function (filename) &#123;</span><br><span class="line">        //        Context.WriteDTS(Context.Paths[0] + &apos;typings/ue.d.ts&apos;)</span><br><span class="line">        //        Context.WriteAliases(Context.Paths[0] + &apos;aliases.js&apos;)</span><br><span class="line"></span><br><span class="line">        Context.RunFile(&apos;aliases.js&apos;)</span><br><span class="line">        Context.RunFile(&apos;polyfill/unrealengine.js&apos;)</span><br><span class="line">        Context.RunFile(&apos;polyfill/timers.js&apos;)</span><br><span class="line"></span><br><span class="line">        require(&apos;devrequire&apos;)(filename)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(this)</span><br></pre></td></tr></table></figure>
+<p>이것은 unreal.js의 공식 git페이지에서 찾을 수 있는데 설정파일이라고 여기자.</p>
+<p>없으면 만들어야 한다. 호출구조를 유지하면 파일명은 바꾸어도 상관없다.</p>
+<p>컨트롤러(app.js)에서 익셉션이 발생하면 설정파일을 다시 실행하고 본인 자신을 실행하는 것이다.</p>
+<p>익셉션이 발생하지 않았다면 ‘start’파일이 실행될 것이다.</p>
+<p>start파일을 열어보자.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">// start.js</span><br><span class="line">(function () &#123;</span><br><span class="line">    &quot;use strict&quot;;</span><br><span class="line"></span><br><span class="line">    module.exports = function () &#123;</span><br><span class="line">        let PC = GWorld.GetPlayerController(0)</span><br><span class="line">        PC.bShowMouseCursor = true</span><br><span class="line">        var mainWidget = GWorld.Create(JavascriptWidget, PC)</span><br><span class="line"></span><br><span class="line">        var page = new VerticalBox</span><br><span class="line">        page.Visibility = &apos;Visible&apos;</span><br><span class="line"></span><br><span class="line">        mainWidget.SetRootWidget(page)</span><br><span class="line">        mainWidget.AddToViewport()</span><br><span class="line">        </span><br><span class="line">        var game = null</span><br><span class="line"></span><br><span class="line">        function start_Game() &#123;</span><br><span class="line">            if (game != null) &#123;</span><br><span class="line">                game()</span><br><span class="line">            &#125;</span><br><span class="line">            try &#123;</span><br><span class="line">                game = require(&apos;./application&apos;)(mainWidget, page)</span><br><span class="line">            &#125;</span><br><span class="line">            catch (e) &#123;</span><br><span class="line">                console.log(&apos;Exception&apos;, String(e))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        start_Game()</span><br><span class="line"></span><br><span class="line">        return function () &#123;</span><br><span class="line">            game()</span><br><span class="line">            mainWidget.RemoveFromViewport()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<p>블루프린트 혹은 C++로 작업을 해왔다면 Widget을 만드는 방법은 익히 알고 있을 것이다.</p>
+<p>CreateWidget이 Create가 된것 말고는 다른게 없다.</p>
+<p>여기서 중요한 것은 SetRootWidget을 꼭 해줘야 한다.</p>
+<p>게임을 만들기 위해서 application.js가 필요하다.</p>
+<p>해보면서 느낀 점은 module.exports와 require만 유심히 보면 된다는 것이다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// application.js</span><br><span class="line">(function () &#123;</span><br><span class="line">    &quot;use strict&quot;</span><br><span class="line"></span><br><span class="line">    module.exports = function (container) &#123;</span><br><span class="line">        run(container)</span><br><span class="line">        return function () &#123;</span><br><span class="line">            game.destroy()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function run(vbox) &#123;</span><br><span class="line">        var design = require(&apos;./design&apos;)</span><br><span class="line">        var instantiate = require(&apos;instantiator&apos;)</span><br><span class="line">        var widget = instantiate(design)</span><br><span class="line">        vbox.AddChild(widget)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<h4 id="그리기"><a href="#그리기" class="headerlink" title="그리기"></a>그리기</h4><p>이제 design이 필요한 것을 알 것이다.</p>
+<p>거의 다 왔다.</p>
+<p>이 design파일에 위젯에 관한 코드들이 들어간다.</p>
+<p>간단하게 두개의 박스로 된 위젯을 만들었다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">// design.js</span><br><span class="line">function titleComment(val) &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        slot: &#123;</span><br><span class="line">            Padding: &#123; Left: 8, Right: 8, Top: 8, Bottom: 8 &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        type: Border,</span><br><span class="line">        attrs: &#123;</span><br><span class="line">            BrushColor: &#123; R: 0.5, G: 0.5, B: 0.2, A: 0.2 &#125;,</span><br><span class="line">            Padding: &#123; Left: 8, Right: 8, Top: 8, Bottom: 8 &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        children: [</span><br><span class="line">            &#123;</span><br><span class="line">                type: TextBlock,</span><br><span class="line">                slot: &#123; Size: &#123; SizeRule: &apos;Fill&apos; &#125; &#125;,</span><br><span class="line">                attrs: &#123;</span><br><span class="line">                    Text: val || &apos;&apos;,</span><br><span class="line">                    Justification: &apos;Right&apos;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    type: HorizontalBox,</span><br><span class="line">    slot: &#123; Size: &#123; SizeRule: &apos;Fill&apos; &#125; &#125;,</span><br><span class="line">    attrs: &#123;</span><br><span class="line">        Padding: &#123; Left: 15, Right: 15, Top: 15, Bottom: 15 &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    children: [</span><br><span class="line">        &#123;</span><br><span class="line">            slot: &#123;</span><br><span class="line">                Padding: &#123; Left: 15, Right: 15, Top: 15, Bottom: 15 &#125;,</span><br><span class="line">                Justification: &apos;Right&apos;</span><br><span class="line">            &#125;,</span><br><span class="line">            type: VerticalBox,</span><br><span class="line">            children: [</span><br><span class="line">                titleComment(&apos;Just title&apos;),</span><br><span class="line">                titleComment(&apos;Just comment&apos;)</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://apexsoft.github.io/2018/07/31/Unreal.js로 위젯 그리기/" data-id="cjk92iwrv00037gulochveu6y" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ApexSoft/apexsoft.github.com" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/07/31/배치 프로그램 (Batch)/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            배치프로그램, Quartz
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/07/31/HeidiSQL에서 csv 파일 import하기/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">HeidiSQL에서 csv파일을 import하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/07/31/아임포트 소개 및 사용방법/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/07/31/아임포트 소개 및 사용방법/" class="title">아임포트 소개 및 사용방법</a></p>
+                            <p class="item-date"><time datetime="2018-07-31T02:12:47.286Z" itemprop="datePublished">2018-07-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/07/31/배치 프로그램 (Batch)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/07/31/배치 프로그램 (Batch)/" class="title">배치프로그램, Quartz</a></p>
+                            <p class="item-date"><time datetime="2018-07-31T02:12:47.282Z" itemprop="datePublished">2018-07-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/07/31/Unreal.js로 위젯 그리기/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/07/31/Unreal.js로 위젯 그리기/" class="title">Unreal.js</a></p>
+                            <p class="item-date"><time datetime="2018-07-31T02:12:47.251Z" itemprop="datePublished">2018-07-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/07/31/HeidiSQL에서 csv 파일 import하기/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/07/31/HeidiSQL에서 csv 파일 import하기/" class="title">HeidiSQL에서 csv파일을 import하기</a></p>
+                            <p class="item-date"><time datetime="2018-07-31T02:12:47.241Z" itemprop="datePublished">2018-07-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/29/Unreal.js 개발을 위한 초보 가이드/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/03/29/Unreal.js 개발을 위한 초보 가이드/" class="title">Unreal.js</a></p>
+                            <p class="item-date"><time datetime="2018-03-29T05:56:24.830Z" itemprop="datePublished">2018-03-29</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">26</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AR/">AR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HeidiSQL/">HeidiSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UMG/">UMG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine-4/">Unreal Engine 4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-js/">Unreal.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/">VR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extends/">extends</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pug/">pug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/widget/">widget</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/가상현실/">가상현실</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/결제모듈/">결제모듈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배치/">배치</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아임포트/">아임포트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/증강현실/">증강현실</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AR/" style="font-size: 10px;">AR</a> <a href="/tags/DB/" style="font-size: 18px;">DB</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/HeidiSQL/" style="font-size: 10px;">HeidiSQL</a> <a href="/tags/JPA/" style="font-size: 16px;">JPA</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UMG/" style="font-size: 10px;">UMG</a> <a href="/tags/Unreal-Engine-4/" style="font-size: 12px;">Unreal Engine 4</a> <a href="/tags/Unreal-js/" style="font-size: 12px;">Unreal.js</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/component/" style="font-size: 14px;">component</a> <a href="/tags/extends/" style="font-size: 10px;">extends</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/node-js/" style="font-size: 12px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pug/" style="font-size: 10px;">pug</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/springboot/" style="font-size: 12px;">springboot</a> <a href="/tags/vue-js/" style="font-size: 20px;">vue.js</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/widget/" style="font-size: 10px;">widget</a> <a href="/tags/가상현실/" style="font-size: 10px;">가상현실</a> <a href="/tags/결제모듈/" style="font-size: 10px;">결제모듈</a> <a href="/tags/배치/" style="font-size: 10px;">배치</a> <a href="/tags/아임포트/" style="font-size: 10px;">아임포트</a> <a href="/tags/증강현실/" style="font-size: 10px;">증강현실</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://www.apexsoft.co.kr">Apexsoft</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 HyoSook Kim</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://apexsoft.github.io/2018/07/31/Unreal.js로 위젯 그리기/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
