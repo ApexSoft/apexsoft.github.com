@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>vueRouter | apexsoft 기술블로그</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="vue.js" />
+    
+    <meta name="description" content="#vue-router  뷰에서 라우팅 기능을 구현할 수 있도록 지원하는 공식 라이브러리 SPA(Single Page Application) 사용 페이지를 이동할 때 마다 서버에 웹 페이지를 요청하여 새로 갱신하는것이 아니라 미리 해당 페이지들을 받아놓고 페이지 이동 시에 클라이언트의 라우팅을 이용하여 화면을 갱신하는 패턴을 적용한 어플리케이션   라우팅이">
+<meta name="keywords" content="vue.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vueRouter">
+<meta property="og:url" content="http://apexsoft.github.io/2018/11/26/vue-router/index.html">
+<meta property="og:site_name" content="apexsoft 기술블로그">
+<meta property="og:description" content="#vue-router  뷰에서 라우팅 기능을 구현할 수 있도록 지원하는 공식 라이브러리 SPA(Single Page Application) 사용 페이지를 이동할 때 마다 서버에 웹 페이지를 요청하여 새로 갱신하는것이 아니라 미리 해당 페이지들을 받아놓고 페이지 이동 시에 클라이언트의 라우팅을 이용하여 화면을 갱신하는 패턴을 적용한 어플리케이션   라우팅이">
+<meta property="og:updated_time" content="2018-11-26T02:53:50.523Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vueRouter">
+<meta name="twitter:description" content="#vue-router  뷰에서 라우팅 기능을 구현할 수 있도록 지원하는 공식 라이브러리 SPA(Single Page Application) 사용 페이지를 이동할 때 마다 서버에 웹 페이지를 요청하여 새로 갱신하는것이 아니라 미리 해당 페이지들을 받아놓고 페이지 이동 시에 클라이언트의 라우팅을 이용하여 화면을 갱신하는 패턴을 적용한 어플리케이션   라우팅이">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">모두가 master가 되는 날 까지</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Inicio</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="https://about.me/apexsoft">Acerca de</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    Sin categoría
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-vue-router" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        vueRouter
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/11/26/vue-router/" class="article-date">
+            <time datetime="2018-11-26T02:53:50.522Z" itemprop="datePublished">2018-11-26</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/vue-js/">vue.js</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>#vue-router</p>
+<ul>
+<li>뷰에서 라우팅 기능을 구현할 수 있도록 지원하는 공식 라이브러리</li>
+<li>SPA(Single Page Application) 사용<ul>
+<li>페이지를 이동할 때 마다 서버에 웹 페이지를 요청하여 새로 갱신하는것이 아니라</li>
+<li>미리 해당 페이지들을 받아놓고 페이지 이동 시에 클라이언트의 라우팅을 이용하여 화면을 갱신하는 패턴을 적용한 어플리케이션</li>
+</ul>
+</li>
+<li>라우팅이 경로에 따라 컴포넌트를 바꿔치기해서 렌더링</li>
+</ul>
+<h2 id="태그-사용"><a href="#태그-사용" class="headerlink" title="태그 사용"></a>태그 사용</h2><h3 id="라우터-링크"><a href="#라우터-링크" class="headerlink" title="라우터 링크"></a>라우터 링크</h3><ul>
+<li><code>&lt;router-link to=&quot;url 값&quot;&gt;</code></li>
+<li>페이지 이동 태그</li>
+<li>to에 지정한 url로 이동</li>
+<li><code>&lt;a&gt;</code>태그 사용 안하는 이유 <ul>
+<li>히스토리모드와 해쉬뱅 모드에서는 주소 체계가 달라서 <code>&lt;a&gt;</code> 태그를 사용할 경우 모드 변경시 주소값을 일일이 변경해 줘야한다. 하지만 <code>&lt;router-link&gt;</code>는 변경할 필요가 없다.</li>
+<li><code>&lt;a&gt;</code> 태그를 클릭하면 화면을 갱신하는데 <code>&lt;router-link&gt;</code>는 이를 차단해준다. 갱신 없이 화면을 이동할 수 있다. </li>
+</ul>
+</li>
+</ul>
+<h3 id="라우터-뷰"><a href="#라우터-뷰" class="headerlink" title="라우터 뷰"></a>라우터 뷰</h3><ul>
+<li><code>&lt;router-view&gt;</code></li>
+<li>페이지 표시 태그</li>
+<li>변경되는 url에 따라 해당 컴포넌트 뿌려줌</li>
+<li>랜더링 해주는 부분</li>
+</ul>
+<h2 id="정의"><a href="#정의" class="headerlink" title="정의"></a>정의</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  mode: <span class="string">'history'</span>,</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">component</span>: Home &#125;,</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'*'</span>, <span class="attr">component</span>: NotFound &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>###mode</p>
+<ul>
+<li>기본값은 , <code>해쉬뱅 모드</code></li>
+<li><code>history</code>모드 사용 시 ,  브라우져 history 객체의 <a href="https://developer.mozilla.org/ko/docs/Web/API/History_API" target="_blank" rel="noopener">pushState() API</a>를 사용 </li>
+</ul>
+<h3 id="routes"><a href="#routes" class="headerlink" title="routes"></a>routes</h3><ul>
+<li>경로와 컴포넌트로 이뤄진 컬렉션</li>
+<li>실제 이 맵을 보고 , 라우터가 경로에 따라 그에 맞는 컴포넌트를 렌더링한다</li>
+<li>정의한 순서대로 경로를 매칭해서 컴포넌트를 출력</li>
+<li>정의되지 않은 경로로 들어올결우<ul>
+<li><code>{ path: &#39;*&#39;, component: NotFound }</code> 설정에 의해 NotFound 컴포넌트가 그려질 것이다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="children"><a href="#children" class="headerlink" title="children"></a>children</h3><ul>
+<li><p>중첩된 라우팅이 중첩된 화면을 구성한다(<a href="http://blog.jeonghwan.net/2018/04/07/vue-router.html" target="_blank" rel="noopener">http://blog.jeonghwan.net/2018/04/07/vue-router.html</a>)</p>
+</li>
+<li><p>특정 라우팅의 하위 경로가 변경됨에 따라 하위 컴포넌트로 변경할수 있는 기능</p>
+<ul>
+<li>부모 컴포넌트 부분에는 <code>&lt;router-view&gt;&lt;/router-view&gt;</code> 반드시 들어가야 한다 <ul>
+<li>이부분에 자식이 보여짐</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    <span class="comment">// 생략 </span></span><br><span class="line">    </span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/posts'</span>,</span><br><span class="line">      component: &#123; <span class="attr">template</span>: <span class="string">'&lt;div&gt;Posts &lt;br/&gt;&lt;router-view&gt;&lt;/router-view&gt;&lt;/div&gt;'</span> &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 중첩된 라우트는 children 속성으로 하위 라우트를 정의할 수 있다.</span></span><br><span class="line">      children: [</span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">'new'</span>, <span class="attr">component</span>: &#123; <span class="attr">template</span>: <span class="string">'&lt;div&gt;New Post&lt;/div&gt;'</span> &#125; &#125;,</span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">'detail'</span>, <span class="attr">component</span>: &#123; <span class="attr">template</span>: <span class="string">'&lt;div&gt;Post Detail&lt;/div&gt;'</span> &#125; &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="동적-라우트-매칭"><a href="#동적-라우트-매칭" class="headerlink" title="동적 라우트 매칭"></a>동적 라우트 매칭</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> User = &#123;</span><br><span class="line">  template: <span class="string">'&lt;div&gt;User&lt;/div&gt;'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    <span class="comment">// 동적 세그먼트는 콜론으로 시작합니다.</span></span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/user/:id'</span>, <span class="attr">component</span>: User &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>동적 세그먼트는 콜론 <code>:</code>으로 표시됩니다. </p>
+</li>
+<li><p>라우트가 일치하면 동적 세그먼트의 값은 모든 컴포넌트에서 <code>this.$route.params</code>로 표시됩니다. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> User = &#123;</span><br><span class="line">  template: <span class="string">'&lt;div&gt;User &#123;&#123; $route.params.id &#125;&#125;&lt;/div&gt;'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>라우트 정의 우선순위로 처리 </p>
+<ul>
+<li>/post/new</li>
+<li>/post/:id</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">  &lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">  &lt;body&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;div id="app"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;header&gt;</span></span><br><span class="line"><span class="regexp">        &lt;h1&gt;Router&lt;/</span>h1&gt;</span><br><span class="line">      &lt;<span class="regexp">/header&gt;</span></span><br><span class="line"><span class="regexp">      &lt;p&gt;</span></span><br><span class="line"><span class="regexp">        &lt;router-link to="/m</span>ain<span class="string">"&gt;Main 컴포넌트로 이동&lt;/router-link&gt;</span></span><br><span class="line"><span class="string">        &lt;router-link to="</span>/login<span class="string">"&gt;Login 컴포넌트로 이동&lt;/router-link&gt;</span></span><br><span class="line"><span class="string">      &lt;/p&gt;</span></span><br><span class="line"><span class="string">      &lt;router-view&gt;&lt;router-view&gt;  &lt;!-- url 값에 따라 갱신되는 화면 영역 --&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;hr&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;script src="</span>https:<span class="comment">//cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"&gt;&lt;/script&gt;</span></span><br><span class="line">    &lt;script src=<span class="string">"https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> Main = &#123;</span><br><span class="line">      template: <span class="string">'&lt;div&gt;main&lt;/div&gt;'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> Login = &#123;</span><br><span class="line">      template: <span class="string">'&lt;div&gt;Login&lt;/div&gt;'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> routes = [</span><br><span class="line">      &#123;<span class="attr">path</span>:<span class="string">'/main'</span>, <span class="attr">component</span>:Main&#125;,</span><br><span class="line">      &#123;<span class="attr">path</span>:<span class="string">'/login'</span>, <span class="attr">component</span>:Login&#125;</span><br><span class="line">    ]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">      routes</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">        el :<span class="string">'#app'</span>,</span><br><span class="line">        router :router</span><br><span class="line">    &#125;)</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>정의되지 않은 경로로 들어올결우<ul>
+<li><code>{ path: &#39;*&#39;, component: NotFound }</code> 설정에 의해 NotFound 컴포넌트가 그려질 것이다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="라우터를-통해-값-전달"><a href="#라우터를-통해-값-전달" class="headerlink" title="라우터를 통해 값 전달"></a>라우터를 통해 값 전달</h2><p>###1. path에 key-value </p>
+<ul>
+<li><p>전달</p>
+<ul>
+<li><p>router.pash()의 인자로 path를 넘길때 , key-value 작성</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">router.push(<span class="string">"/login?key=value &amp;key2=value"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>받기</p>
+<ul>
+<li><p>vue 객체의 query 이용</p>
+</li>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$route.query.key</span><br></pre></td></tr></table></figure>
+<p>전달 값은 주소창에 노출되므로, 보안 내용은 금지한다</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-params를-이용한-값-전달"><a href="#2-params를-이용한-값-전달" class="headerlink" title="2.params를 이용한 값 전달"></a>2.params를 이용한 값 전달</h3><ul>
+<li><p>params를 이용할때는 <code>name</code>  와 <code>props:true</code> 사용</p>
+<ul>
+<li><p>routes에 추가한다 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">routes:[</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/user'</span>,</span><br><span class="line">        name:<span class="string">'login'</span>,</span><br><span class="line">        componet:Login,</span><br><span class="line">        props:<span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>전달</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">router.push(&#123; <span class="attr">name</span>:<span class="string">'login'</span>,<span class="attr">params</span>:&#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125; &#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>path대신 name을 이용해 어떤 경로로 갈지 알려주고 </li>
+<li>params를 이용해 전달한  값을 객체로 알려준다 </li>
+</ul>
+</li>
+<li><p>받기</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$route.params.key</span><br></pre></td></tr></table></figure>
+<ul>
+<li>rul에 노출이 없엇, path 방법보다는 안전하다</li>
+</ul>
+</li>
+</ul>
+<p>## </p>
+<h2 id="데이터-가져오기"><a href="#데이터-가져오기" class="headerlink" title="데이터 가져오기"></a>데이터 가져오기</h2><blockquote>
+<p>매개 변수와 함께 라우트를 사용할 때 주의 해야할 점은 사용자가 <code>/user/foo</code>에서 <code>/user/bar</code>로 이동할 때 <strong>동일한 컴포넌트 인스턴스가 재사용된다는 것입니다.</strong> 두 라우트 모두 동일한 컴포넌트를 렌더링하므로 이전 인스턴스를 삭제 한 다음 새 인스턴스를 만드는 것보다 효율적입니다. <strong>그러나 이는 또한 컴포넌트의 라이프 사이클 훅이 호출되지 않음을 의미합니다.</strong></p>
+<p>동일한 컴포넌트의 params 변경 사항에 반응하려면 <code>$route</code> 객체를 보면됩니다.</p>
+</blockquote>
+<ul>
+<li><p>데이터 페치 : 서버로 부터 데이터를 가져오는 기능</p>
+</li>
+<li><p>각 화면별로 라우팅이 일어나는 시점에 데이터를 불러와야한다</p>
+</li>
+<li><p>화면이 리프레시 될 경우만 <code>created</code>훅이 동작한다</p>
+<ul>
+<li>:id 값이 변경될때 같이 변경되는 것이 필요하다 =&gt;<code>watch</code>사용 </li>
+</ul>
+</li>
+<li><p><code>created()</code> 훅에서 가져온다</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">  <span class="comment">// 컴포넌트 생성시 데이터를 패치한다 </span></span><br><span class="line">  <span class="keyword">this</span>.fetchData()</span><br><span class="line">&#125;,</span><br><span class="line">watch: &#123;</span><br><span class="line">  <span class="comment">// 라우터 객체를 감시하고 있다가 fetchData() 함수를 호출한다 </span></span><br><span class="line">  <span class="string">'$route'</span>: <span class="string">'fetchData'</span></span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  fetchData () &#123;</span><br><span class="line">    <span class="keyword">this</span>.data = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">this</span>.loading = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    Post.get(<span class="keyword">this</span>.$route.params.key).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.data = data</span><br><span class="line">      <span class="keyword">this</span>.loading = <span class="literal">false</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>## </p>
+<h1 id="라우트-컴포넌트에-속성-전달"><a href="#라우트-컴포넌트에-속성-전달" class="headerlink" title="라우트 컴포넌트에 속성 전달"></a>라우트 컴포넌트에 속성 전달</h1><p>컴포넌트에서 <code>$route</code>를 사용하면 특정 URL에서만 사용할 수 있는 컴포넌트의 유연성을 제한하는 라우트와 강한 결합을 만듭니다.</p>
+<p>컴포넌트와 라우터 속성을 분리하려면 다음과 같이 하십시오.</p>
+<p><strong>$route에 의존성 추가</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> User = &#123;</span><br><span class="line">  template: <span class="string">'&lt;div&gt;User &#123;&#123; $route.params.id &#125;&#125;&lt;/div&gt;'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/user/:id'</span>, <span class="attr">component</span>: User &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>속성에 의존성 해제</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MasterReqCncpDetail = &#123;</span><br><span class="line">    template: <span class="string">`&lt;div&gt;  의뢰서 상세 &#123;&#123; param.reqType &#125;&#125;  &#123;&#123; param.key &#125;&#125; 값 :&#123;&#123;  param.keyNo &#125;&#125; </span></span><br><span class="line"><span class="string">       </span></span><br><span class="line"><span class="string">&lt;/div&gt;`</span></span><br><span class="line">    ,</span><br><span class="line">    data() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    props: &#123;</span><br><span class="line">        param: &#123;</span><br><span class="line">            type: <span class="built_in">Object</span>,</span><br><span class="line">            <span class="keyword">default</span>() &#123; <span class="keyword">return</span> <span class="literal">null</span>; &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    created() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">    mode: <span class="string">'history'</span>,</span><br><span class="line">    routes: [</span><br><span class="line">        &#123;</span><br><span class="line">            path: <span class="string">'/master/request'</span>, <span class="attr">component</span>: &#123;<span class="attr">template</span>: <span class="string">'&lt;router-view&gt;&lt;/router-view&gt;'</span>&#125;,</span><br><span class="line">            children: [</span><br><span class="line">                &#123;<span class="attr">path</span>: <span class="string">'reqList/:key/:keyNo'</span>, <span class="attr">name</span>: <span class="string">'masterReqList'</span>, <span class="attr">component</span>: MasterReqList, <span class="attr">props</span>: <span class="literal">true</span>&#125;,</span><br><span class="line"></span><br><span class="line">                &#123;<span class="attr">path</span>: <span class="string">':reqType/detail'</span>, <span class="attr">name</span>: <span class="string">'masterReqCncpDetail'</span>, <span class="attr">component</span>: MasterReqCncpDetail, <span class="attr">props</span>: <span class="literal">true</span>&#125;,</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br><span class="line">        </span><br><span class="line">          &lt;router-link :to=<span class="string">"&#123; name:'masterReqCncpDetail',params: &#123;param: &#123;keyNo:'5', reqType:'proto',key:'reqNo'&#125;&#125;&#125;"</span>&gt;masterReqCncpDetail&lt;<span class="regexp">/router-link&gt;&lt;br&gt;</span></span><br></pre></td></tr></table></figure>
+<p>이를 통해 어디서나 컴포넌트를 사용할 수 있으므로 컴포넌트 재사용 및 테스트하기가 더 쉽습니다.</p>
+<p>## </p>
+<p>## </p>
+<p>## </p>
+<h2 id="인증-플루우"><a href="#인증-플루우" class="headerlink" title="인증 플루우"></a>인증 플루우</h2><ul>
+<li>권한이 있는 path로 만 들어가게 하기 </li>
+<li>SPA 개발에서는 로그인 후 서버에서 발급받은 액세스 토큰(access token)의 유무로 확인할 수 있다.</li>
+<li>뷰 라우터에는 <strong>네비게이션 가드</strong>라는 기능이 있는데 이것이 인증 플로우를 구현하는데 적합하다.</li>
+<li>vue 각각에서 처리하면 번거롭다 - &gt; 라우터에서 생성되기 전에 체크를 한다</li>
+<li>라우터가 타고 들어가는건, 해당 컴포넌트를 그리는 것이므로 그리기전에 체크한다</li>
+</ul>
+<h3 id="네비게이션-가드"><a href="#네비게이션-가드" class="headerlink" title="네비게이션 가드"></a>네비게이션 가드</h3><ul>
+<li>라우터 설정 객체에는 <code>beforeEnter()</code> 함수를 추가할 수 있다. </li>
+<li>이 함수는 경로에 따라 라우트 매칭을 결정하고 해당 컴포넌트를 생성하기 직전에 호출되는 함수다. </li>
+<li>여기서 인증 여부를 판단한 뒤 컴포넌틀 랜더링을 진행하거나 혹은 로그인 페이지로 이동하는 등의 로직을 구현하면 된다.</li>
+</ul>
+<pre><code>const requireAuth = (to, from, next) =&gt; {
+  if (Auth.loggedIn()) return next()
+  next({
+    path: &apos;/login&apos;,
+    query: { redirect: to.fullPath }
+  })
+}
+
+{ 
+  path: &apos;/posts&apos;, component: Posts,
+  children: [{ 
+    path: &apos;new&apos;, 
+    component: NewPost, 
+
+    // 인증 여부를 체크하는 requreAuth를 beforeEnter 속성에 추가했다
+    beforeEnter: requireAuth 
+  },
+</code></pre><h2 id="라우터-url에-해시-값-을-없애는-방법"><a href="#라우터-url에-해시-값-을-없애는-방법" class="headerlink" title="라우터 url에 해시 값(#)을 없애는 방법"></a>라우터 url에 해시 값(#)을 없애는 방법</h2><pre><code>var router = new VueRouter({
+  mode:&apos;history&apos;,
+  routes
+});
+</code></pre>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://apexsoft.github.io/2018/11/26/vue-router/" data-id="cjoxwx4vt0000m8ul9ljt5u5x" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>seguir:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ApexSoft/apexsoft.github.com" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/11/26/vuex es6/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">más nuevo</strong>
+        <p class="article-nav-title">
+        
+            vuex 상용
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/11/26/vscode_vue 프로젝트 디버깅/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">antiguo</strong>
+        <p class="article-nav-title">Chrome 브라우저로 Vue.js 디버깅하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recientes</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/전송 어노테이션/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/전송 어노테이션/" class="title">@ 전송 Annotation</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.532Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/vuex es6/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/vuex es6/" class="title">vuex 상용</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.528Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/vue-router/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/vue-router/" class="title">vueRouter</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.522Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/vscode_vue 프로젝트 디버깅/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/vscode_vue 프로젝트 디버깅/" class="title">Chrome 브라우저로 Vue.js 디버깅하기</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.509Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/ES6 기본 (1)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/ES6 기본 (1)/" class="title">ES6</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.490Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archivos</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">23</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">etiquetas</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AR/">AR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HeidiSQL/">HeidiSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/">SPRINGBOOT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UMG/">UMG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine-4/">Unreal Engine 4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-js/">Unreal.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/">VR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extends/">extends</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pug/">pug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vuex/">vuex </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/widget/">widget</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/가상현실/">가상현실</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/결제모듈/">결제모듈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디버깅/">디버깅</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배치/">배치</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아임포트/">아임포트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/저장소/">저장소</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/증강현실/">증강현실</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">etiqueta cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AR/" style="font-size: 10px;">AR</a> <a href="/tags/DB/" style="font-size: 18px;">DB</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/HeidiSQL/" style="font-size: 10px;">HeidiSQL</a> <a href="/tags/JPA/" style="font-size: 16px;">JPA</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/SPRINGBOOT/" style="font-size: 10px;">SPRINGBOOT</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UMG/" style="font-size: 10px;">UMG</a> <a href="/tags/Unreal-Engine-4/" style="font-size: 12px;">Unreal Engine 4</a> <a href="/tags/Unreal-js/" style="font-size: 12px;">Unreal.js</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/component/" style="font-size: 14px;">component</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/extends/" style="font-size: 10px;">extends</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/node-js/" style="font-size: 12px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pug/" style="font-size: 10px;">pug</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/springboot/" style="font-size: 12px;">springboot</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue-js/" style="font-size: 20px;">vue.js</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex </a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/widget/" style="font-size: 10px;">widget</a> <a href="/tags/가상현실/" style="font-size: 10px;">가상현실</a> <a href="/tags/결제모듈/" style="font-size: 10px;">결제모듈</a> <a href="/tags/디버깅/" style="font-size: 10px;">디버깅</a> <a href="/tags/배치/" style="font-size: 10px;">배치</a> <a href="/tags/아임포트/" style="font-size: 10px;">아임포트</a> <a href="/tags/저장소/" style="font-size: 10px;">저장소</a> <a href="/tags/증강현실/" style="font-size: 10px;">증강현실</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://www.apexsoft.co.kr">Apexsoft</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 HyoSook Kim</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://apexsoft.github.io/2018/11/26/vue-router/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

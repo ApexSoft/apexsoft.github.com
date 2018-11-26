@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>@ 전송 Annotation | apexsoft 기술블로그</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="spring,SPRINGBOOT,annotation" />
+    
+    <meta name="description" content="REST API 전송파라미터 앞에 @ModelAttribute와 @RequestBody를  사용했는데, 바인딩이 안되는 경우 에러를 찾지 못하는 경우   Client에서 Server로 Ajax call을 날렸다. 분명히 날렸음에도 인자값은 전달되지않고 Null Pointer Exception을 발생시켜버린다. 이유가 무엇일까?  GET/POST 등은 각각의">
+<meta name="keywords" content="spring,SPRINGBOOT,annotation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="@ 전송 Annotation">
+<meta property="og:url" content="http://apexsoft.github.io/2018/11/26/전송 어노테이션/index.html">
+<meta property="og:site_name" content="apexsoft 기술블로그">
+<meta property="og:description" content="REST API 전송파라미터 앞에 @ModelAttribute와 @RequestBody를  사용했는데, 바인딩이 안되는 경우 에러를 찾지 못하는 경우   Client에서 Server로 Ajax call을 날렸다. 분명히 날렸음에도 인자값은 전달되지않고 Null Pointer Exception을 발생시켜버린다. 이유가 무엇일까?  GET/POST 등은 각각의">
+<meta property="og:updated_time" content="2018-11-26T02:53:50.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="@ 전송 Annotation">
+<meta name="twitter:description" content="REST API 전송파라미터 앞에 @ModelAttribute와 @RequestBody를  사용했는데, 바인딩이 안되는 경우 에러를 찾지 못하는 경우   Client에서 Server로 Ajax call을 날렸다. 분명히 날렸음에도 인자값은 전달되지않고 Null Pointer Exception을 발생시켜버린다. 이유가 무엇일까?  GET/POST 등은 각각의">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">모두가 master가 되는 날 까지</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Inicio</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="https://about.me/apexsoft">Acerca de</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    Sin categoría
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-전송 어노테이션" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        @ 전송 Annotation
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/11/26/전송 어노테이션/" class="article-date">
+            <time datetime="2018-11-26T02:53:50.532Z" itemprop="datePublished">2018-11-26</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/SPRINGBOOT/">SPRINGBOOT</a>, <a class="tag-link" href="/tags/annotation/">annotation</a>, <a class="tag-link" href="/tags/spring/">spring</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="REST-API-전송"><a href="#REST-API-전송" class="headerlink" title="REST API 전송"></a>REST API 전송</h2><p>파라미터 앞에 @ModelAttribute와 @RequestBody를  사용했는데, 바인딩이 안되는 경우 에러를 찾지 못하는 경우 </p>
+<blockquote>
+<p>Client에서 Server로 Ajax call을 날렸다. 분명히 날렸음에도 인자값은 전달되지않고 Null Pointer Exception을 발생시켜버린다. 이유가 무엇일까?</p>
+</blockquote>
+<h2 id="GET-POST-등은-각각의-다른-방식으로-데이터를-서버로-전송한다"><a href="#GET-POST-등은-각각의-다른-방식으로-데이터를-서버로-전송한다" class="headerlink" title="GET/POST 등은 각각의 다른 방식으로 데이터를 서버로 전송한다."></a>GET/POST 등은 각각의 다른 방식으로 데이터를 서버로 전송한다.</h2><h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><ul>
+<li>URL에 데이터를 담아 전송하며 1차원 데이터밖에 담지 못한다(2차원 배열, 객체속 객체 등등은 불가능하다.)<ul>
+<li>따라서 검색조건 수준의 데이터를 담는게 옳바르다</li>
+</ul>
+</li>
+</ul>
+<h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><ul>
+<li><p>Request 의 Body에 데이터를 담는데 이 경우 JSON, 다차원 데이터를 담을 수 있다.</p>
+</li>
+<li><p>EX) 컨트롤러를 작성할 때 GET방식 메서드의 파라미터 앞에 @RequestBody 어노테이션을 붙혔다. 그럼 데이터 바인딩이 가능할까?</p>
+<ul>
+<li><blockquote>
+<p>“GET 방식 프로토콜은 Request 패킷에 Body가 존재하지 않는다. 따라서 데이터를 가져올 수 없다. “</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>EX)당연히 자동으로 바인딩해주는 줄 알고 파라미터에 @RequestBody 어노테이션을 쓰지 않았다. 하지만 테스트를 해보니 ‘java.lang.NullPointerException’가 개발자를 반겼다. 어디서부터 문제인가?</p>
+<ul>
+<li><blockquote>
+<p>“@RequestBody 어노테이션으로 명시해주지 않은 파라미터는 GET방식으로 데이터를 바인딩 시키기 때문에 결과적으로 NULL이 들어간다.<br>POST방식은 Body에 데이터가 들어가 있기 때문이다.”</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="결론-RequestBody는-POST방식일때"><a href="#결론-RequestBody는-POST방식일때" class="headerlink" title="결론 : @RequestBody는  POST방식일때"></a>결론 : @RequestBody는  POST방식일때</h3><h2 id="RequstBody"><a href="#RequstBody" class="headerlink" title="@RequstBody"></a>@RequstBody</h2><ul>
+<li>http 본문자체를 읽는 부분을 모델로 변환시켜주는 어노테이션이다. <ul>
+<li>Rest API 만들때는 자주 사용하는 어노테이션이다.</li>
+</ul>
+</li>
+<li>JSON 이나 XML같은 데이터를 적절한 messageConverter로 읽을때 사용하거나, POJO형태의 데이터 전체로 받을경우에 사용된다.<ul>
+<li>Content-Type이 <strong>application/json</strong>  이거나 <strong>XML</strong> </li>
+</ul>
+</li>
+<li>페이지에서 FORM에 들어가는 객체를 Submit으로 전송할 때는 @RequestBody 형태로 넘어가지 않는다. <ul>
+<li>HTML 기반의 컨텐츠 타입에서 데이터를 Submit할 때는 Content-Type이 <strong>application/x-www-form-urlencoded</strong> 방식으로 넘어가기 때문이다. <ul>
+<li>이 때 객체를 넘겨 받는 커텐츠의 Content-Type의 형태는 <strong>application/x-www-form-urlencoded</strong> 나 <strong>multipart/form-data</strong> 의 형태가 되어야한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>반드시 POST형식으로 응답을 받는 구조여야만 한다. </li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><h2 id="ModelAttribute"><a href="#ModelAttribute" class="headerlink" title="@ModelAttribute"></a>@ModelAttribute</h2><ul>
+<li>기존에는 post방식으로 전송하면 파라미터를 객체와 맵핑 하였다 <ul>
+<li>이전에는 api서비스가 많지 않았고 , 대부분 웹에서 form을 사용하여 submit을 하였기 때문에 </li>
+</ul>
+</li>
+<li>POST로 넘어오는 객체 파라미터를 <strong>@ModelAttribute</strong>에 매핑하기 위해서는<ul>
+<li>HTTP Request의 컨텐트타입이 <strong>application/x-www-form-urlencoded</strong> 이나 <strong>multipart/form-data</strong> 이어야만 한다.<ul>
+<li><strong>application/x-www-form-urlencoded</strong>와 <strong>multipart/form-data</strong>의 차이는 POST를 전송할 때 <strong>MultipartFile</strong> 파일을 함께 전송하는지에 따라 차이가 난다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>http 요청 파라미터를 VO로 받는다 (커맨드 객체라고도 한다.)</li>
+<li>도메인이나 오브젝트로 파라미터를 받을 경우는 <code>@ModelAttribute</code>으로 받을수 있다.<ul>
+<li><code>@RequestParam</code>과 비슷한데 1:1로 파라미터를 받을경우는 <code>@RequestParam</code>를 사용하고, </li>
+</ul>
+</li>
+<li>검증(Validation)작업을 추가로 할수 있는데 예로들어 null이라던지, 각 멤버변수마다 valid옵션을 줄수가 있고 여기서 에러가 날 경우 BindException 이 발생한다.</li>
+<li>@ModelAttribute 어노테이션은 Parameter에 쓸 경우 받아오고자하는 데이터의 이름을 지정하여 해당 데이터만을 가져온다. </li>
+<li>EX) <code>{ name : &#39;master&#39;, comment : &#39;모두가 master가 되는 그날 까지 &#39; }</code>이라고 ajax-data에 넣었다고 치고, 컨트롤러에 @ModelAttribute(‘comment’) String comment 라고 하면 comment속엔 ‘모두가 master가 되는 그날 까지’만을 받아온다. <ul>
+<li>결론 : @ModelAttribute는 받아오는 데이터를 ‘지정’한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="파일-업로드"><a href="#파일-업로드" class="headerlink" title="파일 업로드"></a>파일 업로드</h3><ul>
+<li>여러개의 파일을 가지고 있다면 <code>List&lt;MutlipartFile&gt;</code>을 추가하면 될 것이다.</li>
+<li>우리는 JSON 타입의 결과를 받는데 MultipartFile을 JSON으로 serialization 을 할 수 없기 때문에 JSON으로 변경될 때 무시하기 위해서 <strong>@JsonIgnore</strong> 를 사용하였고 </li>
+<li>대신 fileName이라는 필드가 file이라는 JSON 프로퍼티로 첨부파일의 이름을 가지고 만들어질 수 있도록 <strong>@JsonProperty(“file”)</strong>로 추가하였다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/articles"</span>, method = RequestMethod.POST)</span><br><span class="line"> <span class="meta">@ResponseBody</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> Article <span class="title">submit</span><span class="params">(@ModelAttribute Article article, MultipartFile file)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> article;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Article</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line">    <span class="keyword">private</span> String content;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Comment&gt; comments;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@JsonIgnore</span></span><br><span class="line">    <span class="keyword">private</span> MultipartFile file;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@JsonProperty</span>(<span class="string">"file"</span>)</span><br><span class="line">    <span class="keyword">private</span> String fileName;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###@RequestParam</p>
+<ul>
+<li><p>요청 파라미터를 넣어주는 어노테이션이다. @PathVariable 마찬가지로 변수 앞에 작성해주면 된다. 만약 name이라는 파라미터를 넘겨 받는다면 아래와 같이 작성해 주면 된다.</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">(@RequestParam String name)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/sample?name=wonwoo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>또한 파라미터가 여러개일 경우에는 Map으로도 받을 수 있다.</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">(@RequestParam Map&lt;String, String&gt; parameters)</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Valid"><a href="#Valid" class="headerlink" title="@Valid"></a>@Valid</h3><ul>
+<li><p>델을 검증작업을 추가적으로 할 수 있다. 그 타입이 Errors 혹은 BindingResult로 검증 작업을 할 수 있다.</p>
+</li>
+<li><p>ModelAttribute 혹은 RequestBody 어노테이션 바로 뒤에 작성되어야만 한다</p>
+<ul>
+<li>자신의 바로 앞에 있는 모델만 검증 작업을 하기 때문이다</li>
+</ul>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@PostMapping</span>(<span class="string">"/sample"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">(@ModelAttribute @Valid Account account, BindingResult result)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(result.hasErrors()) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"error"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Account</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NotBlank</span></span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="PathVariable"><a href="#PathVariable" class="headerlink" title="@PathVariable"></a>@PathVariable</h3><ul>
+<li><p>중괄호에 명시된 값을 변수로 받는다.</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/user/&#123;id&#125;"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">userInfo</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> String id)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://apexsoft.github.io/2018/11/26/전송 어노테이션/" data-id="cjoxwx4wq0006m8ul9jacvbmk" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>seguir:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ApexSoft/apexsoft.github.com" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/11/26/vuex es6/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">antiguo</strong>
+        <p class="article-nav-title">vuex 상용</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recientes</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/전송 어노테이션/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/전송 어노테이션/" class="title">@ 전송 Annotation</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.532Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/vuex es6/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/vuex es6/" class="title">vuex 상용</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.528Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/vue-router/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/vue-router/" class="title">vueRouter</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.522Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/vscode_vue 프로젝트 디버깅/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/vscode_vue 프로젝트 디버깅/" class="title">Chrome 브라우저로 Vue.js 디버깅하기</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.509Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/ES6 기본 (1)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/ES6 기본 (1)/" class="title">ES6</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.490Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archivos</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">23</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">etiquetas</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AR/">AR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HeidiSQL/">HeidiSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/">SPRINGBOOT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UMG/">UMG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine-4/">Unreal Engine 4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-js/">Unreal.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/">VR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extends/">extends</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pug/">pug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vuex/">vuex </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/widget/">widget</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/가상현실/">가상현실</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/결제모듈/">결제모듈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디버깅/">디버깅</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배치/">배치</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아임포트/">아임포트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/저장소/">저장소</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/증강현실/">증강현실</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">etiqueta cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AR/" style="font-size: 10px;">AR</a> <a href="/tags/DB/" style="font-size: 18px;">DB</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/HeidiSQL/" style="font-size: 10px;">HeidiSQL</a> <a href="/tags/JPA/" style="font-size: 16px;">JPA</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/SPRINGBOOT/" style="font-size: 10px;">SPRINGBOOT</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UMG/" style="font-size: 10px;">UMG</a> <a href="/tags/Unreal-Engine-4/" style="font-size: 12px;">Unreal Engine 4</a> <a href="/tags/Unreal-js/" style="font-size: 12px;">Unreal.js</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/component/" style="font-size: 14px;">component</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/extends/" style="font-size: 10px;">extends</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/node-js/" style="font-size: 12px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pug/" style="font-size: 10px;">pug</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/springboot/" style="font-size: 12px;">springboot</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue-js/" style="font-size: 20px;">vue.js</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex </a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/widget/" style="font-size: 10px;">widget</a> <a href="/tags/가상현실/" style="font-size: 10px;">가상현실</a> <a href="/tags/결제모듈/" style="font-size: 10px;">결제모듈</a> <a href="/tags/디버깅/" style="font-size: 10px;">디버깅</a> <a href="/tags/배치/" style="font-size: 10px;">배치</a> <a href="/tags/아임포트/" style="font-size: 10px;">아임포트</a> <a href="/tags/저장소/" style="font-size: 10px;">저장소</a> <a href="/tags/증강현실/" style="font-size: 10px;">증강현실</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://www.apexsoft.co.kr">Apexsoft</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 HyoSook Kim</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://apexsoft.github.io/2018/11/26/전송 어노테이션/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
