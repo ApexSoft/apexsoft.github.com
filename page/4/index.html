@@ -61,11 +61,11 @@
                         <ul id="main-nav">
                             
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">Inicio</a>
+                                    <a class="main-nav-list-link" href="/">Inici</a>
                                 </li>
                             
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="https://about.me/apexsoft">Acerca de</a>
+                                    <a class="main-nav-list-link" href="https://about.me/apexsoft">Quant a</a>
                                 </li>
                             
                         </ul>
@@ -73,7 +73,7 @@
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cercar" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -92,10 +92,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Entradas',
+            POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'Categorias',
-            TAGS: 'Etiquetas',
+            CATEGORIES: 'categories',
+            TAGS: 'etiquetes',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -121,7 +121,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="home">Inicio</em>
+    <em class="page-title-link" data-url="home">Inici</em>
     </h1>
 </div>
                         <div class="main-body-content">
@@ -144,7 +144,7 @@
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/23/nodjs/" class="thumbnail">
+        <a href="/2018/07/31/HeidiSQL에서 csv 파일 import하기/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -154,7 +154,7 @@
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/nodjs/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/07/31/HeidiSQL에서 csv 파일 import하기/">0</span>
     
 </span>
 
@@ -167,26 +167,28 @@
             <div class="category">
             
             </div>
-            <div class="date"><time datetime="2018-02-23T06:58:20.606Z" itemprop="datePublished">2018-02-23</time></div>
+            <div class="date"><time datetime="2018-07-31T02:12:47.241Z" itemprop="datePublished">2018-07-31</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/nodjs/">node.js? npm? cdn? 사용하기</a>
+        <a href="/2018/07/31/HeidiSQL에서 csv 파일 import하기/">HeidiSQL에서 csv파일을 import하기</a>
         </h1>
     
 
         <p class="article-excerpt">
-            javascript 사용1. CDN
-https://unpkg.com/#/   OR https://www.npmjs.com/
-dist 폴더 , 다른이름으로 링크주소 복사
-&lt;script &gt; 주소  &lt;/script&gt;
+            
+엑셀파일을 csv utf-8 로 저장
+HeidiSQL &gt; 도구 &gt;  CSV 파일 가져오기 선택 
+설정
+필드 종결자 : ,
+줄 종결자 : \r
 
-2.npm
-git 다운
-npm run bundle or yarn bundle
-dist  폴더  , 생성된 물리적 파일
-원하는
+
+
+엑셀에서 다른이름으로 저장한 csv파일은 필드종결자와 줄 종결자가 기본으로 위와같이 설정되므로,
+필드 종결자, 줄 종결자를 위와 같게 수정한다. 
+
         </p>
     </div>
 </article>
@@ -199,7 +201,7 @@ dist  폴더  , 생성된 물리적 파일
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/23/JPA 엔티티 구성/" class="thumbnail">
+        <a href="/2018/07/31/Github page와 Hexo 이용, 기술 블로그 만들기/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -209,7 +211,7 @@ dist  폴더  , 생성된 물리적 파일
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/JPA 엔티티 구성/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/07/31/Github page와 Hexo 이용, 기술 블로그 만들기/">0</span>
     
 </span>
 
@@ -222,176 +224,12 @@ dist  폴더  , 생성된 물리적 파일
             <div class="category">
             
             </div>
-            <div class="date"><time datetime="2018-02-23T06:58:20.606Z" itemprop="datePublished">2018-02-23</time></div>
+            <div class="date"><time datetime="2018-07-31T02:12:47.239Z" itemprop="datePublished">2018-07-31</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/JPA 엔티티 구성/">JPA 엔티티 구성</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            JPA 엔티티 구성쇼핑몰 소스/중요도 위주로 작성함
-레퍼런스@Entity테이블과 매핑할 클래스는 필수로 붙혀야 함
-@Table엔티티와 매핑할 테이블을 지정
-생략하면 매핑한 엔티티 이름을 테이블 이름으로 사용.
-
-name : 매핑할 테이블 이름
-
-@Id기본키 직접 할당
-@GeneratedValue@Column객체 필드를 테이블 컬럼에 매핑
-
-name : 필드
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/02/23/JPA 큼직한 개념/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/JPA 큼직한 개념/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2018-02-23T06:58:20.606Z" itemprop="datePublished">2018-02-23</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/JPA 큼직한 개념/">JPA 개념</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            HibernateEJB 엔티티빈 기술을 대체
-오픈소스 ORM 프레임워크
-JPA (Java Persistence API)EJB 3.0에서 하이버네이트를 기반으로 새로운 자바 ORM 기술표준 (JPA를 하이버네이트로 구현)
-자바애플리케이션과 JDBC 사이에서 동작 
-테이블을 객체 지향적으로 만들어서 사용 (상속이 가능함)
-제공하는 기능 (대분류)
-엔티티와 테이
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/02/23/Drag and drop 컴포넌트/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/Drag and drop 컴포넌트/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2018-02-23T06:58:20.606Z" itemprop="datePublished">2018-02-23</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/Drag and drop 컴포넌트/">Drag and drop</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            Drag and dropSortablehttps://github.com/RubaXa/Sortable
-Sortable을 vue component로 만든 Draggablehttps://github.com/SortableJS/Vue.DraggableDraggable
-직접 구현한 예제 https://codepen.io/anon/pen/dzvzGy?editors=1
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/02/23/Github page와 Hexo 이용, 기술 블로그 만들기/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/Github page와 Hexo 이용, 기술 블로그 만들기/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2018-02-23T06:58:20.606Z" itemprop="datePublished">2018-02-23</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/Github page와 Hexo 이용, 기술 블로그 만들기/">블로그 만들기</a>
+        <a href="/2018/07/31/Github page와 Hexo 이용, 기술 블로그 만들기/">블로그 만들기</a>
         </h1>
     
 
@@ -405,15 +243,19 @@ Public / Private 중 Pub
     </div>
 </article>
     
+        </div>
+    
 
     
     
     
     
+        <div class="article-row">
+    
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/02/23/promise/" class="thumbnail">
+        <a href="/2018/07/31/Drag and drop 컴포넌트/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -423,7 +265,7 @@ Public / Private 중 Pub
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/02/23/promise/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/07/31/Drag and drop 컴포넌트/">0</span>
     
 </span>
 
@@ -436,25 +278,175 @@ Public / Private 중 Pub
             <div class="category">
             
             </div>
-            <div class="date"><time datetime="2018-02-23T06:58:20.606Z" itemprop="datePublished">2018-02-23</time></div>
+            <div class="date"><time datetime="2018-07-31T02:12:47.238Z" itemprop="datePublished">2018-07-31</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/23/promise/">promise</a>
+        <a href="/2018/07/31/Drag and drop 컴포넌트/">Drag and drop</a>
         </h1>
     
 
         <p class="article-excerpt">
-            promise
-비동기 동작의 흐름을 제어할 때 사용
-JavaScript ES6에 추가
-아직은 아니지만 나중에 완료될 것으로 기대 되는 연산을 의미
-async(비동기)연산에서 사용
-Promise object는 new를 통해 initiate될 수 있으며, 함수를 패스받을 수 있다.
-이 함수에는 resolve, reject함수가 매개변수로 차례로 들어가있다.
+            Drag and dropSortablehttps://github.com/RubaXa/Sortable
+Sortable을 vue component로 만든 Draggablehttps://github.com/SortableJS/Vue.DraggableDraggable
+직접 구현한 예제 https://codepen.io/anon/pen/dzvzGy?editors=1
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2018/07/31/Component&plugin/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/07/31/Component&amp;plugin/">0</span>
+    
+</span>
 
 
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            
+            </div>
+            <div class="date"><time datetime="2018-07-31T02:12:47.236Z" itemprop="datePublished">2018-07-31</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/07/31/Component&plugin/">컴포넌트와 플러그인</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Component
+기본 html 엘리먼트를 확장하여 재사용 가능한 코드 단위로 묶음
+컴포넌트를 지역/전역적으로 사용할 수 있는 소스코드가 들어있음 
+일반적인 외부 컴포넌트들이 사용가능한 소스코드를 제공하는 것으로 보임
+외부 컴포넌트의 경우, webpack을 사용해 bundle하여 js파일만 제공하는 컴포넌트가 많음
+
+
+
+외부 컴포넌트 사용방법
+npm ins
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2018/07/31/AR & VR/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://news.kotra.or.kr/crosseditor/binary/images/000199/20170401064206710_UTY1NZAX.png)" alt="AR &amp; VR" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/07/31/AR &amp; VR/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            
+            </div>
+            <div class="date"><time datetime="2018-07-31T02:12:47.233Z" itemprop="datePublished">2018-07-31</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/07/31/AR & VR/">AR &amp; VR</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            AR &amp; VR
+##증강현실( AR)
+1증강현실(增強現實, 영어: augmented reality, AR)은 가상현실(VR)의 한 분야로 실제 환경에 가상 사물이나 정보를 합성하여 원래의 환경에 존재하는 사물처럼 보이도록 하는 컴퓨터 그래픽 기법이다. 디지털 미디어에서 빈번하게 사용된다.[1] [2] 세계 최초의 AR폰 &apos;팹2 프로&apos;
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2018/07/31/@Transactional/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://apexsoft.github.io/2018/07/31/@Transactional/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            
+            </div>
+            <div class="date"><time datetime="2018-07-31T02:12:47.231Z" itemprop="datePublished">2018-07-31</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/07/31/@Transactional/">Transaction</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            @Transactional
+정기 사용자 레벨 관리 작업을 수행하는 도중에 네트워크가 끊기거나 서버에 장애가 생겨서 작업을 완료할 수 없다면, 그 때까지 변경된 사용자의 레벨은 그대로 둘까요? 아니면 모두 초기상태로 되돌려 놓아야 할까요?
+
+이 문제에 대한 답은,‘작업 중간에 문제가 발생해서 작업이 중단된다면,그 때까지 진행된 변경 작업도 모두 취소시켜야 한
         </p>
     </div>
 </article>
@@ -467,7 +459,7 @@ Promise object는 new를 통해 initiate될 수 있으며, 함수를 패스받�
 
 
     <nav id="page-nav">
-        <span class="pages">Página 4 de 4</span>
+        <span class="pages">Pàgina 4 de 4</span>
         <a class="extend prev" rel="prev" href="/page/3/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
     </nav>
 
@@ -496,9 +488,29 @@ Promise object는 new를 통해 initiate될 수 있으며, 함수를 패스받�
             
                 
     <div class="widget-wrap">
-        <h3 class="widget-title">recientes</h3>
+        <h3 class="widget-title">recents</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/29/ES6 기본사용/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/29/ES6 기본사용/" class="title">ES6 사용</a></p>
+                            <p class="item-date"><time datetime="2018-11-29T05:16:29.282Z" itemprop="datePublished">2018-11-29</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -580,26 +592,6 @@ Promise object는 new를 통해 initiate될 수 있으며, 함수를 패스받�
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/11/26/ES6 기본 (1)/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/11/26/ES6 기본 (1)/" class="title">ES6</a></p>
-                            <p class="item-date"><time datetime="2018-11-26T02:53:50.490Z" itemprop="datePublished">2018-11-26</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -610,9 +602,9 @@ Promise object는 new를 통해 initiate될 수 있으며, 함수를 패스받�
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">archivos</h3>
+        <h3 class="widget-title">arxius</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">23</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">31</span></li></ul>
         </div>
     </div>
 
@@ -620,9 +612,9 @@ Promise object는 new를 통해 initiate될 수 있으며, 함수를 패스받�
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">etiquetas</h3>
+        <h3 class="widget-title">etiquetes</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AR/">AR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HeidiSQL/">HeidiSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/">SPRINGBOOT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UMG/">UMG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine-4/">Unreal Engine 4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-js/">Unreal.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/">VR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extends/">extends</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pug/">pug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vuex/">vuex </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/widget/">widget</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/가상현실/">가상현실</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/결제모듈/">결제모듈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디버깅/">디버깅</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배치/">배치</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아임포트/">아임포트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/저장소/">저장소</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/증강현실/">증강현실</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AR/">AR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HeidiSQL/">HeidiSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/">SPRINGBOOT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UMG/">UMG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine-4/">Unreal Engine 4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-js/">Unreal.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/">VR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extends/">extends</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pug/">pug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vuex/">vuex </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/widget/">widget</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/가상현실/">가상현실</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/결제모듈/">결제모듈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디버깅/">디버깅</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배치/">배치</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아임포트/">아임포트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/저장소/">저장소</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/증강현실/">증강현실</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -632,7 +624,7 @@ Promise object는 new를 통해 initiate될 수 있으며, 함수를 패스받�
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">etiqueta cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/AR/" style="font-size: 10px;">AR</a> <a href="/tags/DB/" style="font-size: 18px;">DB</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/HeidiSQL/" style="font-size: 10px;">HeidiSQL</a> <a href="/tags/JPA/" style="font-size: 16px;">JPA</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/SPRINGBOOT/" style="font-size: 10px;">SPRINGBOOT</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UMG/" style="font-size: 10px;">UMG</a> <a href="/tags/Unreal-Engine-4/" style="font-size: 12px;">Unreal Engine 4</a> <a href="/tags/Unreal-js/" style="font-size: 12px;">Unreal.js</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/component/" style="font-size: 14px;">component</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/extends/" style="font-size: 10px;">extends</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/node-js/" style="font-size: 12px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pug/" style="font-size: 10px;">pug</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/springboot/" style="font-size: 12px;">springboot</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue-js/" style="font-size: 20px;">vue.js</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex </a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/widget/" style="font-size: 10px;">widget</a> <a href="/tags/가상현실/" style="font-size: 10px;">가상현실</a> <a href="/tags/결제모듈/" style="font-size: 10px;">결제모듈</a> <a href="/tags/디버깅/" style="font-size: 10px;">디버깅</a> <a href="/tags/배치/" style="font-size: 10px;">배치</a> <a href="/tags/아임포트/" style="font-size: 10px;">아임포트</a> <a href="/tags/저장소/" style="font-size: 10px;">저장소</a> <a href="/tags/증강현실/" style="font-size: 10px;">증강현실</a>
+            <a href="/tags/AR/" style="font-size: 10px;">AR</a> <a href="/tags/DB/" style="font-size: 18px;">DB</a> <a href="/tags/ES6/" style="font-size: 12px;">ES6</a> <a href="/tags/HeidiSQL/" style="font-size: 10px;">HeidiSQL</a> <a href="/tags/JPA/" style="font-size: 16px;">JPA</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/SPRINGBOOT/" style="font-size: 10px;">SPRINGBOOT</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UMG/" style="font-size: 10px;">UMG</a> <a href="/tags/Unreal-Engine-4/" style="font-size: 12px;">Unreal Engine 4</a> <a href="/tags/Unreal-js/" style="font-size: 12px;">Unreal.js</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/component/" style="font-size: 14px;">component</a> <a href="/tags/extends/" style="font-size: 10px;">extends</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/node-js/" style="font-size: 12px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pug/" style="font-size: 10px;">pug</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/springboot/" style="font-size: 12px;">springboot</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue-js/" style="font-size: 20px;">vue.js</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex </a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/widget/" style="font-size: 10px;">widget</a> <a href="/tags/가상현실/" style="font-size: 10px;">가상현실</a> <a href="/tags/결제모듈/" style="font-size: 10px;">결제모듈</a> <a href="/tags/디버깅/" style="font-size: 10px;">디버깅</a> <a href="/tags/배치/" style="font-size: 10px;">배치</a> <a href="/tags/아임포트/" style="font-size: 10px;">아임포트</a> <a href="/tags/저장소/" style="font-size: 10px;">저장소</a> <a href="/tags/증강현실/" style="font-size: 10px;">증강현실</a>
         </div>
     </div>
 

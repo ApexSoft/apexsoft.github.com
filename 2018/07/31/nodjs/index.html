@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>node.js? npm? cdn? 사용하기 | apexsoft 기술블로그</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="node.js,npm" />
+    
+    <meta name="description" content="javascript 사용1. CDN https://unpkg.com/#/   OR https://www.npmjs.com/ dist 폴더 , 다른이름으로 링크주소 복사 &amp;lt;script &amp;gt; 주소  &amp;lt;/script&amp;gt;  2.npm git 다운 npm run bundle or yarn bundle dist  폴더  , 생성된 물리적 파일 원하는">
+<meta name="keywords" content="node.js,npm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node.js? npm? cdn? 사용하기">
+<meta property="og:url" content="http://apexsoft.github.io/2018/07/31/nodjs/index.html">
+<meta property="og:site_name" content="apexsoft 기술블로그">
+<meta property="og:description" content="javascript 사용1. CDN https://unpkg.com/#/   OR https://www.npmjs.com/ dist 폴더 , 다른이름으로 링크주소 복사 &amp;lt;script &amp;gt; 주소  &amp;lt;/script&amp;gt;  2.npm git 다운 npm run bundle or yarn bundle dist  폴더  , 생성된 물리적 파일 원하는">
+<meta property="og:updated_time" content="2018-07-31T02:12:47.259Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node.js? npm? cdn? 사용하기">
+<meta name="twitter:description" content="javascript 사용1. CDN https://unpkg.com/#/   OR https://www.npmjs.com/ dist 폴더 , 다른이름으로 링크주소 복사 &amp;lt;script &amp;gt; 주소  &amp;lt;/script&amp;gt;  2.npm git 다운 npm run bundle or yarn bundle dist  폴더  , 생성된 물리적 파일 원하는">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">모두가 master가 되는 날 까지</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Inici</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="https://about.me/apexsoft">Quant a</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cercar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'categories',
+            TAGS: 'etiquetes',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    Sense categoria
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-nodjs" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        node.js? npm? cdn? 사용하기
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/07/31/nodjs/" class="article-date">
+            <time datetime="2018-07-31T02:12:47.259Z" itemprop="datePublished">2018-07-31</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/node-js/">node.js</a>, <a class="tag-link" href="/tags/npm/">npm</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="javascript-사용"><a href="#javascript-사용" class="headerlink" title="javascript 사용"></a>javascript 사용</h2><h4 id="1-CDN"><a href="#1-CDN" class="headerlink" title="1. CDN"></a>1. CDN</h4><ul>
+<li><a href="https://unpkg.com/#/" target="_blank" rel="noopener">https://unpkg.com/#/</a>   OR <a href="https://www.npmjs.com/" target="_blank" rel="noopener">https://www.npmjs.com/</a></li>
+<li><code>dist</code> 폴더 , <code>다른이름으로 링크주소 복사</code></li>
+<li><code>&lt;script &gt; 주소  &lt;/script&gt;</code></li>
+</ul>
+<h4 id="2-npm"><a href="#2-npm" class="headerlink" title="2.npm"></a>2.npm</h4><ul>
+<li>git 다운</li>
+<li><code>npm run bundle</code> or <code>yarn bundle</code></li>
+<li><code>dist</code>  폴더  , 생성된 물리적 파일</li>
+<li>원하는 프로젝트에 옮기기</li>
+</ul>
+<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack ?"></a>webpack ?</h2><blockquote>
+<ul>
+<li>모듈 번들러 </li>
+<li>의존성을 가진 모듈들을 다루고 , 그 모듈로부터 정적인 asset을 생성</li>
+<li>작동 방법 <ul>
+<li>하나의 파일을 진입점으로 지정</li>
+<li>진입점 파일은 트리의 루트가 된다  </li>
+<li><code>require</code>에 의해 다른 파일이 트리에 추가 된다 = require으로 명시된 의존성들을 해석하며 의존성 트리를 그린다</li>
+<li>webpack명령을 실행하면  , 모든 파일과 모듈은 하나의 파일에 번들로 제공된다</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="모듈-번들링"><a href="#모듈-번들링" class="headerlink" title="모듈 번들링"></a>모듈 번들링</h4><blockquote>
+<p>모듈간의 의존성을 해석하고 , 그걸 바탕으로 정적 에셋을 만드는 과정</p>
+</blockquote>
+<h4 id="모듈-번들러"><a href="#모듈-번들러" class="headerlink" title="모듈 번들러"></a>모듈 번들러</h4><blockquote>
+<ul>
+<li>모듈 번들링을 하는 친구</li>
+<li>ex ) webpack</li>
+<li>거대한 파일들을 여러 파일로 나눠 쓸수있게 해준다.</li>
+</ul>
+</blockquote>
+<p>​</p>
+<h2 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h2><ul>
+<li>메모리에 bundle 파일을 올려 놓고 변경이 있을때 마다 , live reload를 시킨다</li>
+<li><strong>webPack.dev.config.js</strong></li>
+</ul>
+<ul>
+<li><p><code>webpack-dev-server</code>가 사용할 환경설정에 대해 정의</p>
+</li>
+<li><p><code>devServer</code></p>
+<ul>
+<li><p><code>host</code>  : localhost</p>
+<ul>
+<li>모든 ip를 사용하는 경우 <code>0.0.0.0</code>사용 </li>
+</ul>
+</li>
+<li><p><code>port</code> : 8080</p>
+<ul>
+<li>접속 포트 설정</li>
+</ul>
+</li>
+<li><p><code>proxy</code>  : {‘**’ :”<a href="http://localhost:8001&quot;}" target="_blank" rel="noopener">http://localhost:8001&quot;}</a></p>
+<ul>
+<li><p>프록시 설정 , Springboot 실행되는 url </p>
+</li>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">axios</span><br><span class="line">      .get(<span class="string">`http://localhost:8001/tester/api/proto/ans/ask/<span class="subst">$&#123;<span class="keyword">this</span>.askNo&#125;</span>`</span>)</span><br><span class="line">      .then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>​</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">axios</span><br><span class="line">.get(<span class="string">`/tester/api/proto/ans/ask/<span class="subst">$&#123;<span class="keyword">this</span>.askNo&#125;</span>`</span>)</span><br><span class="line">.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>실행</p>
+<figure class="highlight bash"><figcaption><span>bash</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#package.json에 정의된 모듈 설치(node_modules에 다운로드)</span></span><br><span class="line"></span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line"><span class="comment">#webpack -dev-server 구동</span></span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>npm run</code>명령 뒤의 스크립트 명(<code>dev</code>)는 <code>pakage.json</code>에 정의 되어있다</li>
+</ul>
+</li>
+</ul>
+<h2 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h2><ul>
+<li>npm 설정을 관리</li>
+<li>이를 통해 모든 부품이 설치되어 돌아갈 수 있습니다.</li>
+</ul>
+<h3 id="devDependencies"><a href="#devDependencies" class="headerlink" title="devDependencies"></a>devDependencies</h3><ul>
+<li><strong>lint</strong><ul>
+<li>코딩 룰에 위배되는거 체크 해준다</li>
+</ul>
+</li>
+<li><strong>pug</strong></li>
+<li><strong>babel</strong><ul>
+<li>Babel은 <strong>Transform Compiler</strong>이다. </li>
+<li>보통 TypeScript, CoffeeScript 같은 Javascript 문법이 아닌 각각의 문법으로 작성된 코드를 Javascript 엔진에서 동작 가능한 코드로 변환하는 역할</li>
+<li>ES6 -&gt; ES5 transpiler</li>
+</ul>
+</li>
+<li><strong>loader</strong><ul>
+<li>일종의 함수</li>
+<li>마지막 로더는 최종적으로 적절하게 변형된 모듈을 번들 자바스크립트 파일에 넣어주게 된다</li>
+<li>ex) css 파일 require 하는 경우<ul>
+<li>css 파일을 그대로 자바스크립트에 넣을수 없으니 , </li>
+<li>원래의 css파일과 같은 역활을 할 수 있는 자바스크립트 형태의 무언가를 만들어야 최종 번들에 해당 내용을 포함시킬수 있다. </li>
+<li>이 과정을 일련의 로더 파이프라인이 수행 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h2><ul>
+<li><p>webpack을 설정한다</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"> entry: &#123;</span><br><span class="line">        <span class="string">'vuejs-test2'</span>: path.join(__dirname, <span class="string">'/src/vuejs-test2.js'</span>),</span><br><span class="line">        <span class="string">'draggabletest'</span>: path.join(__dirname, <span class="string">'/src/draggabletest.js'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(__dirname, <span class="string">'../src/main/resources/static/js/bundles'</span>),</span><br><span class="line">    publicPath: <span class="string">'/js/bundles'</span>,</span><br><span class="line">    filename: <span class="string">'[name].js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>enty</strong> - 번들의 엔트리 포인트 . webpack은 여러 번들을 생성하는 진입점을 허용하기 때문에 배열이다</p>
+</li>
+<li><p><strong>output</strong> - webpack의 최종 결과물이 되는 형태를 명시</p>
+<ul>
+<li><p>path -  어디에 번들 파일을 위치 시킬 것인지를 지정 ( 빌드 결과물 들어갈 <code>webpack.config.js</code>로 부터의 상태 경로 )</p>
+</li>
+<li><p>publicPath -  웹사이트에서 해당 에셋에 접근하기 위해 필요한 경로 </p>
+</li>
+<li><p>filename  </p>
+<blockquote>
+<ul>
+<li>각 번들 파일의 이름을 지정</li>
+<li><code>[name]</code> : <code>entry</code>에서의 key 값</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>Loader</strong> - Loader는 사전에 처리할 작업을 나타내며 css, html, jpg, scss 등의 자산을 하나의 모듈로 취급하며 이러한 파일들을 종속성 그래프에 추가할 때 모듈로 변환한다.</p>
+</li>
+<li><p><strong>Plug-In</strong> - Plug-In은 일반적인 Compile 또는 모듈 처리에 필요한 작업 및 사용자 정의 기능을 수행하는데 사용한다.</p>
+</li>
+</ul>
+</li>
+<li><p>webpack 명령을 실행하면 , bundles라는 폴더에 <code>draggabletest.js</code> <code>vuejs-test2</code>파일을 생성한다</p>
+</li>
+<li><p>webpack은 <code>require</code> 하고있는  파일들 모두 묶어 하나의  번들을 내놓게 된다</p>
+</li>
+</ul>
+<h2 id="node-moules"><a href="#node-moules" class="headerlink" title="node-moules"></a>node-moules</h2><ul>
+<li>npm이 pakage들을 설치하는 디렉토리 폴더</li>
+</ul>
+<h1 id="사용"><a href="#사용" class="headerlink" title="사용"></a>사용</h1><h3 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h3><ul>
+<li>node.js 설치 <ul>
+<li><a href="https://nodejs.org/en/download/current/" target="_blank" rel="noopener">https://nodejs.org/en/download/current/</a></li>
+</ul>
+</li>
+<li>yarn 설치<ul>
+<li><code>npm install -g yarn</code><ul>
+<li><code>-g</code>는 글로벌 옵션</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Plugins 설치 (선택)<ul>
+<li>vue.js</li>
+<li>pug</li>
+</ul>
+</li>
+</ul>
+<h3 id="실행"><a href="#실행" class="headerlink" title="실행"></a>실행</h3><ul>
+<li><p>package.json에 정의된 모듈 설치</p>
+<ul>
+<li><code>npm install</code></li>
+<li>주입 후 빌드  refresh</li>
+</ul>
+</li>
+<li><p>webpack -dev-server 구동</p>
+<ul>
+<li><code>npm run dev</code> </li>
+</ul>
+</li>
+<li><p>springboot  서버 실행</p>
+<ul>
+<li>시큐리티 설정에 걸리는 경우 ,  해당 url <code>.permitAll()</code> 하기</li>
+</ul>
+<p>​</p>
+</li>
+</ul>
+<h3 id="옮기기"><a href="#옮기기" class="headerlink" title="옮기기"></a>옮기기</h3><ul>
+<li><code>npm run bundle</code><ul>
+<li>dist 밑에 생기는 파일 복사해서 붙여 넣는다</li>
+</ul>
+</li>
+</ul>
+<h1 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h1><h3 id="lint"><a href="#lint" class="headerlink" title="lint"></a>lint</h3><ul>
+<li>코딩룰 체크 </li>
+</ul>
+<ul>
+<li>설치<ul>
+<li>yarn 설치 <code>npm install -g yarn</code></li>
+<li>lint 설치 <code>npm install -g eslint</code></li>
+<li>pakage.json &gt;&gt; devDependencies &gt;&gt; 추가 </li>
+</ul>
+</li>
+<li>사용<ul>
+<li>rule 확인 + fix <code>yarn lint --fix</code></li>
+</ul>
+</li>
+<li>.eslintrc.js<ul>
+<li>rule 정의</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://apexsoft.github.io/2018/07/31/nodjs/" data-id="cjp216ozi000poouls79cjsyh" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>seguir:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ApexSoft/apexsoft.github.com" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/07/31/promise/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">més nou</strong>
+        <p class="article-nav-title">
+        
+            promise
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/07/31/mixin/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">antic</strong>
+        <p class="article-nav-title">mixin</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/29/ES6 기본사용/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/29/ES6 기본사용/" class="title">ES6 사용</a></p>
+                            <p class="item-date"><time datetime="2018-11-29T05:16:29.282Z" itemprop="datePublished">2018-11-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/전송 어노테이션/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/전송 어노테이션/" class="title">@ 전송 Annotation</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.532Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/vuex es6/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/vuex es6/" class="title">vuex 상용</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.528Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/vue-router/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/vue-router/" class="title">vueRouter</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.522Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/vscode_vue 프로젝트 디버깅/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/vscode_vue 프로젝트 디버깅/" class="title">Chrome 브라우저로 Vue.js 디버깅하기</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.509Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">arxius</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">31</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">etiquetes</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AR/">AR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HeidiSQL/">HeidiSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/">SPRINGBOOT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UMG/">UMG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine-4/">Unreal Engine 4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-js/">Unreal.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/">VR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extends/">extends</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pug/">pug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vuex/">vuex </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/widget/">widget</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/가상현실/">가상현실</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/결제모듈/">결제모듈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디버깅/">디버깅</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배치/">배치</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아임포트/">아임포트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/저장소/">저장소</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/증강현실/">증강현실</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">etiqueta cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AR/" style="font-size: 10px;">AR</a> <a href="/tags/DB/" style="font-size: 18px;">DB</a> <a href="/tags/ES6/" style="font-size: 12px;">ES6</a> <a href="/tags/HeidiSQL/" style="font-size: 10px;">HeidiSQL</a> <a href="/tags/JPA/" style="font-size: 16px;">JPA</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/SPRINGBOOT/" style="font-size: 10px;">SPRINGBOOT</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UMG/" style="font-size: 10px;">UMG</a> <a href="/tags/Unreal-Engine-4/" style="font-size: 12px;">Unreal Engine 4</a> <a href="/tags/Unreal-js/" style="font-size: 12px;">Unreal.js</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/component/" style="font-size: 14px;">component</a> <a href="/tags/extends/" style="font-size: 10px;">extends</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/node-js/" style="font-size: 12px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pug/" style="font-size: 10px;">pug</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/springboot/" style="font-size: 12px;">springboot</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue-js/" style="font-size: 20px;">vue.js</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex </a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/widget/" style="font-size: 10px;">widget</a> <a href="/tags/가상현실/" style="font-size: 10px;">가상현실</a> <a href="/tags/결제모듈/" style="font-size: 10px;">결제모듈</a> <a href="/tags/디버깅/" style="font-size: 10px;">디버깅</a> <a href="/tags/배치/" style="font-size: 10px;">배치</a> <a href="/tags/아임포트/" style="font-size: 10px;">아임포트</a> <a href="/tags/저장소/" style="font-size: 10px;">저장소</a> <a href="/tags/증강현실/" style="font-size: 10px;">증강현실</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://www.apexsoft.co.kr">Apexsoft</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 HyoSook Kim</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://apexsoft.github.io/2018/07/31/nodjs/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
