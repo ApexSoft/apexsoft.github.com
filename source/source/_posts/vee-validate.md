@@ -5,61 +5,17 @@ tags : ["vue.js","component"]
 
 
 
-## 몇가지 사전 체크사항
-
-### &lt;label&gt;, &lt;input&gt; and `id`, `name` attribute
-
-- `<label for="">`의 대상은 `input`의 `id`
-- VeeValidate에서 validation 대상은 `input`의 `name`으로 `errors.has('name')`와 같이 사용
-- 그러므로 `input`은 `id`, `name`을 모두 명시해 주는 것이 좋음
-
-### Migrating to Bootstrap 4
-
-#### Form Group
-
-`label`과 `input`을 한 줄에 배치하려면 class에 `"row"`를 추가
-
-#### Label
-
-`control-label`은 더이상 사용 불가능하며 오른쪽 정렬도 해주지 않음
-
-`col-form-label`을 사용하고 정렬은 `text-*`를 사용
-
-```html html
-<label for="username" class="col-form-label text-right">아이디</label>
-```
-
-#### Input
-
-`form-control`을 필히 명시
-
-validation에 대한 bootstrap 클래스는 `is-invalid | is-valid`
-
-```html html
-<input id="username" class="form-control is-invalid">  <!--invalid인 경우-->
-```
-
-
-
-# vee-validate
+## vee-validate
 
 vue에서 validation 수행을 도와준다. 
 
-공식사이트 : http://vee-validate.logaretm.com/
+[공식사이트](http://vee-validate.logaretm.com/) 
 
 ## 사용방법
 
-### html
+HTML, NPM 방식 두가지 있음
 
-```html html
-<!-- 기본 vue.js -->
-<script src="https://unpkg.com/vue"></script>
-<!--vee validate-->
-<script src="https://unpkg.com/vee-validate@2.0.0-rc.13"></script>
-<script>
-        Vue.use(VeeValidate);
-</script>
-```
+[공식사이트 - Get started](https://baianat.github.io/vee-validate/guide/getting-started.html#installation) 
 
 #### 기본 validate 설정
 
@@ -80,8 +36,6 @@ vue에서 validation 수행을 도와준다.
 ```
 
 * `fa`, `fa-warning`으로 아이콘 출력 가능 ([icons 참조](http://fontawesome.io/icons/))
-* 아이콘을 input과 함께 표시해주기 위해 `div`에 `has-icon` 클래스를 추가
-* 해당 클래스에 대한 스타일은 vee-validate 예제 페이지를 참조하여 `apex-web-base.css`에 추가
 
 
 
@@ -104,6 +58,15 @@ vue에서 validation 수행을 도와준다.
 
   ​					(이메일, 비밀번호(대,소문자,특수문자), 전화번호, 웹사이트)
 
+#### name
+
+* 필수 속성
+* id 처럼 쓰이는 유니크한 속성
+
+#### data-vv-as
+
+* error 메시지 출력할 때 나오는 필드명 (다국어 처리가 필요하면, 다국어 처리된 데이터를 바인딩 해야 함)
+
 #### v-bind:class
 
 * class를 동적 바인딩
@@ -124,10 +87,32 @@ vue에서 validation 수행을 도와준다.
   > - `any()`:
 
 
+### 경고 메시지
 
-### 경고 메시지 커스텀
+#### 다국어
 
-Vue 생성시 Dictionary를 변경
+validate/index.js
+
+```javascript javascript
+import Vue from 'vue'
+import VeeValidate from 'vee-validate'
+import validationKoMessages from 'vee-validate/dist/locale/ko.js'
+
+const validate = {
+    locale: Vue.i18n.locale(),
+    dictionary: {
+        ko: validationKoMessages
+    }
+}
+```
+
+기본으로 영문 경고메시지를 띄운다. `vee-validate`에서 제공하는 다른 언어 경고메시지가 있으니, 필요한 것을  import 하여 사용한다. (설치된 패키지에 포함되어 있음)
+
+#### 커스텀
+
+Dictionary를 변경
+
+제공되는 다국어 메시지 외에 사용자정의 validate 에 대한 메시지나 다른 문구를 넣고싶은 경우에 사용한다.
 
 ```javascript vue.js
 created() {
@@ -153,3 +138,16 @@ created() {
   this.$validator.updateDictionary(dict);
 }
 ```
+
+### 저장버튼에 validate 
+
+```javascript javascript 
+this.$validator.validateAll().then((result) => {
+        if (result) {
+          alert('From Submitted!');
+        } else {
+          alert('Correct them errors!');
+        }
+      });
+```
+
