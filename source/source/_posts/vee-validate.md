@@ -37,7 +37,7 @@ HTML, NPM 방식 두가지 있음
 
 * `fa`, `fa-warning`으로 아이콘 출력 가능 ([icons 참조](http://fontawesome.io/icons/))
 
-### 에러메세지 API 
+#### 에러메세지 API 
 
 https://baianat.github.io/vee-validate/api/errorbag.html#api
 
