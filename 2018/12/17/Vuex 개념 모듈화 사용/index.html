@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>vuex 사용(모듈화 포함) | apexsoft 기술블로그</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="vue.js,vuex ,저장소" />
+    
+    <meta name="description" content="vuex 단일상태관리 패턴  + 라이브러리 모든 컴포넌트에 대한 중앙 집중식 저장소 역활 단일 state , Getters로 읽고 ,  actions로 mutations변화하고 mutations로 값을 변경 한다   One-way data flow 를 가진다 사용 이유? eventBus 도 있는데, 왜 vuex를 쓸까?  컴포넌트 간의 부-자  컴포넌트 간">
+<meta name="keywords" content="vue.js,vuex ,저장소">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vuex 사용(모듈화 포함)">
+<meta property="og:url" content="http://apexsoft.github.io/2018/12/17/Vuex 개념 모듈화 사용/index.html">
+<meta property="og:site_name" content="apexsoft 기술블로그">
+<meta property="og:description" content="vuex 단일상태관리 패턴  + 라이브러리 모든 컴포넌트에 대한 중앙 집중식 저장소 역활 단일 state , Getters로 읽고 ,  actions로 mutations변화하고 mutations로 값을 변경 한다   One-way data flow 를 가진다 사용 이유? eventBus 도 있는데, 왜 vuex를 쓸까?  컴포넌트 간의 부-자  컴포넌트 간">
+<meta property="og:updated_time" content="2018-12-17T02:35:26.574Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vuex 사용(모듈화 포함)">
+<meta name="twitter:description" content="vuex 단일상태관리 패턴  + 라이브러리 모든 컴포넌트에 대한 중앙 집중식 저장소 역활 단일 state , Getters로 읽고 ,  actions로 mutations변화하고 mutations로 값을 변경 한다   One-way data flow 를 가진다 사용 이유? eventBus 도 있는데, 왜 vuex를 쓸까?  컴포넌트 간의 부-자  컴포넌트 간">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">모두가 master가 되는 날 까지</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Inici</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="https://about.me/apexsoft">Quant a</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cercar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'categories',
+            TAGS: 'etiquetes',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    Sense categoria
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-Vuex 개념 모듈화 사용" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        vuex 사용(모듈화 포함)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/12/17/Vuex 개념 모듈화 사용/" class="article-date">
+            <time datetime="2018-12-17T02:32:14.313Z" itemprop="datePublished">2018-12-17</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/vue-js/">vue.js</a>, <a class="tag-link" href="/tags/vuex/">vuex </a>, <a class="tag-link" href="/tags/저장소/">저장소</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h1><blockquote>
+<p><code>단일상태</code>관리 <code>패턴</code>  + 라이브러리</p>
+<p>모든 컴포넌트에 대한 중앙 집중식 <code>저장소</code> 역활</p>
+<p>단일 <code>state</code> , <code>Getters</code>로 읽고 ,  <code>actions</code>로 <code>mutations</code>변화하고 <code>mutations</code>로 값을 변경 한다 </p>
+</blockquote>
+<p><strong>One-way data flow 를 가진다</strong></p>
+<h2 id="사용-이유"><a href="#사용-이유" class="headerlink" title="사용 이유?"></a>사용 이유?</h2><blockquote>
+<p><code>eventBus</code> 도 있는데, 왜 vuex를 쓸까?</p>
+<ul>
+<li>컴포넌트 간의 <code>부-자</code> </li>
+<li>컴포넌트 간의 <code>형제</code> </li>
+</ul>
+<p>두 타입간의 데이터 공유가 씽크문제가 발생하는 것을 막을 수 있다.</p>
+</blockquote>
+<h2 id="vuex-부르기"><a href="#vuex-부르기" class="headerlink" title="vuex 부르기"></a>vuex 부르기</h2><ul>
+<li><p>main.js 안에서 적용된 것은 <code>$</code>를 붙여서 불러올수 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="comment">// "store" 옵션을 사용하여 저장소를 제공하십시오.</span></span><br><span class="line">  <span class="comment">// 그러면 모든 하위 컴포넌트에 저장소 인스턴스가 삽입됩니다.</span></span><br><span class="line">  store</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>this.$store</code></li>
+</ul>
+</li>
+<li><p>vuex는 <code>store</code> 옵션(<code>Vue.use(Vuex)</code>에 의해 가능)으로 루트 컴포넌트의 모든 자식 컴포넌트에 저장소를 <code>주입</code>하는 메커니즘을 제공합니다.</p>
+<ul>
+<li><p>플러그인 형태 = 전역으로 </p>
+<p><code>.use ()</code> 사용</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><blockquote>
+<p>Vuex는 <strong>단일 상태 트리</strong> 를 사용합니다. </p>
+<p>즉, 이 단일 객체는 모든 애플리케이션 수준의 상태를 포함하며 “원본 소스” 역할을 합니다. </p>
+<p>단일 상태 트리를 사용하면 특정 상태를 쉽게 찾을 수 있으므로 디버깅을 위해 현재 앱 상태의 스냅 샷을 쉽게 가져올 수 있습니다.</p>
+</blockquote>
+<h3 id="선언"><a href="#선언" class="headerlink" title="선언"></a>선언</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    count: <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="vuex-상태를-vue-컴포넌트-에서-가져오기"><a href="#vuex-상태를-vue-컴포넌트-에서-가져오기" class="headerlink" title="vuex 상태를 vue 컴포넌트 에서 가져오기"></a>vuex 상태를 vue 컴포넌트 에서 가져오기</h3><blockquote>
+<p> 상태를 “검색”하는 가장 간단한 방법은 <a href="http://kr.vuejs.org/guide/computed.html" target="_blank" rel="noopener">계산된 속성</a>내에서 일부 저장소 상태를 가져오는 것</p>
+</blockquote>
+<h3 id="1-computed"><a href="#1-computed" class="headerlink" title="1. computed"></a>1. computed</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  count () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.count</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-mapState"><a href="#2-mapState" class="headerlink" title="2. mapState"></a>2. <code>mapState</code></h3><ul>
+<li>배열 형태 사용 ( 매핑 된 계산된 속성의 이름이 상태 하위 트리 이름과 같을 때 문자열 배열을 <code>mapState</code>에 전달할 수 있습니다.) </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;mapState&#125; <span class="keyword">from</span> <span class="string">'vuex'</span>    <span class="comment">///vuex에서 mapState 가져오기</span></span><br><span class="line">computed: mapState([</span><br><span class="line">  <span class="comment">// this.count를 store.state.count에 매핑 합니다.</span></span><br><span class="line">  <span class="string">'count'</span></span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<h3 id="3-mapState-proposal-object-rest-spread"><a href="#3-mapState-proposal-object-rest-spread" class="headerlink" title="3. mapState ,proposal-object-rest-spread"></a>3. <code>mapState</code> ,<strong>proposal-object-rest-spread</strong></h3><ul>
+<li>다른 계산된 속성과 사용시 </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;mapState&#125; <span class="keyword">from</span> <span class="string">'vuex'</span>    <span class="comment">///vuex에서 mapState 가져오기</span></span><br><span class="line">computed:&#123;</span><br><span class="line">localComputed () &#123; <span class="comment">/* ... */</span> &#125;,</span><br><span class="line">...mapState([<span class="string">'count'</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>만약 , vue컴포넌트 내에서 단 한개의 상태만을 가져온다면, <code>1</code> 번의 방법을 사용하겠지만 </p>
+<p>확장 성을 위해서 <code>3</code>번 사용을 표준으로 한다  </p>
+</blockquote>
+<h2 id="Getters"><a href="#Getters" class="headerlink" title="Getters"></a>Getters</h2><blockquote>
+<p>때로는 저장소 상태를 기반하는 상태를 계산해야 할 수도 있습니다.(예: 아이템 리스트를 필터링하고 계산)</p>
+<p>장소의 계산된 속성으로 생각할 수 있습니다. 계산된 속성처럼 getter의 결과는 종속성에 따라 <code>캐쉬</code>되고, 일부 종속성이 변경된 경우에만 다시 재계산 됩니다.</p>
+<p>모든 컴포넌트에서 부르는 상태가 있다면, <code>getters</code>에 등록해서 사용하는것이 중복코드를 막는 좋은방법</p>
+</blockquote>
+<h3 id="선언-1"><a href="#선언-1" class="headerlink" title="선언"></a>선언</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    todos: [</span><br><span class="line">      &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">text</span>: <span class="string">'...'</span>, <span class="attr">done</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">text</span>: <span class="string">'...'</span>, <span class="attr">done</span>: <span class="literal">false</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  getters: &#123;</span><br><span class="line">    doneTodos: <span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> state.todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> todo.done)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>속성 인자로 다른 getter 로 가능</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  doneTodosCount: <span class="function">(<span class="params">state, getters</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> getters.doneTodos.length</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>getter에 전달 인자로 전달</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  getTodoById: <span class="function">(<span class="params">state</span>) =&gt;</span> (id) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> state.todos.find(<span class="function"><span class="params">todo</span> =&gt;</span> todo.id === id)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">///컴포넌트에서 사용 </span></span><br><span class="line">store.getters.getTodoById(<span class="number">2</span>) <span class="comment">// -&gt; &#123; id: 2, text: '...', done: false &#125;</span></span><br></pre></td></tr></table></figure>
+<p>###1.computed</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  doneTodosCount () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> todo.done).length</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-mapGetters-proposal-object-rest-spread"><a href="#2-mapGetters-proposal-object-rest-spread" class="headerlink" title="2.mapGetters ,proposal-object-rest-spread"></a>2.<code>mapGetters</code> ,proposal-object-rest-spread</h3><ul>
+<li>Enhancde Object Literals <ul>
+<li>object의 property가 key와 value가 동일하다면, 하나로 축약 가능</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapGetters &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  computed: &#123;</span><br><span class="line">    <span class="comment">// getter를 객체 전개 연산자(Object Spread Operator)로 계산하여 추가합니다.</span></span><br><span class="line">    ...mapGetters([</span><br><span class="line">      <span class="string">'doneTodosCount'</span>,</span><br><span class="line">      <span class="string">'anotherGetter'</span>,</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">    ])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>getter를 다른 이름으로 매핑</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">...mapGetters(&#123;</span><br><span class="line">  <span class="comment">// this.doneCount를 store.getters.doneTodosCount에 매핑하십시오.</span></span><br><span class="line">  doneCount: <span class="string">'doneTodosCount'</span></span><br><span class="line">&#125;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="mutations"><a href="#mutations" class="headerlink" title="mutations"></a>mutations</h2><blockquote>
+<p>state 값을 변화 시키는 mutations</p>
+<ul>
+<li>state는 직접 변경도 가능하다  &gt;&gt; but 절대 권장 하지 않는다 <ul>
+<li>디버깅을 보장 되지 않음 (dev-tools)</li>
+<li>상황에 따라서, 값이 바뀌지 않을 때도 있다 </li>
+</ul>
+</li>
+</ul>
+<p>같은 기능을 하는 함수 사용을 막기 위해서 사용</p>
+<p>무조건 동기적 이여야 한다  &gt;&gt; 대부분 상태 변경</p>
+<p>비동기 (axios) 같은 경우 , action에서 </p>
+<p>mutations 을 호출 = commit </p>
+<p>mutations을 commit 해서 state를 변화 한다 </p>
+<p><code>vue.set()</code>을 사용해서 state를 변경 가능 &gt; vue reactive rule에 따라서 가능. 이후에 mutation을 시킴.</p>
+</blockquote>
+<h3 id="선언-2"><a href="#선언-2" class="headerlink" title="선언"></a>선언</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    count: <span class="number">1</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    increment (state) &#123;</span><br><span class="line">      <span class="comment">// 상태 변이</span></span><br><span class="line">      state.count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.commit(<span class="string">'increment'</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>전달 인자(payload) 가능</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    count: <span class="number">1</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">     increment: <span class="function">(<span class="params">state, payload</span>)=&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 상태 변이</span></span><br><span class="line">      state.count+=payload.amount</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>vue의 반응성 규칙</p>
+<blockquote>
+<p>Vuex 저장소의 상태는 Vue에 의해 반응하므로, 상태를 변경하면 상태를 관찰하는 Vue 컴포넌트가 자동으로 업데이트됩니다. 이것은 또한 Vuex 변이가 일반 Vue로 작업 할 때 동일한 반응성에 대한 경고를 받을 수 있음을 의미합니다.</p>
+<p>원하는 모든 필드에 앞서 저장소를 초기화하는 것이 좋습니다.</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">state.obj = &#123; ...state.obj, <span class="attr">newProp</span>: <span class="number">123</span> &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>객체 스타일로 commit 가능  (명사로 표현이 가능하므로, 더 직관적이다)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.commit(&#123;</span><br><span class="line">  type: <span class="string">'increment'</span>, <span class="comment">// mutations 이름 </span></span><br><span class="line">  amount: <span class="number">10</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="mapMutations"><a href="#mapMutations" class="headerlink" title="mapMutations"></a>mapMutations</h3><blockquote>
+<p>컴포넌트 안에서 변이 커밋하기</p>
+<p><code>this.$store.commit(&#39;xxx&#39;)</code>를 사용하여 컴포넌트에서 변이를 수행하거나</p>
+<p> 컴포넌트 메소드를 <code>store.commit</code> 호출에 매핑하는 <code>mapMutations</code> 헬퍼를 사용할 수 있습니다 (루트 <code>store</code> 주입 필요)</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapMutations &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">    ...mapMutations([</span><br><span class="line">      <span class="string">'increment'</span> <span class="comment">// this.increment()를 this.$store.commit('increment')에 매핑합니다.</span></span><br><span class="line">    ]),</span><br><span class="line">    ...mapMutations(&#123;</span><br><span class="line">      add: <span class="string">'increment'</span> <span class="comment">// this.add()를 this.$store.commit('increment')에 매핑합니다.</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>이렇게 하면, 실제 선언된 함수처럼 사용이 가능하다 </p>
+</blockquote>
+<h2 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h2><blockquote>
+<p>mutaions은 모든 기능이 동기로 작동한다</p>
+<p>하나의 state에 여러가지 데이터가 접근하려 할떄 순서를 알기 힘들다</p>
+<p>dispatch(보내다) 사용해서 actions을 부른다</p>
+<p>컴포넌트에서 dispatch로 actions을 부르고 , commit으로 mudtaions이 호추로디어 state가 변함 </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">actions: &#123;</span><br><span class="line">  incrementAsync: <span class="function">(<span class="params">&#123; commit &#125;,payload</span>)=&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      commit(<span class="string">'increment'</span>)</span><br><span class="line">    &#125;, <span class="number">1000</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="mapActions"><a href="#mapActions" class="headerlink" title="mapActions"></a>mapActions</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapActions &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">    ...mapActions([</span><br><span class="line">      <span class="string">'increment'</span> <span class="comment">// this.increment()을 this.$store.dispatch('increment')에 매핑</span></span><br><span class="line">    ]),</span><br><span class="line">    ...mapActions(&#123;</span><br><span class="line">      add: <span class="string">'increment'</span> <span class="comment">// this.add()을 this.$store.dispatch('increment')에 매핑</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="why"><a href="#why" class="headerlink" title="why ??"></a>why ??</h2><h3 id="sate-getters-는-computed-인데-mutations-actions는-methods-에-매핑할까"><a href="#sate-getters-는-computed-인데-mutations-actions는-methods-에-매핑할까" class="headerlink" title="sate , getters 는 computed 인데 , mutations,actions는 methods 에 매핑할까?"></a>sate , getters 는 <code>computed</code> 인데 , mutations,actions는 <code>methods</code> 에 매핑할까?</h3><ol>
+<li>수정하는 것이지 , 가져오는게(state, getter) 아니다</li>
+<li>computed는 <code>캐싱</code></li>
+</ol>
+<h2 id="모듈화"><a href="#모듈화" class="headerlink" title="모듈화"></a>모듈화</h2><blockquote>
+<p>저장소를<code>모듈</code>로 나눌수 있다.</p>
+<p>관리를 위해 모듈로 나누어서 사용한다. </p>
+</blockquote>
+<h4 id="store-modules-modal-js"><a href="#store-modules-modal-js" class="headerlink" title="store/modules/modal.js"></a>store/modules/modal.js</h4><p>modal이라는 모듈 한개</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> state = &#123;</span><br><span class="line"> test: <span class="string">'test1'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> actions = &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> getters = &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mutations = &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  state,</span><br><span class="line">  getters,</span><br><span class="line">  actions,</span><br><span class="line">  mutations</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="store-modules-index-js"><a href="#store-modules-index-js" class="headerlink" title="store/modules/index.js"></a>store/modules/index.js</h4><p>모든 모듈을 <code>store/index.js</code> 상단에 <code>import XX from &#39;store/modules/XX&#39;</code> 라고 써줘야하는 번거로움이 있다. </p>
+<p>js 로 modules 파일 아래 모든 파일들을 import 해주도록 짜두면 편리하다.</p>
+<figure class="highlight javascript"><figcaption><span>js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> camelCase <span class="keyword">from</span> <span class="string">'lodash/camelCase'</span></span><br><span class="line"><span class="comment">// Storing in variable a context with all files in this folder</span></span><br><span class="line"><span class="comment">// ending with `.js`.</span></span><br><span class="line"><span class="keyword">const</span> requireModule = <span class="built_in">require</span>.context(<span class="string">'.'</span>, <span class="literal">false</span>, /\.js$/)</span><br><span class="line"><span class="keyword">const</span> modules = &#123;&#125;</span><br><span class="line"></span><br><span class="line">requireModule.keys().forEach(<span class="function"><span class="params">fileName</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (fileName === <span class="string">'./index.js'</span>) <span class="keyword">return</span></span><br><span class="line">    <span class="comment">// filter fullstops and extension </span></span><br><span class="line">  <span class="comment">// and return a camel-case name for the file</span></span><br><span class="line">    <span class="keyword">const</span> moduleName = camelCase(</span><br><span class="line">        fileName.replace(<span class="regexp">/(\.\/|\.js)/g</span>, <span class="string">''</span>)</span><br><span class="line">    )</span><br><span class="line">  <span class="comment">// create a dynamic object with all modules</span></span><br><span class="line">    modules[moduleName] = &#123;</span><br><span class="line">    <span class="comment">// add namespace here</span></span><br><span class="line">        namespaced: <span class="literal">true</span>,</span><br><span class="line">        ...requireModule(fileName).default</span><br><span class="line">    <span class="comment">// if you have exported the object with name in the module `js` file</span></span><br><span class="line">    <span class="comment">// e.g., export const name = &#123;&#125;;</span></span><br><span class="line">    <span class="comment">// uncomment this line and comment the above</span></span><br><span class="line">        <span class="comment">// ...requireModule(fileName)[moduleName]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> modules</span><br></pre></td></tr></table></figure>
+<h4 id="store-index-js"><a href="#store-index-js" class="headerlink" title="store/index.js"></a>store/index.js</h4><p>modules 만 import 해준다.</p>
+<figure class="highlight javascript"><figcaption><span>js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">import</span> modules <span class="keyword">from</span> <span class="string">'./modules'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  modules</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://apexsoft.github.io/2018/12/17/Vuex 개념 모듈화 사용/" data-id="cjprpfed200008culb487s91x" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>seguir:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ApexSoft/apexsoft.github.com" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/11/29/ES6 기본사용/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">antic</strong>
+        <p class="article-nav-title">ES6 사용</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/12/17/Vuex 개념 모듈화 사용/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/12/17/Vuex 개념 모듈화 사용/" class="title">vuex 사용(모듈화 포함)</a></p>
+                            <p class="item-date"><time datetime="2018-12-17T02:32:14.313Z" itemprop="datePublished">2018-12-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/29/ES6 기본사용/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/29/ES6 기본사용/" class="title">ES6 사용</a></p>
+                            <p class="item-date"><time datetime="2018-11-29T05:16:29.282Z" itemprop="datePublished">2018-11-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/전송 어노테이션/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/전송 어노테이션/" class="title">@ 전송 Annotation</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.532Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/vue-router/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/vue-router/" class="title">vueRouter</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.522Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/26/vscode_vue 프로젝트 디버깅/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/26/vscode_vue 프로젝트 디버깅/" class="title">Chrome 브라우저로 Vue.js 디버깅하기</a></p>
+                            <p class="item-date"><time datetime="2018-11-26T02:53:50.509Z" itemprop="datePublished">2018-11-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">arxius</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">31</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">etiquetes</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AR/">AR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HeidiSQL/">HeidiSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/">SPRINGBOOT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UMG/">UMG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine-4/">Unreal Engine 4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-js/">Unreal.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/">VR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extends/">extends</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pug/">pug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vuex/">vuex </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/widget/">widget</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/가상현실/">가상현실</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/결제모듈/">결제모듈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디버깅/">디버깅</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배치/">배치</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아임포트/">아임포트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/저장소/">저장소</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/증강현실/">증강현실</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">etiqueta cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AR/" style="font-size: 10px;">AR</a> <a href="/tags/DB/" style="font-size: 18px;">DB</a> <a href="/tags/ES6/" style="font-size: 12px;">ES6</a> <a href="/tags/HeidiSQL/" style="font-size: 10px;">HeidiSQL</a> <a href="/tags/JPA/" style="font-size: 16px;">JPA</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/SPRINGBOOT/" style="font-size: 10px;">SPRINGBOOT</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UMG/" style="font-size: 10px;">UMG</a> <a href="/tags/Unreal-Engine-4/" style="font-size: 12px;">Unreal Engine 4</a> <a href="/tags/Unreal-js/" style="font-size: 12px;">Unreal.js</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/component/" style="font-size: 14px;">component</a> <a href="/tags/extends/" style="font-size: 10px;">extends</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/node-js/" style="font-size: 12px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pug/" style="font-size: 10px;">pug</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/springboot/" style="font-size: 12px;">springboot</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue-js/" style="font-size: 20px;">vue.js</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex </a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/widget/" style="font-size: 10px;">widget</a> <a href="/tags/가상현실/" style="font-size: 10px;">가상현실</a> <a href="/tags/결제모듈/" style="font-size: 10px;">결제모듈</a> <a href="/tags/디버깅/" style="font-size: 10px;">디버깅</a> <a href="/tags/배치/" style="font-size: 10px;">배치</a> <a href="/tags/아임포트/" style="font-size: 10px;">아임포트</a> <a href="/tags/저장소/" style="font-size: 10px;">저장소</a> <a href="/tags/증강현실/" style="font-size: 10px;">증강현실</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://www.apexsoft.co.kr">Apexsoft</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 HyoSook Kim</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://apexsoft.github.io/2018/12/17/Vuex 개념 모듈화 사용/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
