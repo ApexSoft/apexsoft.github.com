@@ -1,3 +1,8 @@
+---
+title : JFrame for IntelliJ
+tags : ["JFrame", "IntelliJ"]
+---
+
 ## JFrame for IntelliJ
 
 자바로 응용프로그램을 개발할 때 Swing을 많이 사용한다.
