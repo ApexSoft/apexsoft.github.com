@@ -1,5 +1,5 @@
 ---
-title : vuex 상용
+title : vuex 사용(모듈화 포함)
 tags : ["vuex ","저장소", "vue.js"]
 ---
 
