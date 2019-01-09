@@ -214,7 +214,7 @@ public class Order {
 
 - 밸류 컬렉션을 별도 테이블로 매핑할 땐, `@ElementCollection`, `@CollectionTable` 함께 사용
 
-#### Value
+#### Value Object
 
 ```java java
 @Embeddable
