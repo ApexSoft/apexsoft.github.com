@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>DDD설계 개념과 구현 | apexsoft 기술블로그</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="JPA,DDD" />
+    
+    <meta name="description" content="개념정의도메인 모델의 엔티티 속성이 아닌 식별성을 기준으로 정의되는 도메인 객체.반드시 식별자가 있어야 하고, 식별자가 같으면 같은 Object 인 것이 보장되어야 한다. 단순히 데이터를 담고 있는 데이터 구조라기 보다 , 데이터와 함께 기능을 제공하는 객체 도메인 로직   두개이상의 데이터가 개념적으로 하나인 경우, 벨류 타입(Value Object )을">
+<meta name="keywords" content="JPA,DDD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DDD설계 개념과 구현">
+<meta property="og:url" content="http://apexsoft.github.io/2019/01/09/DDD 자주사용 요약 정리/index.html">
+<meta property="og:site_name" content="apexsoft 기술블로그">
+<meta property="og:description" content="개념정의도메인 모델의 엔티티 속성이 아닌 식별성을 기준으로 정의되는 도메인 객체.반드시 식별자가 있어야 하고, 식별자가 같으면 같은 Object 인 것이 보장되어야 한다. 단순히 데이터를 담고 있는 데이터 구조라기 보다 , 데이터와 함께 기능을 제공하는 객체 도메인 로직   두개이상의 데이터가 개념적으로 하나인 경우, 벨류 타입(Value Object )을">
+<meta property="og:updated_time" content="2019-01-09T08:12:53.833Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DDD설계 개념과 구현">
+<meta name="twitter:description" content="개념정의도메인 모델의 엔티티 속성이 아닌 식별성을 기준으로 정의되는 도메인 객체.반드시 식별자가 있어야 하고, 식별자가 같으면 같은 Object 인 것이 보장되어야 한다. 단순히 데이터를 담고 있는 데이터 구조라기 보다 , 데이터와 함께 기능을 제공하는 객체 도메인 로직   두개이상의 데이터가 개념적으로 하나인 경우, 벨류 타입(Value Object )을">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">모두가 master가 되는 날 까지</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Inici</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="https://about.me/apexsoft">Quant a</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cercar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'categories',
+            TAGS: 'etiquetes',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    Sense categoria
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-DDD 자주사용 요약 정리" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        DDD설계 개념과 구현
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/01/09/DDD 자주사용 요약 정리/" class="article-date">
+            <time datetime="2019-01-09T08:10:45.138Z" itemprop="datePublished">2019-01-09</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/DDD/">DDD</a>, <a class="tag-link" href="/tags/JPA/">JPA</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="개념정의"><a href="#개념정의" class="headerlink" title="개념정의"></a>개념정의</h1><h2 id="도메인-모델의-엔티티"><a href="#도메인-모델의-엔티티" class="headerlink" title="도메인 모델의 엔티티"></a>도메인 모델의 엔티티</h2><ul>
+<li>속성이 아닌 <strong>식별성을 기준</strong>으로 정의되는 도메인 객체.<br>반드시 식별자가 있어야 하고, 식별자가 같으면 같은 Object 인 것이 보장되어야 한다.</li>
+<li>단순히 데이터를 담고 있는 데이터 구조라기 보다 , <strong>데이터</strong>와 함께 <strong>기능을 제공하는 객체</strong><ul>
+<li>도메인 로직</li>
+</ul>
+</li>
+<li><strong>두개이상의 데이터가 개념적으로 하나인 경우</strong>, <strong>벨류 타입</strong>(Value Object )을 이용해서 표현할수 있다 </li>
+</ul>
+<h2 id="Value-Object"><a href="#Value-Object" class="headerlink" title="Value Object"></a>Value Object</h2><ul>
+<li><p><strong>식별자가 없으며</strong> 영속성이 필요없는 객체</p>
+<ul>
+<li>값이 변경되면, 원본데이터를 찾기 어렵다 </li>
+<li>모든 데이터를 삭제하고, 모든 데이터를 다시 저장해야한다</li>
+<li>실무에서 값 타입 컬렉션이 매핑된 테이블에 데이터가 많다면, <strong>일대다 관계를 고려(엔티티로만들어라)</strong></li>
+</ul>
+</li>
+<li><p>식별자 없는 물리테이블로 표현될수도 , 칼럼으로 표현될수도 있다 </p>
+</li>
+<li><p><strong>불변타입</strong></p>
+<ul>
+<li>데이터 변경 기능을 제공하지 않는다 </li>
+<li>set 없다 &gt;&gt;  생성자  등 사용 </li>
+</ul>
+</li>
+<li><p>벨류 타입은 <strong>개념적으로 완전한 하나</strong>를 표현할 때 사용한다. </p>
+<p>예를들어  밸류타입인 File를 다음과 같이 작성할 수 있다.</p>
+<ul>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">File</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> String originName;</span><br><span class="line">  <span class="keyword">private</span> String path;</span><br><span class="line">  <span class="keyword">private</span> String size;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>벨류 타입을 사용할 때의 또다른 장점은 <strong>밸류타입을 위한 기능을 추가</strong> 할 수 있다. </p>
+<ul>
+<li>s3파일 path가 붙은 전체 path 추가 가능 </li>
+</ul>
+</li>
+</ul>
+<h2 id="Aggregate"><a href="#Aggregate" class="headerlink" title="Aggregate"></a>Aggregate</h2><ul>
+<li><p><code>관련</code>된 모델을 <code>하나로 모은것</code></p>
+</li>
+<li><p>애그리거트의 루트는 엔티티 므로 @Entity로 매핑 설정한다</p>
+</li>
+<li><p>애그리거트에 속한 객체는 유사하거나 ,<strong>동일한 라이프 사이클</strong>을 가진다 </p>
+<ul>
+<li><p>애그리거트에 속한 구성요소는 대부분 함께 생성하고 함께 제거한다 </p>
+<ul>
+<li><p>ex) <code>상품</code> 과 <code>리뷰</code>  는 함께 생성되지 않고, 함께 변경되지 도 않는다 </p>
+<p>또한 변경 주체도 다르다</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>애그리거트는 <strong>독립된 객체 군</strong>이며, 각 에그리거트는 자기 자신을 관리할 뿐 다른 애그리거트를 관리하지 않는다 </p>
+</li>
+<li><p>애그리거트 내의 엔티티 및 밸류 객체의 데이터 수정은 애그리것 <strong>루트</strong>를 통해서만 수행</p>
+<ul>
+<li>다른 애그리것의 엔티티를 참조할 때 객체 직접 참조 대신 ID 참조 방식을 적용<ul>
+<li>애그리것에 포함된 객체의 정보 수정은 애그리것 내에서만 가능하도록 제한</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>애그리거트에서 루트 엔터티를 뺀 나머지 구성요서는 <strong>대부분 밸류</strong></p>
+<ul>
+<li>루트 엔터티 외 다른 밸류가 있다면 진짜 엔터티인지 의심 필요</li>
+<li>단지 별도 테이블에 데이터 저장한다고 해서 엔터티는 아님</li>
+<li>엔터티가 확실하다면 다른 애그리거트는 아닌지 확인 필요</li>
+</ul>
+<p>- 예를 들어 쇼핑몰 사이트에서 주문 Entity내에 배송주소 정보를 우편번호 주소1, 주소2, 상세주소 이런식으로 각 컬럼으로 정의하는 것이 아니라, 주소라는 Value Object를 별도로 작성하고 주문 Entity는 주소 Value Object를 포함하는 방식으로 관계 일관성 및 단순화를 유지한다.</p>
+</li>
+</ul>
+<h2 id="Repository"><a href="#Repository" class="headerlink" title="Repository"></a>Repository</h2><ul>
+<li><p>리포지터리는 애그리거트의 저장소이다.</p>
+</li>
+<li><p>애그리거트를 저장, 조회, 삭제 &gt; 리포지터리의 기본 기능</p>
+</li>
+</ul>
+<hr>
+<h1 id="매핑-구현"><a href="#매핑-구현" class="headerlink" title="매핑 구현"></a>매핑 구현</h1><h2 id="1-엔티티와-기본-벨류-매핑"><a href="#1-엔티티와-기본-벨류-매핑" class="headerlink" title="1. 엔티티와 기본 벨류 매핑"></a>1. 엔티티와 기본 벨류 매핑</h2><h2 id="Embeddable"><a href="#Embeddable" class="headerlink" title="Embeddable"></a>Embeddable</h2><ul>
+<li>value object</li>
+<li>기간(시작 날짜, 끝 날짜)이나 좌표(X, Y) 등 <strong>항상 같이 다니는 값들</strong>을 <strong>객체</strong>로 묶어서 <strong>Entity의 속성</strong>으로 지정<ul>
+<li>테이블이 생기지 않고, <strong>칼럼만 추가</strong>된다 </li>
+</ul>
+</li>
+<li>객체의 클래스에 <code>@Embeddable</code> 어노테이션을 붙여서 선언</li>
+<li>Entity에서 <code>@Embedded</code>어노테이션을 붙여서 사용</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Embeddable</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmploymentPeriod</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Column</span>(name=<span class="string">"START_DATE"</span>)</span><br><span class="line">  <span class="keyword">private</span> java.sql.Date startDate;</span><br><span class="line"> </span><br><span class="line">  <span class="meta">@Column</span>(name=<span class="string">"END_DATE"</span>)</span><br><span class="line">  <span class="keyword">private</span> java.sql.Date endDate;</span><br><span class="line">  ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Embedded</span></span><br><span class="line"> <span class="keyword">private</span> EmploymentPeriod period;</span><br></pre></td></tr></table></figure>
+<h2 id="2-두개-이상의-프로퍼티를-가진-밸류타입을-한개의-칼럼에-매핑"><a href="#2-두개-이상의-프로퍼티를-가진-밸류타입을-한개의-칼럼에-매핑" class="headerlink" title="2.두개 이상의 프로퍼티를 가진 밸류타입을  한개의 칼럼에 매핑"></a>2.<strong>두개 이상의 프로퍼티</strong>를 가진 밸류타입을  <strong>한개의 칼럼</strong>에 매핑</h2><h2 id="Converter"><a href="#Converter" class="headerlink" title="@Converter"></a>@Converter</h2><ul>
+<li><p>데이터를 변환해서 데이터베이스에 저장 </p>
+<ul>
+<li><strong>두개 이상의 프로퍼티</strong>를 가진 밸류타입을  <strong>한개의 칼럼</strong>에 <strong>매핑</strong>하기 위해서 사용</li>
+<li>사용 편의상 변환 사용 </li>
+</ul>
+</li>
+</ul>
+<h3 id="자바의-boolean-사용-하고-데이터베이스에-y-n-으로-저장하기"><a href="#자바의-boolean-사용-하고-데이터베이스에-y-n-으로-저장하기" class="headerlink" title="자바의 boolean 사용 하고, 데이터베이스에 y n 으로 저장하기"></a>자바의 boolean 사용 하고, 데이터베이스에 <code>y</code> <code>n</code> 으로 저장하기</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Converter</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BooleanToYNConverter</span> <span class="keyword">implements</span> <span class="title">AttributeConverter</span>&lt;<span class="title">Boolean</span>, <span class="title">Character</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Character <span class="title">convertToDatabaseColumn</span><span class="params">(Boolean attribute)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (attribute != <span class="keyword">null</span> &amp;&amp; attribute) ? <span class="string">'Y'</span> : <span class="string">'N'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Boolean <span class="title">convertToEntityAttribute</span><span class="params">(Character dbData)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dbData == <span class="string">'Y'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>AttributeConverter</code> 인터페이스 구현 <ul>
+<li><code>convertToDatabaseColumn</code> : 엔티티의 데이터를 데이터베이스 칼럼에 저장할 데이터로 변환한다</li>
+<li><code>convertToEntityAttribute</code> :  데이터베이스에서 조회한 칼럼 데이터를 엔티티의 데이터로 변환 </li>
+</ul>
+</li>
+<li>제네릭에 현재타입과 변환할 타입을 지정해야한다 </li>
+</ul>
+<h3 id="칼럼-레벨에-적용"><a href="#칼럼-레벨에-적용" class="headerlink" title="칼럼 레벨에 적용"></a>칼럼 레벨에 적용</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Column</span>(name = <span class="string">"MULTI_YN"</span>)</span><br><span class="line"><span class="meta">@Convert</span>(converter = BooleanToYNConverter.class)</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> multi;</span><br></pre></td></tr></table></figure>
+<h3 id="글로벌-설정"><a href="#글로벌-설정" class="headerlink" title="글로벌 설정"></a>글로벌 설정</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Converter</span>(autoApply=<span class="keyword">true</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BooleanToYNConverter</span> <span class="keyword">implements</span> <span class="title">AttributeConverter</span>&lt;<span class="title">Boolean</span>, <span class="title">Character</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Character <span class="title">convertToDatabaseColumn</span><span class="params">(Boolean attribute)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (attribute != <span class="keyword">null</span> &amp;&amp; attribute) ? <span class="string">'Y'</span> : <span class="string">'N'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Boolean <span class="title">convertToEntityAttribute</span><span class="params">(Character dbData)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dbData == <span class="string">'Y'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>모든 Boolean 타입에 컨버터를 적용한다 </li>
+<li>따로  <code>@Convert</code>를 지정하지 않아도 된다 </li>
+</ul>
+<h2 id="3-Value-Collection"><a href="#3-Value-Collection" class="headerlink" title="3.Value Collection"></a>3.Value Collection</h2><blockquote>
+<p>값 타입을 하나 이상 저장 하려면, 컬렉션에  보관해야하고  보관 방법은 두가지가 있다 </p>
+</blockquote>
+<h3 id="3-1-별도-테이블-매핑"><a href="#3-1-별도-테이블-매핑" class="headerlink" title="3-1.별도 테이블 매핑"></a>3-1.별도 <code>테이블</code> 매핑</h3><blockquote>
+<p> 밸류 컬렉션을 별도 테이블로 매핑하는 방법이다.</p>
+<p> <code>@ElementCollection</code>을 통해 변경이 발생할 시, 전체를 지우고 다시 입력하는 이슈가 있음. 이를 완화시키기 위해서 <code>@OrderColumn</code>을 추가하는 방법이 있긴하나 완벽하지는 않음</p>
+</blockquote>
+<h4 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h4><figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line">  <span class="meta">@ElementCollection</span></span><br><span class="line">  <span class="meta">@CollectionTable</span>(name = <span class="string">"order_line"</span>,</span><br><span class="line">                  joinColumns= <span class="meta">@JoinColumn</span>(name = <span class="string">"order_number"</span>))</span><br><span class="line">  <span class="meta">@OrderColumn</span>(name = <span class="string">"line_idx"</span>)</span><br><span class="line">  <span class="keyword">private</span> List&lt;OrderLine&gt; orderLines;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>밸류 컬렉션을 별도 테이블로 매핑할 땐, <code>@ElementCollection</code>, <code>@CollectionTable</code> 함께 사용</li>
+</ul>
+<h4 id="Value-Object-1"><a href="#Value-Object-1" class="headerlink" title="Value Object"></a>Value Object</h4><figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Embeddable</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderLine</span> </span>&#123;</span><br><span class="line">  ..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>List</code> 타입 자체가 인덱스를 가지기 때문에, 인덱스 값을 저장하기 위한 프로퍼티가 존재하지 않음</li>
+<li>Entity에 <code>@OrderColumn</code> 이용해서 지정한 칼럼에 인덱스 저장</li>
+</ul>
+<blockquote>
+<p>사회혀신타운 프로젝트에서 <code>Portfolio</code>엔터티에 첨부인 <code>Attachment</code>밸류 컬렉션을 매핑한 방법</p>
+</blockquote>
+<h3 id="3-2-한-개-칼럼-매핑-Converter"><a href="#3-2-한-개-칼럼-매핑-Converter" class="headerlink" title="3-2.한 개 칼럼 매핑 (@Converter)"></a>3-2.한 개 <code>칼럼</code> 매핑 (@Converter)</h3><blockquote>
+<p>별도 테이블 아닌 한 개 칼럼에 저장해야 할때 방법이다.</p>
+<p>예를 들어, 도메인 모델에는 이메일 주소 목록을 <code>Set</code>으로 보관하고 DB에는 한개 컬럼에 콤마로 구분해서 저장해야 할 때가 있다. 이때 <code>AttributeConverter</code>를 사용하면 밸류 컬렉션을 한 개 칼럼에 쉽게 매핑할 수 있다.</p>
+</blockquote>
+<h4 id="EmailSet"><a href="#EmailSet" class="headerlink" title="EmailSet"></a>EmailSet</h4><figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmailSet</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Set&lt;Email&gt; emails = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">EmailSet</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">EmailSet</span><span class="params">(Set&lt;Email&gt; emails)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.emails.addAll(emails);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> Set&lt;Email&gt; <span class="title">getEmails</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Collections.unmodifiableSet(emails);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Entity-1"><a href="#Entity-1" class="headerlink" title="Entity"></a>Entity</h4><figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Column</span>(name = <span class="string">"emails"</span>)</span><br><span class="line"><span class="meta">@Convert</span>(converter = EmailSetConverter.class)</span><br><span class="line"><span class="keyword">private</span> EmailSet emailSet;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>크라우드 프로젝트 <code>EvalAns</code>부분에 답변이 여러개인 경우 때문에, <code>items</code>에 콤마로 구분해서 여러값이 들어갈수 있도록 매핑한 방법</p>
+<p><code>AttributeConverter</code> 를 구현해서 만든 <code>ListToStringConverter</code>가 매핑을 도와준다.</p>
+<p>차이점 : 책에서는 <code>Set</code>타입 사용했지만 책임님은 <code>List&lt;Object&gt;</code> 사용, 코드집합 (예: itemSet 타입)이 필요하다고 했는데, 책임님은 만들지 않으셨다.</p>
+</blockquote>
+<h2 id="Value-Collection을-테이블로-저장할지-컬럼으로-저장할지-결정하는-기준은"><a href="#Value-Collection을-테이블로-저장할지-컬럼으로-저장할지-결정하는-기준은" class="headerlink" title="Value Collection을 테이블로 저장할지, 컬럼으로 저장할지 결정하는 기준은?"></a>Value Collection을 테이블로 저장할지, 컬럼으로 저장할지 결정하는 기준은?</h2><p>책에 의하면,  <code>List</code>는 순서가 있는 타입이며 순서가 필요한 경우 <code>List&lt;밸류컬렉션&gt;</code> 으로 선언하여 테이블로 저장한다고만 짧게 언급했다. </p>
+<h1 id="OneToMany"><a href="#OneToMany" class="headerlink" title="@OneToMany"></a>@OneToMany</h1><ul>
+<li><p><strong>@Entity</strong> 끼리의  <strong>매핑</strong>을 위해서 사용된다</p>
+</li>
+<li><p>대부분의 다른 애그리거트에 있는,  엔티티 간의 관게를 표현 할때 사용된다 </p>
+<ul>
+<li><p>애그리거트는 ROOT 엔티티를 한개를 가진다 </p>
+<ul>
+<li>ROOT 엔티티 끼리의 관계를 표현</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>간혹 개념적으로 벨류인데, 여러이유로  @Entity를 사용해야 할때도 사용된다 </li>
+</ul>
+<h1 id="Enumerated"><a href="#Enumerated" class="headerlink" title="Enumerated"></a>Enumerated</h1><blockquote>
+<p>자바의 enum 타입을 매핑할 때 사용 </p>
+</blockquote>
+<ul>
+<li>Enum클래스</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> FileType &#123;</span><br><span class="line">     IMAGE, MOVIE, DOC, ETC</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>매핑<ul>
+<li>EnumType.STRING : enum <code>이름</code>을 db에 저장</li>
+<li>EnumType.ORDINAL: enum ‘순서’ 를 db에 저장</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*첨부유형구분코드*/</span></span><br><span class="line">    <span class="meta">@Enumerated</span>(EnumType.STRING)</span><br><span class="line">    <span class="meta">@NonNull</span> <span class="keyword">private</span> FileType fileType;</span><br></pre></td></tr></table></figure>
+<h1 id="MappedSuperclass"><a href="#MappedSuperclass" class="headerlink" title="@MappedSuperclass"></a>@MappedSuperclass</h1><ul>
+<li><p>추상 클래스와 유사</p>
+<ul>
+<li>단순히 매핑 정보를 상속할 목적으로만 사용된다</li>
+</ul>
+</li>
+<li><p>부모클래스는 테이블과 매핑하지않고, 부모클래스를 상속받는 자식클래스에게 매핑 정보만 제공한다 </p>
+</li>
+<li><p>여러엔티티에서 공통으로 사용하는 속성을 효과적으로 관리</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EntityListeners</span>(AuditingEntityListener.class)  <span class="comment">// 생성 수정 자동 설정</span></span><br><span class="line"><span class="meta">@MappedSuperclass</span>  <span class="comment">// 부모설정 </span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractBaseEntity</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@CreatedDate</span></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"CREATED_AT"</span>, updatable = <span class="keyword">false</span>)</span><br><span class="line">    <span class="meta">@JsonIgnore</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime createdDateTime;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@LastModifiedDate</span></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"LAST_MODIFIED_AT"</span>, updatable = <span class="keyword">true</span>)</span><br><span class="line">    <span class="meta">@JsonIgnore</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime lastModifiedDateTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name = <span class="string">"USER"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">AbstractBaseEntity</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"USER_ID"</span>)</span><br><span class="line">    <span class="keyword">private</span> String userId;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="jakson"><a href="#jakson" class="headerlink" title="jakson"></a>jakson</h1><p>jackson은 자바진영 json 라이브러리로 잘 알려져 있지만 json 뿐만 아니라 XML, YAML, CSV 등 다양한 형식의 데이타를 지원하는 data-processing 툴이다.</p>
+<p>스트림 방식이므로 속도가 빠르며 유연하며 다양한 third party 데이터 타입을 지원하며 annotation 방식으로 메타 데이타를 기술할 수 있으므로 JSON 의 약점중 하나인 문서화와 데이타 validation 문제를 해결할 수 있다.</p>
+<ul>
+<li>@JsonIgnore : VO의 멤버변수 위에 선언해서 제외처리 (비밀번호 같은거)</li>
+<li>@JsonProperty : json으로 변환 시에 사용할 이름이다. (DB 칼럼과 이름이 다르거나 api 응답과 이름이 다르지만 매핑시켜야 할 때)</li>
+<li>@JsonGetter : 어떤 필드값을 가져올 떄 이 메소드로 접근해서만 가져오라고 jackson에게 명시적으로 알린다.</li>
+<li>@JsonSetter : 위와 동일, Deserialize 때</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://apexsoft.github.io/2019/01/09/DDD 자주사용 요약 정리/" data-id="cjqowmobm0000zculhi9zcv48" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>seguir:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ApexSoft/apexsoft.github.com" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/01/02/연관관계/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">antic</strong>
+        <p class="article-nav-title">JPA 연관관계</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/01/09/DDD 자주사용 요약 정리/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/01/09/DDD 자주사용 요약 정리/" class="title">DDD설계 개념과 구현</a></p>
+                            <p class="item-date"><time datetime="2019-01-09T08:10:45.138Z" itemprop="datePublished">2019-01-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/01/02/연관관계/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://imgur.com/y0yxJAQ.png)" alt="JPA 연관관계" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/01/02/연관관계/" class="title">JPA 연관관계</a></p>
+                            <p class="item-date"><time datetime="2019-01-02T08:19:26.701Z" itemprop="datePublished">2019-01-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/01/02/상속관계/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/01/02/상속관계/" class="title">JPA 상속관계</a></p>
+                            <p class="item-date"><time datetime="2019-01-02T08:19:26.697Z" itemprop="datePublished">2019-01-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/12/17/Node - MongoDB 간단 프로젝트/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/12/17/Node - MongoDB 간단 프로젝트/" class="title">Node - MongoDB 간단 프로젝트</a></p>
+                            <p class="item-date"><time datetime="2018-12-17T05:01:08.962Z" itemprop="datePublished">2018-12-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/12/17/JFrame for IntelliJ/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/12/17/JFrame for IntelliJ/" class="title">JFrame for IntelliJ</a></p>
+                            <p class="item-date"><time datetime="2018-12-17T04:47:10.833Z" itemprop="datePublished">2018-12-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">arxius</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">31</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">etiquetes</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AR/">AR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARjs/">ARjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDD/">DDD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HeidiSQL/">HeidiSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IntelliJ/">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JFrame/">JFrame</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/">JPA</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/">SPRINGBOOT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UMG/">UMG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine-4/">Unreal Engine 4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-js/">Unreal.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/">VR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/component/">component</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extends/">extends</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pug/">pug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vuex/">vuex </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/widget/">widget</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/가상현실/">가상현실</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/결제모듈/">결제모듈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디버깅/">디버깅</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배치/">배치</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/브라우저AR/">브라우저AR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아임포트/">아임포트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/저장소/">저장소</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/증강현실/">증강현실</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">etiqueta cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AR/" style="font-size: 10px;">AR</a> <a href="/tags/ARjs/" style="font-size: 10px;">ARjs</a> <a href="/tags/DB/" style="font-size: 16.67px;">DB</a> <a href="/tags/DDD/" style="font-size: 10px;">DDD</a> <a href="/tags/ES6/" style="font-size: 11.67px;">ES6</a> <a href="/tags/HeidiSQL/" style="font-size: 10px;">HeidiSQL</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JFrame/" style="font-size: 10px;">JFrame</a> <a href="/tags/JPA/" style="font-size: 18.33px;">JPA</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/SPRINGBOOT/" style="font-size: 10px;">SPRINGBOOT</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UMG/" style="font-size: 10px;">UMG</a> <a href="/tags/Unreal-Engine-4/" style="font-size: 11.67px;">Unreal Engine 4</a> <a href="/tags/Unreal-js/" style="font-size: 11.67px;">Unreal.js</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/component/" style="font-size: 13.33px;">component</a> <a href="/tags/extends/" style="font-size: 10px;">extends</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/javascript/" style="font-size: 11.67px;">javascript</a> <a href="/tags/node-js/" style="font-size: 11.67px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/pug/" style="font-size: 10px;">pug</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/springboot/" style="font-size: 11.67px;">springboot</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue-js/" style="font-size: 20px;">vue.js</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex </a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/widget/" style="font-size: 10px;">widget</a> <a href="/tags/가상현실/" style="font-size: 10px;">가상현실</a> <a href="/tags/결제모듈/" style="font-size: 10px;">결제모듈</a> <a href="/tags/디버깅/" style="font-size: 10px;">디버깅</a> <a href="/tags/배치/" style="font-size: 10px;">배치</a> <a href="/tags/브라우저AR/" style="font-size: 10px;">브라우저AR</a> <a href="/tags/아임포트/" style="font-size: 10px;">아임포트</a> <a href="/tags/저장소/" style="font-size: 10px;">저장소</a> <a href="/tags/증강현실/" style="font-size: 11.67px;">증강현실</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://www.apexsoft.co.kr">Apexsoft</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 HyoSook Kim</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://apexsoft.github.io/2019/01/09/DDD 자주사용 요약 정리/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
