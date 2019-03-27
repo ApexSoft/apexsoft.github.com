@@ -1,7 +1,8 @@
 ---
-title: [Postman 활용] Runner로 자동 반복 호출 수행하기
+title : "Postman 활용 - Runner로 반복 호출 수행하기"
 tags: ["postman"]
 ---
+
 Postman은 테스트도구로써 사용할 수 있다. 
 `api` 수행하는 것을 테스트 라고 볼 수 있다.
 같은 `api`를 여러번 반복해야하는 경우에 Postman의 Runner를 사용할 수 있다. 
