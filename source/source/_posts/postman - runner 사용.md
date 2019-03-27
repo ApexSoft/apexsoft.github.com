@@ -1,4 +1,4 @@
-﻿---
+---
 title: [Postman 활용] Runner로 자동 반복 호출 수행하기
 tags: ["postman"]
 ---
